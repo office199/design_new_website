@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Calendar, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Calendar, ArrowRight, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { services } from '../../data/content';
 
@@ -124,8 +124,8 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-2 shrink-0">
-            <a href="https://wa.me/919322364002" className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-105 transition shadow-sm" title="WhatsApp">
-              <span className="font-bold text-[12px]">WA</span>
+            <a href="https://wa.me/919322364002" className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-105 transition shadow-sm" title="WhatsApp" aria-label="Chat on WhatsApp">
+              <MessageCircle size={20} strokeWidth={2.25} />
             </a>
             <Link to="/contact" className="flex items-center gap-2 bg-[#0B4DA2] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-[#083A7A] transition shadow-lg shadow-blue-900/20">
               <Calendar size={16} /> Book Appointment
