@@ -28,16 +28,12 @@ export default function TopBar() {
   return (
     <div className="bg-[#0B4DA2] text-white text-[13px] relative z-50">
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-2 flex flex-wrap justify-between items-center gap-x-4 gap-y-2">
-        {/* Left side: Shifted Emergency word & Call Now with both numbers */}
+        {/* Left side: primary call numbers */}
         <div className="flex items-center flex-wrap gap-x-4 gap-y-1.5 w-full lg:w-auto justify-between sm:justify-start">
           <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-xs sm:text-[13px] font-medium">
-            <span className="bg-red-600 text-white px-2 sm:px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase flex items-center gap-1 shadow-xs shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-              Emergency
-            </span>
             <span className="flex items-center gap-1 text-white font-semibold shrink-0">
               <Phone size={13} className="text-blue-200 shrink-0" />
-              <span>Call Now :</span>
+              <span>Call No.:</span>
             </span>
             <div className="flex items-center gap-1 text-white font-bold flex-wrap">
               <a href="tel:+919322364002" className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap">
@@ -64,7 +60,7 @@ export default function TopBar() {
           </div>
         </div>
 
-        {/* Right side: Mobile Quick WhatsApp, Social Icons & Emergency Pill */}
+        {/* Right side: Mobile Quick WhatsApp, Social Icons & Call Numbers */}
         <div className="flex items-center justify-between w-full lg:w-auto gap-2 sm:gap-3">
           <div className="flex items-center gap-2 lg:hidden text-xs">
             <a href="https://wa.me/919322364002" className="flex items-center gap-1.5 bg-[#25D366] px-3 py-1 rounded-full font-bold text-white hover:bg-[#1ebe5d] transition shadow-xs">
@@ -107,13 +103,12 @@ export default function TopBar() {
               </a>
             </div>
 
-            {/* Emergency Wording & Numbers on Right side for desktop/tablet */}
+            {/* Call numbers on the right for desktop/tablet */}
             <div className="hidden lg:flex items-center gap-1.5">
-              <span className="hidden 2xl:inline opacity-80 text-xs font-medium">For Emergency:</span>
               <div className="bg-white text-[#0B4DA2] px-3 py-1 rounded-full text-xs font-bold shadow-xs flex items-center gap-1.5 flex-wrap">
-                <span className="text-red-600 font-extrabold flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
-                  Emergency:
+                <span className="font-extrabold flex items-center gap-1">
+                  <Phone size={13} aria-hidden="true" />
+                  Call No.:
                 </span>
                 <a href="tel:+919322364002" className="hover:text-blue-700 underline-offset-2 hover:underline transition whitespace-nowrap">
                   +91 93223 64002
