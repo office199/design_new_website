@@ -84,7 +84,7 @@ export default function ServiceDetail() {
         </div>
 
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 pb-16">
-          <div className="grid lg:grid-cols-[minmax(0,4fr)_minmax(0,1fr)] gap-6 lg:gap-8">
+          <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-6 lg:gap-8">
             <Reveal className="min-w-0">
             <div className="min-w-0 space-y-8">
               <div className="bg-white rounded-[28px] border border-slate-200 overflow-hidden shadow-sm">

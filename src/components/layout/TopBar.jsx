@@ -28,50 +28,70 @@ function LinkedinIcon({ size = 14, className = "" }) {
 export default function TopBar() {
   return (
     <div className="bg-[#0B4DA2] text-white text-[13px] relative z-50">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-2 flex flex-wrap justify-between items-center gap-x-4 gap-y-2">
-        {/* Left side: primary call numbers */}
-        <div className="flex items-center flex-wrap gap-x-4 gap-y-1.5 w-full lg:w-auto justify-between sm:justify-start">
-          <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-xs sm:text-[13px] font-medium">
-            <span className="flex items-center gap-1 text-white font-semibold shrink-0">
-              <Phone size={13} className="text-blue-200 shrink-0" />
-              <span>Call No.:</span>
-            </span>
-            <div className="flex items-center gap-1 text-white font-bold flex-wrap">
-              <a href="tel:+919322364002" className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap">
-                +91 93223 64002
+      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-2.5">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 lg:gap-4">
+
+          {/* Left Section */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+            {/* Phone Numbers */}
+            <div className="flex items-center gap-2 text-xs sm:text-[13px]">
+              <span className="flex items-center gap-1.5 text-white font-semibold shrink-0">
+                <Phone size={13} className="text-blue-200 shrink-0" />
+                Call No.:
+              </span>
+              <div className="flex items-center gap-1.5 font-bold">
+                <a
+                  href="tel:+919322364002"
+                  className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap"
+                >
+                  +91 93223 64002
+                </a>
+                <span className="text-blue-300 font-normal">/</span>
+                <a
+                  href="tel:+917506509666"
+                  className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap"
+                >
+                  +91 75065 09666
+                </a>
+              </div>
+            </div>
+
+            {/* WhatsApp Button - Mobile Only */}
+            <div className="sm:hidden">
+              <a
+                href="https://wa.me/919322364002"
+                className="inline-flex items-center gap-1.5 bg-[#25D366] px-4 py-1.5 rounded-full font-bold text-white hover:bg-[#1ebe5d] transition shadow-sm"
+                aria-label="Chat on WhatsApp"
+              >
+                <WhatsAppIcon size={14} />
+                WhatsApp
               </a>
-              <span className="text-blue-300 font-normal">/</span>
-              <a href="tel:+917506509666" className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap">
-                +91 75065 09666
+            </div>
+
+            {/* Additional Info - XL screens */}
+            <div className="hidden xl:flex items-center gap-6 text-blue-100 border-l border-white/20 pl-6 text-xs">
+              <a
+                href="mailto:info@ashulaservision.com"
+                className="flex items-center gap-1.5 hover:text-white transition"
+              >
+                <Mail size={13} className="text-blue-200 shrink-0" />
+                info@ashulaservision.com
               </a>
+              <span className="flex items-center gap-1.5">
+                <Clock size={13} className="text-blue-200 shrink-0" />
+                Mon-Sat: 10AM - 8PM
+              </span>
+              <span className="flex items-center gap-1.5">
+                <MapPin size={13} className="text-blue-200 shrink-0" />
+                Andheri West, Mumbai
+              </span>
             </div>
           </div>
 
-          {/* Additional Contact Info on Extra Large screens */}
-          <div className="hidden xl:flex items-center gap-5 text-blue-100 border-l border-white/20 pl-4 text-xs font-normal">
-            <span className="flex items-center gap-1.5 hover:text-white transition">
-              <Mail size={13} className="text-blue-200 shrink-0" /> info@ashulaservision.com
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock size={13} className="text-blue-200 shrink-0" /> Mon-Sat: 10AM - 8PM
-            </span>
-            <span className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-blue-200 shrink-0" /> Andheri West, Mumbai
-            </span>
-          </div>
-        </div>
-
-        {/* Right side: Mobile Quick WhatsApp, Social Icons & Call Numbers */}
-        <div className="flex items-center justify-between w-full lg:w-auto gap-2 sm:gap-3">
-          <div className="flex items-center gap-2 lg:hidden text-xs">
-            <a href="https://wa.me/919322364002" className="flex items-center gap-1.5 bg-[#25D366] px-3 py-1 rounded-full font-bold text-white hover:bg-[#1ebe5d] transition shadow-xs" aria-label="Chat on WhatsApp">
-              <WhatsAppIcon size={14} /> WhatsApp
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3 ml-auto flex-wrap justify-end">
-            {/* Social Media Links with Icons */}
-            <div className="flex items-center gap-1.5 border-r border-white/20 pr-2 sm:pr-3 mr-0.5">
+          {/* Right Section - Social Media Only */}
+          <div className="flex items-center justify-between sm:justify-end">
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-2">
               <a
                 href="https://www.facebook.com/AshuLaserVision/"
                 target="_blank"
@@ -103,24 +123,8 @@ export default function TopBar() {
                 <LinkedinIcon size={13} />
               </a>
             </div>
-
-            {/* Call numbers on the right for desktop/tablet */}
-            <div className="hidden lg:flex items-center gap-1.5">
-              <div className="bg-white text-[#0B4DA2] px-3 py-1 rounded-full text-xs font-bold shadow-xs flex items-center gap-1.5 flex-wrap">
-                <span className="font-extrabold flex items-center gap-1">
-                  <Phone size={13} aria-hidden="true" />
-                  Call No.:
-                </span>
-                <a href="tel:+919322364002" className="hover:text-blue-700 underline-offset-2 hover:underline transition whitespace-nowrap">
-                  +91 93223 64002
-                </a>
-                <span className="text-slate-400 font-normal">/</span>
-                <a href="tel:+917506509666" className="hover:text-blue-700 underline-offset-2 hover:underline transition whitespace-nowrap">
-                  +91 75065 09666
-                </a>
-              </div>
-            </div>
           </div>
+
         </div>
       </div>
     </div>
