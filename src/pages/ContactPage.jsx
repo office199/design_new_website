@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import SEO from '../components/SEO';
+import PageTransition from '../components/animations/PageTransition';
+import { Reveal } from '../components/animations/Reveal';
 import { services } from '../data/content';
 import { Phone, Mail, MapPin, Clock, Send, Navigation, ShieldCheck, Award } from 'lucide-react';
 
@@ -21,7 +23,7 @@ export default function ContactPage() {
   };
 
   return (
-    <>
+    <PageTransition>
       <SEO
         title="Contact & Book Appointment - Ashu Laser Vision Andheri Mumbai - 9322364002"
         description="Book eye checkup at Ashu Laser Vision - two convenient locations in Mumbai: Pearl Plaza Opp Andheri Railway Platform 1 Next to McDonald's, Andheri West 400058 (2 mins DN Nagar Metro) and Ashu Eye Hospital, Premises No. 9, 1st Floor, Silver Streak Apartments, Yari Road Opp Madina Masjid, Versova, Andheri West 400061. Call +91 93223 64002 / 75065 09666. Mon-Sat 10AM-8PM Emergency 24x7. 28+ services Cataract LASIK Retina Glaucoma Squint Oculoplasty. Email ashueyelaser@gmail.com"
@@ -33,6 +35,7 @@ export default function ContactPage() {
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
           <div className="inline-flex bg-white border border-slate-200 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4">Contact & Appointment • 24x7 Emergency • Home Care</div>
           <div className="grid lg:grid-cols-12 gap-8">
+            <Reveal>
             <div className="lg:col-span-5 space-y-6">
               <h1 className="text-[32px] md:text-[44px] font-bold leading-[0.9] tracking-tight">Book Your<br/>Eye Checkup Today<br/>at <span className="text-[#0B4DA2]">Andheri West</span> or <span className="text-[#0B4DA2]">Versova</span></h1>
               <p className="text-sm text-slate-600 leading-relaxed">Same-day appointments available with Dr. Shahnawaz Kazi FMRF FRCS Gold Medalist - 17+ years 50K+ surgeries. Visit us at Pearl Plaza, Opp Andheri Railway Station Platform 1 (2 mins DN Nagar Metro) or at Ashu Eye Hospital, Yari Road, Versova. Fill form or call directly. Emergency retinal detachment, trauma, chemical injury - 24x7 OT ready. Elderly home visit eye care available.</p>
@@ -88,7 +91,9 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+            </Reveal>
 
+            <Reveal>
             <div className="lg:col-span-7">
               <div className="bg-white rounded-[28px] border border-slate-200 p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.06)] lg:sticky lg:top-[100px]">
                 <h2 className="font-bold text-xl">Request Appointment - Same Day Available</h2>
@@ -136,8 +141,10 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+            </Reveal>
           </div>
 
+          <Reveal>
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             <div className="rounded-[24px] overflow-hidden border border-slate-200 h-[420px] bg-slate-100 relative shadow-sm">
               <div className="absolute top-4 left-4 z-10 bg-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2 text-xs font-bold border border-slate-200 max-w-[90%]"><MapPin size={14} className="text-[#0B4DA2] shrink-0"/> <span className="truncate">Ashu Laser Vision - Pearl Plaza, Opp Andheri Station</span> <span className="bg-[#0B4DA2] text-white text-[10px] px-2 py-0.5 rounded-full shrink-0">OPEN</span></div>
@@ -148,8 +155,9 @@ export default function ContactPage() {
               <iframe title="Ashu Eye Hospital Location Map Yari Road Versova Mumbai" className="absolute inset-0 w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d72.8091!3d19.1397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAshu%20Eye%20Hospital%20Yari%20Road%20Versova!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
-    </>
+    </PageTransition>
   );
 }

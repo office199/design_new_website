@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { services, categories } from '../../data/content';
 import { ArrowUpRight, Eye, ScanEye, Focus, Activity, Layers, Baby, Droplet, AlertTriangle, ShieldAlert, Sparkles, Home, Map, Crosshair, Zap, Camera, Scan, HeartPulse, Syringe, Droplets, Ruler, Shield, Gamepad2, Contact, EyeOff } from 'lucide-react';
+
+const gridV = { hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } } };
+const cardV = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } };
 
 const iconMap = {
   Eye, ScanEye, Focus, Activity, Layers, Baby, Droplet, AlertTriangle, ShieldAlert, Sparkles, Home, Map, Crosshair, Zap, Camera, Scan, HeartPulse, Syringe, Droplets, Ruler, Shield, Gamepad2, Contact, EyeOff
@@ -50,11 +54,12 @@ export default function Services({ limit, showCategoryFilter = false }) {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" variants={gridV} initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -60px 0px' }}>
           {list.map((s)=> {
             const Icon = iconMap[s.icon] || Eye;
             return (
-              <Link key={s.id} to={`/services/${s.id}`} className="group relative bg-white rounded-[24px] border border-slate-200 overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-blue-200 hover:-translate-y-1 transition-all duration-300">
+              <motion.div key={s.id} variants={cardV}>
+              <Link to={`/services/${s.id}`} className="group relative bg-white rounded-[24px] border border-slate-200 overflow-hidden hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
                 <div className="aspect-[16/10] overflow-hidden bg-slate-50 relative">
                   <img src={s.image} alt={`${s.title} - Ashu Laser Vision Andheri Mumbai`} className="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300" />
@@ -78,9 +83,10 @@ export default function Services({ limit, showCategoryFilter = false }) {
                   </div>
                 </div>
               </Link>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {list.length===0 && (
           <div className="text-center py-12 text-slate-500">No services found for "{search}" in {activeCat}</div>

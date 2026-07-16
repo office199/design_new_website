@@ -1,4 +1,5 @@
 import { technologies } from '../../data/content';
+import { Stagger, StaggerItem } from '../animations/Reveal';
 import { Cpu, Eye, Zap } from 'lucide-react';
 
 export default function Technology() {
@@ -10,14 +11,16 @@ export default function Technology() {
             <div className="inline-flex bg-blue-50 text-[#0B4DA2] px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase">Advanced Technology</div>
             <h2 className="text-[28px] md:text-[40px] font-bold leading-[0.9] tracking-tight">Precision, Technology & Trust Come Together for <span className="text-[#0B4DA2]">Better Vision</span></h2>
             <p className="text-[14px] text-slate-600 leading-relaxed">We invest in world-class diagnostic & surgical platforms to ensure accurate diagnosis, safe surgery & best visual outcomes.</p>
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              {technologies.map(t=>(
-                <div key={t.name} className="border border-slate-200 rounded-xl p-3.5 hover:bg-blue-50/50 transition">
-                  <div className="font-semibold text-[13px]">{t.name}</div>
-                  <div className="text-[11px] text-slate-500">{t.desc}</div>
-                </div>
-              ))}
-            </div>
+              <Stagger className="grid grid-cols-2 gap-3 pt-2">
+                {technologies.map(t=>(
+                  <StaggerItem key={t.name}>
+                    <div className="border border-slate-200 rounded-xl p-3.5 hover:bg-blue-50/50 transition">
+                      <div className="font-semibold text-[13px]">{t.name}</div>
+                      <div className="text-[11px] text-slate-500">{t.desc}</div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
           </div>
           <div className="lg:col-span-7 relative">
             <div className="grid grid-cols-2 gap-4">

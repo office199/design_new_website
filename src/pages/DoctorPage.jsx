@@ -1,14 +1,17 @@
 import SEO from '../components/SEO';
+import PageTransition from '../components/animations/PageTransition';
+import { Reveal } from '../components/animations/Reveal';
 import { doctor } from '../data/content';
 import { Award, GraduationCap, Briefcase, Heart } from 'lucide-react';
 
 export default function DoctorPage() {
   return (
-    <>
+    <PageTransition>
       <SEO title="Dr. Shahnawaz Kazi - Best Retina Surgeon in Mumbai | Ashu Laser Vision" description="Meet Dr. Shahnawaz Kazi - FMRF, FRCS Glasgow, Gold Medalist, Retina & Cataract Surgeon with 17+ years experience. Founder of Ashu Laser Vision." url="https://ashulaservision.com/doctor" />
       <div className="bg-[#F8FAFF] py-12 lg:py-20">
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
+            <Reveal>
             <div className="lg:col-span-5">
               <div className="bg-white rounded-[28px] border border-slate-200 p-8">
                 <img
@@ -31,6 +34,9 @@ export default function DoctorPage() {
                 </div>
               </div>
             </div>
+            </Reveal>
+
+            <Reveal>
             <div className="lg:col-span-7 space-y-6">
               <div className="bg-white rounded-[28px] border border-slate-200 p-8 lg:p-10">
                 <h2 className="text-2xl font-bold">About Doctor</h2>
@@ -71,9 +77,10 @@ export default function DoctorPage() {
                 </ul>
               </div>
             </div>
+            </Reveal>
           </div>
         </div>
       </div>
-    </>
+    </PageTransition>
   );
 }
