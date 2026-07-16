@@ -1,13 +1,6 @@
 import { useState } from 'react';
 import { Phone, Menu, X, ChevronLeft } from 'lucide-react';
-
-function WhatsAppIcon({ size = 22, className = "" }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.34 5L2 22l4.99-1.33C8.47 21.51 10.18 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.84 14.4c-.2.55-1.12 1.02-1.58 1.09-.43.06-1.12.28-3.75-.78-3.16-1.29-5.18-4.56-5.33-4.77-.16-.22-1.26-1.67-1.26-3.2 0-1.52.8-2.27 1.08-2.58.28-.3.61-.38.82-.38l.58.01c.19.01.45-.07.7.53.25.6.85 2.09.93 2.24.08.15.14.33.03.54-.1.2-.15.32-.3.5-.14.17-.3.37-.43.49-.13.13-.27.27-.12.53.15.26.67 1.1 1.43 1.79 1.02.9 1.95 1.18 2.25 1.31.28.12.45.1.6-.06.15-.16.67-.78.85-1.05.18-.27.35-.22.59-.13.24.09 1.52.72 1.78.85.26.13.43.2.5.31.06.11.06.64-.14 1.19z"/>
-    </svg>
-  );
-}
+import WhatsAppIcon from './icons/WhatsAppIcon';
 
 function FacebookIcon({ size = 20, className = "" }) {
   return (
