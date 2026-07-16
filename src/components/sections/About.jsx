@@ -5,8 +5,8 @@ export default function About() {
   return (
     <section className="py-16 lg:py-24 bg-[#F8FAFF] overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-6 relative">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-1 relative">
             <div className="relative">
               <div className="rounded-[32px] overflow-hidden aspect-[4/3] bg-white shadow-2xl">
                 <img
@@ -36,7 +36,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-1 space-y-6">
             <div className="inline-flex bg-white border border-slate-200 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase">About Ashu Laser Vision</div>
             <h2 className="text-[28px] md:text-[40px] font-bold leading-[0.9] tracking-tight">Committed to the Eye Care <span className="text-[#0B4DA2]">Excellence</span> Since 2004</h2>
             <p className="text-[15px] text-slate-600 leading-relaxed">

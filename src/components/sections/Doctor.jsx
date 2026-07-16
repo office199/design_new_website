@@ -8,8 +8,8 @@ export default function Doctor() {
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
         <div className="bg-[#0F172A] rounded-[28px] lg:rounded-[40px] overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-br from-[#0B4DA2]/40 to-transparent pointer-events-none" />
-          <div className="grid lg:grid-cols-12 relative">
-            <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center">
+          <div className="grid lg:grid-cols-2 relative">
+            <div className="lg:col-span-1 p-8 lg:p-12 flex flex-col justify-center">
               <div className="inline-flex bg-white/10 border border-white/20 text-white text-[11px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full w-fit">Founder & Medical Director</div>
               <h2 className="text-[30px] md:text-[40px] font-bold text-white leading-[0.95] mt-5 font-display">{doctor.name}</h2>
               <div className="text-blue-200 text-xs mt-3 leading-relaxed font-medium">{doctor.degrees}</div>
@@ -35,7 +35,7 @@ export default function Doctor() {
               </div>
             </div>
 
-            <div className="lg:col-span-4 relative lg:h-auto h-[380px]">
+            <div className="lg:col-span-1 relative lg:h-auto h-[380px]">
               <div className="absolute inset-0 lg:inset-6 bg-gradient-to-t from-[#0F172A] to-transparent z-10 lg:hidden" />
               <img
                 src="/images/clinic/hero-consultation.webp"
@@ -51,7 +51,7 @@ export default function Doctor() {
               </div>
             </div>
 
-            <div className="lg:col-span-3 bg-white/5 backdrop-blur border-t lg:border-t-0 lg:border-l border-white/10 p-8 lg:p-8">
+            <div className="lg:col-span-2 bg-white/5 backdrop-blur border-t lg:border-t-0 lg:border-l border-white/10 p-8 lg:p-8">
               <h4 className="text-white font-semibold text-sm mb-4 flex items-center gap-2"><Stethoscope size={16}/> Hospital Associations</h4>
               <ul className="space-y-3">
                 {doctor.associations.map(a=>(

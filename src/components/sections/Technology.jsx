@@ -6,8 +6,8 @@ export default function Technology() {
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-5 space-y-5">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div className="lg:col-span-1 space-y-5">
             <div className="inline-flex bg-blue-50 text-[#0B4DA2] px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase">Advanced Technology</div>
             <h2 className="text-[28px] md:text-[40px] font-bold leading-[0.9] tracking-tight">Precision, Technology & Trust Come Together for <span className="text-[#0B4DA2]">Better Vision</span></h2>
             <p className="text-[14px] text-slate-600 leading-relaxed">We invest in world-class diagnostic & surgical platforms to ensure accurate diagnosis, safe surgery & best visual outcomes.</p>
@@ -22,7 +22,7 @@ export default function Technology() {
                 ))}
               </Stagger>
           </div>
-          <div className="lg:col-span-7 relative">
+          <div className="lg:col-span-1 relative">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div className="space-y-4">
                 <div className="rounded-[20px] overflow-hidden h-[220px] bg-slate-100">

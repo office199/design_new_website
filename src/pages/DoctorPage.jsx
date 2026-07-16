@@ -10,9 +10,9 @@ export default function DoctorPage() {
       <SEO title="Dr. Shahnawaz Kazi - Best Retina Surgeon in Mumbai | Ashu Laser Vision" description="Meet Dr. Shahnawaz Kazi - FMRF, FRCS Glasgow, Gold Medalist, Retina & Cataract Surgeon with 17+ years experience. Founder of Ashu Laser Vision." url="https://ashulaservision.com/doctor" />
       <div className="bg-[#F8FAFF] py-12 lg:py-20">
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-10 items-start">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
             <Reveal>
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-1">
               <div className="bg-white rounded-[28px] border border-slate-200 p-8">
                 <img
                   src="/images/clinic/hero-consultation.webp"
@@ -37,7 +37,7 @@ export default function DoctorPage() {
             </Reveal>
 
             <Reveal>
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-1 space-y-6">
               <div className="bg-white rounded-[28px] border border-slate-200 p-6 sm:p-8 lg:p-10">
                 <h2 className="text-2xl font-bold">About Doctor</h2>
                 <p className="text-[15px] text-slate-600 leading-relaxed mt-4">Welcome to Ashu Laser Vision, our Ophthalmologist, Eye Surgeon & Retina Specialist Dr. Shahnawaz Kazi, specializes in surgically correcting disorders and diseases of the eye affecting vision like Lasik, Cataract, Glaucoma, Cornea, Age Related Macular Disease, Retinopathy of Prematurity, Diabetic Retinopathy, Squint, Retinal Detachment, Ocular Injuries, Oculoplastic, Kid’s Eye Problems etc.</p>
