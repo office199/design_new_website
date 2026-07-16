@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Phone, Menu, X, ChevronRight } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import WhatsAppIcon from './icons/WhatsAppIcon';
 
 function FacebookIcon({ size = 20, className = "" }) {
@@ -27,107 +26,77 @@ function LinkedinIcon({ size = 20, className = "" }) {
 }
 
 export default function MobileToggleButtons() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <div className="fixed left-5 top-1/2 -translate-y-1/2 z-[50]">
-      <div className="relative">
-        {/* Expanded buttons expanding horizontally to the right of the toggle button */}
-        <div
-          className={`absolute left-full top-1/2 -translate-y-1/2 ml-3 flex flex-row items-center gap-2.5 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-            isOpen ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 -translate-x-4 scale-95 pointer-events-none'
-          }`}
+    <div className="fixed right-5 top-1/2 -translate-y-1/2 z-[50]">
+      <div className="flex flex-col items-center gap-2.5">
+        {/* Facebook Button */}
+        <a
+          href="https://www.facebook.com/AshuLaserVision/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          className="w-11 h-11 rounded-full bg-[#1877F2] shadow-[0_6px_20px_rgba(24,119,242,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
         >
-          {/* Facebook Button */}
-          <a
-            href="https://www.facebook.com/AshuLaserVision/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="w-11 h-11 rounded-full bg-[#1877F2] shadow-[0_6px_20px_rgba(24,119,242,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
-          >
-            <FacebookIcon size={20} />
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
-              Facebook
-            </span>
-          </a>
-
-          {/* Instagram Button */}
-          <a
-            href="https://www.instagram.com/ashueyehospital/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] shadow-[0_6px_20px_rgba(220,39,67,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
-          >
-            <InstagramIcon size={20} />
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
-              Instagram
-            </span>
-          </a>
-
-          {/* LinkedIn Button */}
-          <a
-            href="https://www.linkedin.com/in/shahnawaz-kazi-971a067b/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="w-11 h-11 rounded-full bg-[#0A66C2] shadow-[0_6px_20px_rgba(10,102,194,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
-          >
-            <LinkedinIcon size={20} />
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
-              LinkedIn
-            </span>
-          </a>
-
-          {/* WhatsApp Button */}
-          <a
-            href="https://wa.me/919322364002"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className="w-11 h-11 rounded-full bg-[#25D366] shadow-[0_6px_20px_rgba(37,211,102,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
-          >
-            <WhatsAppIcon size={22} />
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
-              WhatsApp
-            </span>
-            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 -z-10"></span>
-          </a>
-
-          {/* Call Button */}
-          <a
-            href="tel:+919322364002"
-            aria-label="Call Now"
-            className="w-11 h-11 rounded-full bg-[#0B4DA2] shadow-[0_6px_20px_rgba(11,77,162,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
-          >
-            <Phone size={20} strokeWidth={2} />
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
-              Call Now
-            </span>
-          </a>
-        </div>
-
-        {/* Main Toggle Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Quick Links & Socials"
-          className="w-13 h-13 rounded-full bg-gradient-to-br from-[#0F172A] to-[#1e293b] shadow-[0_8px_28px_rgba(15,23,42,0.35)] border border-slate-700/40 flex items-center justify-center text-white hover:scale-105 transition-all duration-300 active:scale-95 relative overflow-hidden group shrink-0"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#0B4DA2]/20 to-transparent pointer-events-none"></div>
-          {isOpen ? (
-            <X size={22} strokeWidth={2.5} className="transition-transform duration-300" />
-          ) : (
-            <div className="flex items-center gap-[1px]">
-              <ChevronRight size={18} strokeWidth={2.5} className="-mr-0.5" />
-              <Menu size={16} strokeWidth={2.5} />
-            </div>
-          )}
-          {/* Toggle label */}
-          <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-xs font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
-            {isOpen ? 'Close' : 'Quick Connect'}
+          <FacebookIcon size={20} />
+          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            Facebook
           </span>
-        </button>
+        </a>
+
+        {/* Instagram Button */}
+        <a
+          href="https://www.instagram.com/ashueyehospital/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] shadow-[0_6px_20px_rgba(220,39,67,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
+        >
+          <InstagramIcon size={20} />
+          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            Instagram
+          </span>
+        </a>
+
+        {/* LinkedIn Button */}
+        <a
+          href="https://www.linkedin.com/in/shahnawaz-kazi-971a067b/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="w-11 h-11 rounded-full bg-[#0A66C2] shadow-[0_6px_20px_rgba(10,102,194,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
+        >
+          <LinkedinIcon size={20} />
+          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            LinkedIn
+          </span>
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href="https://wa.me/919322364002"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+          className="w-11 h-11 rounded-full bg-[#25D366] shadow-[0_6px_20px_rgba(37,211,102,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
+        >
+          <WhatsAppIcon size={22} />
+          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            WhatsApp
+          </span>
+          <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 -z-10"></span>
+        </a>
+
+        {/* Call Button */}
+        <a
+          href="tel:+919322364002"
+          aria-label="Call Now"
+          className="w-11 h-11 rounded-full bg-[#0B4DA2] shadow-[0_6px_20px_rgba(11,77,162,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
+        >
+          <Phone size={20} strokeWidth={2} />
+          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            Call Now
+          </span>
+        </a>
       </div>
     </div>
   );

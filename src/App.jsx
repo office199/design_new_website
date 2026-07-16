@@ -56,7 +56,7 @@ export default function App() {
         {/* AI Chat Toggle */}
         <AIChatToggle />
 
-        {/* Mobile Toggle WhatsApp & Call - bottom right */}
+        {/* Social links & quick contact - right side */}
         <MobileToggleButtons />
       </div>
     </Router>
