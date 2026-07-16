@@ -37,7 +37,7 @@ export default function MobileToggleButtons() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-5 right-5 z-[50] lg:hidden">
+    <div className="fixed bottom-5 right-5 z-[50]">
       <div className="relative">
         {/* Expanded buttons expanding to the left */}
         <div
