@@ -16,15 +16,15 @@ export default function ContactPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact Ashu Laser Vision Andheri Mumbai - Book Eye Checkup",
-    "description": "Book eye checkup at Ashu Laser Vision Andheri West Mumbai - Call 9322364002, Mon-Sat 10AM-8PM Emergency 24x7, 28+ services"
+    "name": "Contact Ashu Laser Vision Andheri & Versova Mumbai - Book Eye Checkup",
+    "description": "Book eye checkup at Ashu Laser Vision - Pearl Plaza Opp Andheri Railway Platform 1, Andheri West 400058 and Ashu Eye Hospital, Yari Road Opp Madina Masjid, Versova 400061. Call 9322364002, Mon-Sat 10AM-8PM Emergency 24x7, 28+ services"
   };
 
   return (
     <>
       <SEO
         title="Contact & Book Appointment - Ashu Laser Vision Andheri Mumbai - 9322364002"
-        description="Book eye checkup at Ashu Laser Vision Andheri West Mumbai - Pearl Plaza Opp Andheri Railway Platform 1 Next to McDonald's, 2 mins DN Nagar Metro. Call +91 93223 64002 / 75065 09666. Mon-Sat 10AM-8PM Emergency 24x7. 28+ services Cataract LASIK Retina Glaucoma Squint Oculoplasty. Email ashueyelaser@gmail.com"
+        description="Book eye checkup at Ashu Laser Vision - two convenient locations in Mumbai: Pearl Plaza Opp Andheri Railway Platform 1 Next to McDonald's, Andheri West 400058 (2 mins DN Nagar Metro) and Ashu Eye Hospital, Premises No. 9, 1st Floor, Silver Streak Apartments, Yari Road Opp Madina Masjid, Versova, Andheri West 400061. Call +91 93223 64002 / 75065 09666. Mon-Sat 10AM-8PM Emergency 24x7. 28+ services Cataract LASIK Retina Glaucoma Squint Oculoplasty. Email ashueyelaser@gmail.com"
         keywords="contact ashulaservision, book eye appointment andheri, eye hospital contact mumbai, andheri eye hospital phone number, eye doctor near me"
         url="https://ashulaservision.com/contact"
         jsonLd={jsonLd}
@@ -34,8 +34,8 @@ export default function ContactPage() {
           <div className="inline-flex bg-white border border-slate-200 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4">Contact & Appointment • 24x7 Emergency • Home Care</div>
           <div className="grid lg:grid-cols-12 gap-8">
             <div className="lg:col-span-5 space-y-6">
-              <h1 className="text-[32px] md:text-[44px] font-bold leading-[0.9] tracking-tight">Book Your<br/>Eye Checkup Today<br/>at <span className="text-[#0B4DA2]">Andheri West</span></h1>
-              <p className="text-sm text-slate-600 leading-relaxed">Same-day appointments available with Dr. Shahnawaz Kazi FMRF FRCS Gold Medalist - 17+ years 50K+ surgeries. Fill form or call directly. Emergency retinal detachment, trauma, chemical injury - 24x7 OT ready. Elderly home visit eye care available.</p>
+              <h1 className="text-[32px] md:text-[44px] font-bold leading-[0.9] tracking-tight">Book Your<br/>Eye Checkup Today<br/>at <span className="text-[#0B4DA2]">Andheri West</span> or <span className="text-[#0B4DA2]">Versova</span></h1>
+              <p className="text-sm text-slate-600 leading-relaxed">Same-day appointments available with Dr. Shahnawaz Kazi FMRF FRCS Gold Medalist - 17+ years 50K+ surgeries. Visit us at Pearl Plaza, Opp Andheri Railway Station Platform 1 (2 mins DN Nagar Metro) or at Ashu Eye Hospital, Yari Road, Versova. Fill form or call directly. Emergency retinal detachment, trauma, chemical injury - 24x7 OT ready. Elderly home visit eye care available.</p>
 
               <div className="grid gap-3">
                 <div className="bg-white border border-slate-200 rounded-2xl p-5 flex gap-4 hover:border-blue-200 hover:shadow-sm transition">
@@ -56,7 +56,21 @@ export default function ContactPage() {
                 </div>
                 <div className="bg-white border border-slate-200 rounded-2xl p-4 flex gap-4">
                   <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-[#0B4DA2] shrink-0"><MapPin size={20}/></div>
-                  <div><div className="font-bold text-sm flex items-center gap-2">Location <span className="text-[10px] bg-blue-50 text-[#0B4DA2] px-2 py-0.5 rounded-full">2 min DN Nagar Metro</span></div><div className="text-[13px] leading-relaxed mt-1">701/2/3 Pearl Plaza Bldg<br/>Opp Andheri Railway Platform No.1<br/>Next to McDonald's, Andheri West Mumbai 400058<br/><span className="text-slate-500 text-xs">Also: Ashu Eye Hospital Yari Road Versova Andheri West</span></div><a href="https://www.google.com/maps/search/Ashu+Laser+Vision+Andheri+West" target="_blank" className="text-xs text-[#0B4DA2] font-bold mt-2 inline-flex items-center gap-1"><Navigation size={12}/> Get Directions on Google Maps</a></div>
+                  <div className="flex-1">
+                    <div className="font-bold text-sm flex items-center gap-2">Our Locations</div>
+                    <div className="mt-2 space-y-3">
+                      <div className="text-[13px] leading-relaxed">
+                        <div className="font-semibold text-[#0B4DA2] text-[11px] uppercase tracking-wider mb-0.5">Main Centre <span className="bg-blue-50 text-[#0B4DA2] px-1.5 py-0.5 rounded-full normal-case font-medium">2 min DN Nagar Metro</span></div>
+                        701/2/3 Pearl Plaza Bldg<br/>Opp Andheri Railway Platform No.1<br/>Next to McDonald's, Andheri West Mumbai 400058
+                        <a href="https://www.google.com/maps/search/Ashu+Laser+Vision+Andheri+West" target="_blank" rel="noopener noreferrer" className="text-xs text-[#0B4DA2] font-bold mt-1.5 inline-flex items-center gap-1"><Navigation size={12}/> Get Directions</a>
+                      </div>
+                      <div className="border-t border-slate-100 pt-2 text-[13px] leading-relaxed">
+                        <div className="font-semibold text-[#0B4DA2] text-[11px] uppercase tracking-wider mb-0.5">Ashu Eye Hospital <span className="bg-blue-50 text-[#0B4DA2] px-1.5 py-0.5 rounded-full normal-case font-medium">Versova</span></div>
+                        Premises No. 9, 1st Floor, Silver Streak Apartments<br/>Yari Road, Opposite Madina Masjid<br/>Versova, Andheri West Mumbai 400061
+                        <a href="https://www.google.com/maps/search/Ashu+Eye+Hospital+Yari+Road+Versova+Mumbai" target="_blank" rel="noopener noreferrer" className="text-xs text-[#0B4DA2] font-bold mt-1.5 inline-flex items-center gap-1"><Navigation size={12}/> Get Directions</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="bg-white border border-slate-200 rounded-2xl p-4 flex gap-4">
                   <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-[#0B4DA2] shrink-0"><Clock size={20}/></div>
@@ -111,7 +125,7 @@ export default function ContactPage() {
                 {sent && (
                   <div className="mt-5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm p-4 rounded-xl">
                     <div className="font-bold">Thank you {form.name}! Appointment request received.</div>
-                    <div className="text-xs mt-1">Our counselor will call you shortly at {form.phone} for {form.service}. For urgent, call 9322364002. Location: Pearl Plaza opp Andheri Stn Platform 1.</div>
+                    <div className="text-xs mt-1">Our counselor will call you shortly at {form.phone} for {form.service}. For urgent, call 9322364002. Visit us at Pearl Plaza, Opp Andheri Stn Platform 1, Andheri West or at Ashu Eye Hospital, Yari Road, Versova.</div>
                   </div>
                 )}
 
@@ -124,9 +138,15 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="mt-12 rounded-[24px] overflow-hidden border border-slate-200 h-[420px] bg-slate-100 relative shadow-sm">
-            <div className="absolute top-4 left-4 z-10 bg-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2 text-xs font-bold border border-slate-200"><MapPin size={14} className="text-[#0B4DA2]"/> Ashu Laser Vision - Pearl Plaza, Opp Andheri Station - 2 min DN Nagar Metro <span className="bg-[#0B4DA2] text-white text-[10px] px-2 py-0.5 rounded-full">OPEN</span></div>
-            <iframe title="Ashu Laser Vision Location Map Andheri West Mumbai" className="absolute inset-0 w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d72.829!3d19.113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9d4f5f6e7e3%3A0x123456789!2sAndheri%20West%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+          <div className="mt-12 grid md:grid-cols-2 gap-6">
+            <div className="rounded-[24px] overflow-hidden border border-slate-200 h-[420px] bg-slate-100 relative shadow-sm">
+              <div className="absolute top-4 left-4 z-10 bg-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2 text-xs font-bold border border-slate-200 max-w-[90%]"><MapPin size={14} className="text-[#0B4DA2] shrink-0"/> <span className="truncate">Ashu Laser Vision - Pearl Plaza, Opp Andheri Station</span> <span className="bg-[#0B4DA2] text-white text-[10px] px-2 py-0.5 rounded-full shrink-0">OPEN</span></div>
+              <iframe title="Ashu Laser Vision Location Map Andheri West Mumbai" className="absolute inset-0 w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d72.8468!3d19.1197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9d4f5f6e7e3%3A0x123456789!2sAshu%20Laser%20Vision%20Pearl%20Plaza%20Andheri%20West!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            </div>
+            <div className="rounded-[24px] overflow-hidden border border-slate-200 h-[420px] bg-slate-100 relative shadow-sm">
+              <div className="absolute top-4 left-4 z-10 bg-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2 text-xs font-bold border border-slate-200 max-w-[90%]"><MapPin size={14} className="text-[#0B4DA2] shrink-0"/> <span className="truncate">Ashu Eye Hospital - Yari Road, Versova</span> <span className="bg-[#0B4DA2] text-white text-[10px] px-2 py-0.5 rounded-full shrink-0">OPEN</span></div>
+              <iframe title="Ashu Eye Hospital Location Map Yari Road Versova Mumbai" className="absolute inset-0 w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d72.8091!3d19.1397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAshu%20Eye%20Hospital%20Yari%20Road%20Versova!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            </div>
           </div>
         </div>
       </div>
