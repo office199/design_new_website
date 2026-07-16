@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import TopBar from './components/layout/TopBar';
 import TopBottomButton from './components/TopBottomButton';
+import AIChatToggle from './components/AIChatToggle';
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -42,6 +43,9 @@ export default function App() {
 
         {/* Top to Bottom floating button */}
         <TopBottomButton />
+
+        {/* AI Chat Toggle */}
+        <AIChatToggle />
 
         {/* floating whatsapp & call - right side */}
         <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
