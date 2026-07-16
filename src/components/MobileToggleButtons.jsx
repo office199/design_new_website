@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Menu, X, ChevronUp } from 'lucide-react';
+import { Phone, Menu, X, ChevronLeft } from 'lucide-react';
 
 function WhatsAppIcon({ size = 26 }) {
   return (
@@ -16,10 +16,10 @@ export default function MobileToggleButtons() {
     <div className="fixed bottom-5 right-5 z-[50] lg:hidden">
       {/* Dev Box Container */}
       <div className="relative">
-        {/* Expanded buttons */}
+        {/* Expanded buttons expanding to the left */}
         <div
-          className={`flex flex-col gap-3 mb-2 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-            isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95 pointer-events-none'
+          className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 flex items-center gap-3 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+            isOpen ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-6 scale-95 pointer-events-none'
           }`}
         >
           {/* WhatsApp Button */}
@@ -28,11 +28,11 @@ export default function MobileToggleButtons() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
-            className="w-14 h-14 rounded-full bg-[#25D366] shadow-[0_8px_24px_rgba(37,211,102,0.45)] flex items-center justify-center text-white hover:scale-110 transition-all duration-300 group relative"
+            className="w-14 h-14 rounded-full bg-[#25D366] shadow-[0_8px_24px_rgba(37,211,102,0.45)] flex items-center justify-center text-white hover:scale-110 transition-all duration-300 group relative shrink-0"
           >
             <WhatsAppIcon size={26} />
             {/* Label tooltip */}
-            <span className="absolute right-[68px] top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-xs font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg">
+            <span className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 bg-[#0A1931] text-white text-xs font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
               WhatsApp Chat
             </span>
             <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 -z-10"></span>
@@ -42,10 +42,10 @@ export default function MobileToggleButtons() {
           <a
             href="tel:+919322364002"
             aria-label="Call Now"
-            className="w-14 h-14 rounded-full bg-[#0B4DA2] shadow-[0_8px_24px_rgba(11,77,162,0.45)] flex items-center justify-center text-white hover:scale-110 transition-all duration-300 group relative"
+            className="w-14 h-14 rounded-full bg-[#0B4DA2] shadow-[0_8px_24px_rgba(11,77,162,0.45)] flex items-center justify-center text-white hover:scale-110 transition-all duration-300 group relative shrink-0"
           >
             <Phone size={26} strokeWidth={2} />
-            <span className="absolute right-[68px] top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-xs font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg">
+            <span className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 bg-[#0A1931] text-white text-xs font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
               Call Now
             </span>
           </a>
@@ -55,20 +55,20 @@ export default function MobileToggleButtons() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle WhatsApp and Call"
-          className="w-14 h-14 rounded-full bg-gradient-to-br from-[#0F172A] to-[#1e293b] shadow-[0_8px_28px_rgba(15,23,42,0.35)] border border-slate-700/40 flex items-center justify-center text-white hover:scale-110 hover:shadow-[0_12px_36px_rgba(15,23,42,0.55)] transition-all duration-300 active:scale-95 relative overflow-hidden"
+          className="w-14 h-14 rounded-full bg-gradient-to-br from-[#0F172A] to-[#1e293b] shadow-[0_8px_28px_rgba(15,23,42,0.35)] border border-slate-700/40 flex items-center justify-center text-white hover:scale-110 hover:shadow-[0_12px_36px_rgba(15,23,42,0.55)] transition-all duration-300 active:scale-95 relative overflow-hidden group shrink-0"
         >
           <div className="absolute inset-0 bg-gradient-to-tr from-[#0B4DA2]/20 to-transparent pointer-events-none"></div>
           {isOpen ? (
             <X size={22} strokeWidth={2.5} className="transition-transform duration-300" />
           ) : (
-            <div className="flex flex-col items-center gap-[2px]">
-              <ChevronUp size={16} strokeWidth={2.5} className="-mb-0.5" />
+            <div className="flex items-center gap-[1px]">
+              <ChevronLeft size={18} strokeWidth={2.5} className="-mr-0.5" />
               <Menu size={16} strokeWidth={2.5} />
             </div>
           )}
           {/* Toggle label */}
-          <span className="absolute right-[68px] top-1/2 -translate-y-1/2 bg-[#0A1931] text-white text-xs font-bold px-3 py-1.5 rounded-full opacity-0 hover:opacity-100 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg">
-            {isOpen ? 'Close' : 'Open'}
+          <span className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 bg-[#0A1931] text-white text-xs font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            {isOpen ? 'Close' : 'Contact Options'}
           </span>
         </button>
       </div>
