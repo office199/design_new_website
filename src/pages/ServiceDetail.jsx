@@ -4,6 +4,7 @@ import PageTransition from '../components/animations/PageTransition';
 import { Reveal } from '../components/animations/Reveal';
 import { services } from '../data/content';
 import { CheckCircle2, ArrowLeft, Calendar, Phone, ShieldCheck, Clock, Award, Eye, AlertCircle, HeartPulse } from 'lucide-react';
+import WhatsAppIcon from '../components/icons/WhatsAppIcon';
 
 export default function ServiceDetail() {
   const { id } = useParams();
@@ -199,7 +200,7 @@ export default function ServiceDetail() {
                 <div className="mt-6 space-y-3 relative z-10">
                   <Link to="/contact" className="w-full bg-white text-[#0B4DA2] py-3.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 hover:bg-blue-50 transition"><Calendar size={16}/> Book Appointment Now</Link>
                   <a href="tel:+919322364002" className="w-full bg-white/15 border border-white/20 py-3.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2 hover:bg-white/20 transition"><Phone size={16}/> Call +91 93223 64002</a>
-                  <a href="https://wa.me/919322364002" className="w-full bg-[#25D366] py-3.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#1EBE5D] transition">💬 WhatsApp Us</a>
+                  <a href="https://wa.me/919322364002" target="_blank" rel="noopener noreferrer" className="w-full bg-[#25D366] py-3.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#1EBE5D] transition"><WhatsAppIcon size={16}/> WhatsApp Us</a>
                 </div>
                 <div className="mt-6 text-xs text-blue-200 bg-white/10 rounded-xl p-4 space-y-1.5 relative z-10">
                   <div className="flex gap-2"><ShieldCheck size={14} className="shrink-0 mt-0.5"/> FDA approved tech & protocols</div>
