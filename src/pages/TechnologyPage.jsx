@@ -29,8 +29,8 @@ export default function TechnologyPage() {
       />
       <Reveal>
       <div className="bg-[#F8FAFF] py-10 border-b">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-center">
+          <div className="lg:col-span-1">
             <div className="inline-flex bg-blue-50 text-[#0B4DA2] px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">US FDA Approved • Since 2004</div>
             <h1 className="text-[32px] md:text-[48px] font-bold leading-[0.9] tracking-tight mt-4">Precision Technology for <span className="text-[#0B4DA2]">Better Vision</span> & Safer Surgery</h1>
             <p className="text-sm text-slate-600 mt-3 max-w-3xl leading-relaxed">We invest in advanced US FDA approved platforms for accurate diagnostics & safe surgeries - Pentacam HR, OCT Angio, Micron M7 800Hz fastest LASIK laser in Mumbai, Femto, Green Diode, YAG SLT, Humphrey Visual Field, IOL Master 700, FFA, 25G vitrectomy with BIOM wide-angle. 50K+ surgeries backed by tech + trust.</p>
@@ -38,7 +38,7 @@ export default function TechnologyPage() {
               {technologies.slice(0,5).map(t=><span key={t.name} className="bg-white border border-slate-200 px-3 py-1.5 rounded-full text-xs font-medium">{t.name}</span>)}
             </div>
           </div>
-          <div className="lg:col-span-4 rounded-[24px] overflow-hidden shadow-lg border-4 border-white h-[240px] lg:h-[280px]">
+          <div className="lg:col-span-1 rounded-[24px] overflow-hidden shadow-lg border-4 border-white h-[240px] lg:h-[280px]">
             <img
               src="/images/clinic/retina-diagnostic.webp"
               alt="Retina diagnostic imaging at Ashu Laser Vision"

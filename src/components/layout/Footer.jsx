@@ -51,8 +51,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
-          <div className="lg:col-span-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+          <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-11 h-14 rounded-xl bg-white p-1 flex items-center justify-center">
                 <img src="/images/ashu-logo-mark.png" alt="" className="w-full h-full object-contain" width="146" height="211" loading="lazy" />
@@ -79,7 +79,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <h4 className="font-bold mb-5 text-white text-sm">Retina Services</h4>
             <ul className="space-y-2.5 text-[13px] text-slate-300">
               {retinaServices.map(s=><li key={s.id}><Link to={`/services/${s.id}`} className="hover:text-white hover:translate-x-0.5 transition inline-block">{s.title}</Link></li>)}
@@ -96,7 +96,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <h4 className="font-bold mb-5 text-white text-sm">Cataract & Refractive</h4>
             <ul className="space-y-2.5 text-[13px] text-slate-300">
               <li><Link to="/services/cataract" className="hover:text-white">Cataract Surgery</Link></li>
@@ -116,7 +116,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <h4 className="font-bold mb-5 text-white text-sm">Pediatric & Oculoplasty</h4>
             <ul className="space-y-2.5 text-[13px] text-slate-300">
               {pediatric.map(s=><li key={s.id}><Link to={`/services/${s.id}`} className="hover:text-white">{s.title}</Link></li>)}
@@ -131,7 +131,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <h4 className="font-bold mb-5 text-sm">Contact & Location</h4>
             <ul className="space-y-4 text-[13px] text-slate-300">
               <li className="flex gap-3"><MapPin size={18} className="shrink-0 text-blue-400" /> 701/2/3 Pearl Plaza, Opp Andheri Rly Platform 1, Next to McDonald's, Andheri West Mumbai 400058. Yari Road Versova.</li>

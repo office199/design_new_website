@@ -84,9 +84,9 @@ export default function ServiceDetail() {
         </div>
 
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 pb-16">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10">
             <Reveal>
-            <div className="lg:col-span-8 space-y-8">
+            <div className="lg:col-span-1 space-y-8">
               <div className="bg-white rounded-[28px] border border-slate-200 overflow-hidden shadow-sm">
                 <div className="aspect-[16/9] overflow-hidden bg-slate-100 relative">
                   <img src={service.banner || service.image} alt={`${service.title} treatment at Ashu Laser Vision Andheri Mumbai`} className="w-full h-full object-cover" />
@@ -191,7 +191,7 @@ export default function ServiceDetail() {
             </Reveal>
 
             <Reveal>
-            <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-[100px] h-fit">
+            <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-[100px] h-fit">
               <div className="bg-[#0B4DA2] rounded-[24px] p-6 lg:p-8 text-white relative overflow-hidden">
                 <div className="absolute -right-16 -top-16 w-56 h-56 bg-white/10 rounded-full blur-2xl" />
                 <h3 className="font-bold text-lg relative z-10 flex items-center gap-2"><Calendar size={18}/> Book Your {service.title} Consultation</h3>

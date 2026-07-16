@@ -34,9 +34,9 @@ export default function ContactPage() {
       <div className="bg-[#F8FAFF] py-12 lg:py-16">
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
           <div className="inline-flex bg-white border border-slate-200 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4">Contact & Appointment • 24x7 Emergency • Home Care</div>
-          <div className="grid lg:grid-cols-12 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8">
             <Reveal>
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-1 space-y-6">
               <h1 className="text-[32px] md:text-[44px] font-bold leading-[0.9] tracking-tight">Book Your<br/>Eye Checkup Today<br/>at <span className="text-[#0B4DA2]">Andheri West</span> or <span className="text-[#0B4DA2]">Versova</span></h1>
               <p className="text-sm text-slate-600 leading-relaxed">Same-day appointments available with Dr. Shahnawaz Kazi FMRF FRCS Gold Medalist - 17+ years 50K+ surgeries. Visit us at Pearl Plaza, Opp Andheri Railway Station Platform 1 (2 mins DN Nagar Metro) or at Ashu Eye Hospital, Yari Road, Versova. Fill form or call directly. Emergency retinal detachment, trauma, chemical injury - 24x7 OT ready. Elderly home visit eye care available.</p>
 
@@ -94,7 +94,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal>
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-1">
               <div className="bg-white rounded-[28px] border border-slate-200 p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.06)] lg:sticky lg:top-[100px]">
                 <h2 className="font-bold text-xl">Request Appointment - Same Day Available</h2>
                 <p className="text-xs text-slate-500 mt-1">Our counselor will call you back within 30 mins during working hours. For emergency call 9322364002 directly. 28+ services - Cataract, LASIK, Retina, Glaucoma, Squint, Pediatric, Oculoplasty, etc.</p>

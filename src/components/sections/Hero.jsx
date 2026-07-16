@@ -14,10 +14,10 @@ export default function Hero() {
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-6 py-10 lg:py-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-6 py-10 lg:py-20 items-center">
 
           {/* left */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-1 space-y-6">
             <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="inline-flex items-center gap-2 bg-white border border-blue-100 px-3 py-1.5 rounded-full text-xs font-semibold shadow-sm">
               <span className="bg-[#0B4DA2] text-white px-2.5 py-0.5 rounded-full text-[10px]">NEW</span>
               <span className="text-slate-700">Advanced Femto Cataract & Contoura LASIK Now Available</span>
@@ -73,7 +73,7 @@ export default function Hero() {
           </div>
 
           {/* right visual */}
-          <div className="lg:col-span-5 relative lg:h-[640px]">
+          <div className="lg:col-span-1 relative lg:h-[640px]">
             <motion.div initial={{opacity:0,scale:0.95}} animate={{opacity:1,scale:1}} transition={{delay:0.2}} className="relative h-[420px] md:h-[520px] lg:h-full">
               {/* main image card */}
               <div className="absolute inset-0 rounded-[28px] overflow-hidden shadow-2xl">
