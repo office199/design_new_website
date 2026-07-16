@@ -1,4 +1,5 @@
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
+import WhatsAppIcon from '../icons/WhatsAppIcon';
 
 function FacebookIcon({ size = 14, className = "" }) {
   return (
@@ -63,8 +64,8 @@ export default function TopBar() {
         {/* Right side: Mobile Quick WhatsApp, Social Icons & Call Numbers */}
         <div className="flex items-center justify-between w-full lg:w-auto gap-2 sm:gap-3">
           <div className="flex items-center gap-2 lg:hidden text-xs">
-            <a href="https://wa.me/919322364002" className="flex items-center gap-1.5 bg-[#25D366] px-3 py-1 rounded-full font-bold text-white hover:bg-[#1ebe5d] transition shadow-xs">
-              WhatsApp
+            <a href="https://wa.me/919322364002" className="flex items-center gap-1.5 bg-[#25D366] px-3 py-1 rounded-full font-bold text-white hover:bg-[#1ebe5d] transition shadow-xs" aria-label="Chat on WhatsApp">
+              <WhatsAppIcon size={14} /> WhatsApp
             </a>
           </div>
 
