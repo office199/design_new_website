@@ -45,9 +45,9 @@ export default function Footer() {
               <span className="bg-white/15 border border-white/20 text-xs px-3 py-1 rounded-full">Pediatric • Squint • Oculoplasty • DCR</span>
             </div>
           </div>
-          <div className="flex flex-wrap gap-3 shrink-0">
-            <Link to="/contact" className="bg-white text-[#0B4DA2] px-7 py-3.5 rounded-full font-bold text-sm hover:bg-blue-50 transition flex items-center gap-2">Book Appointment <ArrowUpRight size={16}/></Link>
-            <a href="tel:+919322364002" className="bg-white/15 border border-white/20 px-6 py-3.5 rounded-full font-semibold text-sm hover:bg-white/20 transition flex items-center gap-2"><Phone size={16}/> +91 93223 64002</a>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 shrink-0 w-full lg:w-auto">
+            <Link to="/contact" className="bg-white text-[#0B4DA2] px-6 py-3.5 rounded-full font-bold text-sm hover:bg-blue-50 transition flex items-center justify-center gap-2 w-full sm:w-auto">Book Appointment <ArrowUpRight size={16}/></Link>
+            <a href="tel:+919322364002" className="bg-white/15 border border-white/20 px-6 py-3.5 rounded-full font-semibold text-sm hover:bg-white/20 transition flex items-center justify-center gap-2 w-full sm:w-auto"><Phone size={16}/> +91 93223 64002</a>
           </div>
         </div>
 

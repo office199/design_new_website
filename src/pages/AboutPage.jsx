@@ -22,12 +22,12 @@ export default function AboutPage() {
             <p className="text-[15px] text-slate-600 leading-relaxed mt-6 max-w-3xl">
               Ashu Laser Vision is a premium center for all Eye Diseases, Eye Treatments & Eye Problems and has been providing all Advanced, innovative & modern eye care since 2004. Our practice has been recognized as one of the leading Ophthalmologist, Eye Surgeon & Retina Specialist practices in Mumbai, offering a complete range of eye & retina services: Cataract, LASIK Contoura SMILE ASA, Retina Detachment Vitrectomy, Diabetic Retinopathy, Glaucoma AGV GATT SLT, Pediatric Squint Myopia Control Ortho-K Vision Therapy, Cornea C3R DSEK, Oculoplasty Laser DCR Botox, Eye Tumors Retinoblastoma, Ocular Injuries 24x7, Diagnostics OCT Angio FFA Pentacam Pachymetry Perimetry Biometry, Lasers Green YAG Diode.
             </p>
-            <div className="flex flex-wrap gap-6 mt-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
               {stats.map(s=>(
-                <div key={s.label} className="bg-white border border-slate-200 rounded-2xl px-6 py-4 min-w-[140px]">
-                  <div className="text-2xl font-bold text-[#0B4DA2]">{s.value}</div>
-                  <div className="text-xs font-bold">{s.label}</div>
-                  <div className="text-[11px] text-slate-500">{s.sub}</div>
+                <div key={s.label} className="bg-white border border-slate-200 rounded-2xl p-4 sm:px-6 sm:py-4">
+                  <div className="text-xl sm:text-2xl font-bold text-[#0B4DA2]">{s.value}</div>
+                  <div className="text-xs font-bold mt-0.5">{s.label}</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500">{s.sub}</div>
                 </div>
               ))}
             </div>
@@ -51,8 +51,8 @@ export default function AboutPage() {
 
           <Reveal>
           <div className="grid lg:grid-cols-2 gap-8 mt-12 items-start">
-            <div className="bg-white rounded-[32px] border border-slate-200 p-8 lg:p-10">
-              <h2 className="text-[28px] font-bold leading-tight">Life is beautiful,<br/>why not see it clearly?</h2>
+            <div className="bg-white rounded-[32px] border border-slate-200 p-6 sm:p-8 lg:p-10">
+              <h2 className="text-[26px] sm:text-[28px] font-bold leading-tight">Life is beautiful,<br/>why not see it clearly?</h2>
               <div className="mt-6 space-y-4">
                 {[
                   "Ultra-modern diagnostics & Advanced Laser Systems - Pentacam HR, OCT Angio RNFL, Micron M7 800Hz, Femto, Green Diode YAG SLT, Humphrey Fields, IOL Master 700, FFA, 23/25/27G vitrectomy BIOM",
@@ -73,7 +73,7 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-[#0A1931] rounded-[32px] p-8 text-white relative overflow-hidden">
+              <div className="bg-[#0A1931] rounded-[32px] p-6 sm:p-8 text-white relative overflow-hidden">
                 <div className="absolute -right-10 -top-10 w-40 h-40 bg-[#0B4DA2]/40 rounded-full blur-2xl" />
                 <h3 className="font-bold text-xl relative z-10 flex items-center gap-2"><Award size={20}/> Dr. Shahnawaz Kazi - Education & Gold Medal</h3>
                 <div className="mt-4 space-y-2 text-sm text-blue-100 relative z-10 leading-relaxed">

@@ -55,8 +55,8 @@ export default function Header() {
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[72px] lg:h-[84px] gap-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Ashu Laser Vision home">
-            <div className="w-11 h-12 lg:w-12 lg:h-14 flex items-center justify-center">
+          <Link to="/" className="flex items-center gap-3 shrink-0 min-w-0" aria-label="Ashu Laser Vision home">
+            <div className="w-11 h-12 lg:w-12 lg:h-14 flex items-center justify-center shrink-0">
               <img
                 src="/images/ashu-logo-mark.png"
                 alt=""
@@ -65,9 +65,9 @@ export default function Header() {
                 height="211"
               />
             </div>
-            <div className="leading-tight">
-              <div className="font-bold text-[18px] lg:text-[20px] tracking-tight text-[#0B4DA2] font-display">Ashu Laser Vision</div>
-              <div className="text-[11px] lg:text-[12px] text-slate-500 font-medium tracking-widest uppercase">Super Specialty Eye Hospital</div>
+            <div className="leading-tight min-w-0">
+              <div className="font-bold text-[17px] sm:text-[18px] lg:text-[20px] tracking-tight text-[#0B4DA2] font-display truncate">Ashu Laser Vision</div>
+              <div className="text-[10px] sm:text-[11px] lg:text-[12px] text-slate-500 font-medium tracking-widest uppercase truncate">Super Specialty Eye Hospital</div>
             </div>
           </Link>
 
@@ -90,7 +90,7 @@ export default function Header() {
                 Services <ChevronDown size={14} className={`transition ${serviceOpen ? 'rotate-180' : ''}`} />
               </button>
               <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 ${serviceOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-3'}`}>
-                <div className="bg-white rounded-[24px] shadow-[0_20px_80px_rgba(0,0,0,0.15)] border border-slate-100 w-[900px] p-6 grid grid-cols-3 gap-6 max-h-[70vh] overflow-auto">
+                <div className="bg-white rounded-[24px] shadow-[0_20px_80px_rgba(0,0,0,0.15)] border border-slate-100 w-[900px] max-w-[calc(100vw-2rem)] p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[70vh] overflow-auto">
                   {serviceGroups.map(group => (
                     <div key={group.cat}>
                       <div className="text-[11px] font-bold tracking-widest uppercase text-[#0B4DA2] bg-blue-50 px-2.5 py-1 rounded-full inline-block mb-3">{group.cat}</div>
@@ -108,9 +108,9 @@ export default function Header() {
                       </div>
                     </div>
                   ))}
-                  <div className="col-span-3 border-t border-slate-100 pt-4 mt-2 flex justify-between items-center">
+                  <div className="col-span-1 md:col-span-2 lg:col-span-3 border-t border-slate-100 pt-4 mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                     <div className="text-xs text-slate-500">28+ specialized eye services under one roof since 2004</div>
-                    <Link to="/services" className="bg-[#0B4DA2] text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-[#083A7A] transition flex items-center gap-1">
+                    <Link to="/services" className="bg-[#0B4DA2] text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-[#083A7A] transition flex items-center gap-1 shrink-0">
                       View All Services <ArrowRight size={12}/>
                     </Link>
                   </div>
@@ -187,7 +187,7 @@ export default function Header() {
               <Link to="/technology" className={`flex justify-between items-center px-4 py-3.5 rounded-xl font-medium ${location.pathname === '/technology' ? 'bg-[#0B4DA2] text-white' : 'bg-slate-50'}`}>Technology</Link>
               <Link to="/contact" className={`flex justify-between items-center px-4 py-3.5 rounded-xl font-medium ${location.pathname === '/contact' ? 'bg-[#0B4DA2] text-white' : 'bg-slate-50'}`}>Contact</Link>
 
-              <div className="pt-4 grid grid-cols-2 gap-3">
+              <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <a href="tel:+919322364002" className="flex items-center justify-center gap-2 border border-slate-200 py-3.5 rounded-xl font-semibold text-sm">
                   <Phone size={16} /> Call Now
                 </a>

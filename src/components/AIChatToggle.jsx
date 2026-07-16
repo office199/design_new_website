@@ -292,7 +292,7 @@ export default function AIChatToggle() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.9 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed bottom-[210px] right-5 z-[55] w-[360px] max-w-[calc(100vw-2rem)] h-[520px] max-h-[calc(100vh-260px)] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-slate-200/60 flex flex-col overflow-hidden"
+            className="fixed bottom-5 sm:bottom-[210px] right-4 sm:right-5 z-[65] w-[360px] max-w-[calc(100vw-2rem)] h-[520px] max-h-[calc(100vh-5rem)] sm:max-h-[calc(100vh-260px)] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-slate-200/60 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-[#0B4DA2] to-[#00A6CB] px-4 py-3.5 flex items-center gap-3 shrink-0">
@@ -330,7 +330,7 @@ export default function AIChatToggle() {
                     </div>
                   )}
                   <div
-                    className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 ${
+                    className={`max-w-[82%] sm:max-w-[80%] rounded-2xl px-3.5 py-2.5 break-words ${
                       msg.sender === 'user'
                         ? 'bg-gradient-to-br from-[#0B4DA2] to-[#00A6CB] text-white rounded-br-md'
                         : 'bg-white text-slate-700 shadow-sm border border-slate-100 rounded-bl-md'

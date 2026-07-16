@@ -83,7 +83,7 @@ export default function ContactPage() {
 
               <div className="bg-[#0B4DA2] rounded-2xl p-5 text-white">
                 <div className="flex items-center gap-2 font-bold text-sm"><Award size={16}/> Why 1L+ Patients Trust Us</div>
-                <div className="grid grid-cols-2 gap-3 mt-3 text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-3 text-xs">
                   <div className="bg-white/10 rounded-xl p-2.5">✅ 20+ Years Since 2004</div>
                   <div className="bg-white/10 rounded-xl p-2.5">✅ 50K+ Surgeries Done</div>
                   <div className="bg-white/10 rounded-xl p-2.5">✅ 4.9★ 1200+ Reviews</div>
@@ -95,11 +95,11 @@ export default function ContactPage() {
 
             <Reveal>
             <div className="lg:col-span-7">
-              <div className="bg-white rounded-[28px] border border-slate-200 p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.06)] lg:sticky lg:top-[100px]">
+              <div className="bg-white rounded-[28px] border border-slate-200 p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.06)] lg:sticky lg:top-[100px]">
                 <h2 className="font-bold text-xl">Request Appointment - Same Day Available</h2>
                 <p className="text-xs text-slate-500 mt-1">Our counselor will call you back within 30 mins during working hours. For emergency call 9322364002 directly. 28+ services - Cataract, LASIK, Retina, Glaucoma, Squint, Pediatric, Oculoplasty, etc.</p>
 
-                <form onSubmit={handleSubmit} className="mt-8 grid sm:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div className="sm:col-span-2 lg:col-span-1">
                     <label className="text-xs font-bold uppercase tracking-widest">Full Name *</label>
                     <input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="John Doe" className="mt-2 w-full border border-slate-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#0B4DA2] focus:ring-2 focus:ring-blue-100 bg-slate-50 focus:bg-white" />
@@ -145,12 +145,12 @@ export default function ContactPage() {
           </div>
 
           <Reveal>
-          <div className="mt-12 grid md:grid-cols-2 gap-6">
-            <div className="rounded-[24px] overflow-hidden border border-slate-200 h-[420px] bg-slate-100 relative shadow-sm">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-[24px] overflow-hidden border border-slate-200 h-[360px] sm:h-[420px] bg-slate-100 relative shadow-sm">
               <div className="absolute top-4 left-4 z-10 bg-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2 text-xs font-bold border border-slate-200 max-w-[90%]"><MapPin size={14} className="text-[#0B4DA2] shrink-0"/> <span className="truncate">Ashu Laser Vision - Pearl Plaza, Opp Andheri Station</span> <span className="bg-[#0B4DA2] text-white text-[10px] px-2 py-0.5 rounded-full shrink-0">OPEN</span></div>
               <iframe title="Ashu Laser Vision Location Map Andheri West Mumbai" className="absolute inset-0 w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d72.8468!3d19.1197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9d4f5f6e7e3%3A0x123456789!2sAshu%20Laser%20Vision%20Pearl%20Plaza%20Andheri%20West!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </div>
-            <div className="rounded-[24px] overflow-hidden border border-slate-200 h-[420px] bg-slate-100 relative shadow-sm">
+            <div className="rounded-[24px] overflow-hidden border border-slate-200 h-[360px] sm:h-[420px] bg-slate-100 relative shadow-sm">
               <div className="absolute top-4 left-4 z-10 bg-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2 text-xs font-bold border border-slate-200 max-w-[90%]"><MapPin size={14} className="text-[#0B4DA2] shrink-0"/> <span className="truncate">Ashu Eye Hospital - Yari Road, Versova</span> <span className="bg-[#0B4DA2] text-white text-[10px] px-2 py-0.5 rounded-full shrink-0">OPEN</span></div>
               <iframe title="Ashu Eye Hospital Location Map Yari Road Versova Mumbai" className="absolute inset-0 w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d72.8091!3d19.1397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAshu%20Eye%20Hospital%20Yari%20Road%20Versova!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </div>

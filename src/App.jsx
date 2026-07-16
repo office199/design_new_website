@@ -36,7 +36,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-white antialiased selection:bg-[#0B4DA2] selection:text-white">
+      <div className="min-h-screen flex flex-col bg-white antialiased selection:bg-[#0B4DA2] selection:text-white overflow-x-hidden w-full relative">
         <TopBar />
         <Header />
         <main className="flex-1">

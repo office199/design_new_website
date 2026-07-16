@@ -18,7 +18,7 @@ export default function About() {
                   loading="lazy"
                 />
               </div>
-              <div className="absolute -bottom-8 -right-4 md:-right-8 bg-white rounded-[20px] p-5 shadow-2xl border border-slate-100 w-[260px]">
+              <div className="absolute -bottom-6 sm:-bottom-8 right-2 sm:-right-4 md:-right-8 bg-white rounded-[20px] p-4 sm:p-5 shadow-2xl border border-slate-100 w-[230px] sm:w-[260px] max-w-[calc(100%-1.5rem)] z-10">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#0B4DA2]"><Award size={20}/></div>
                   <div className="text-sm font-bold">NABH & ISO Certified<br/><span className="text-xs font-medium text-slate-500">Super Specialty</span></div>
