@@ -145,6 +145,7 @@ export default function Footer() {
               <li><Link to="/about" className="hover:text-white">About Hospital Since 2004</Link></li>
               <li><Link to="/doctor" className="hover:text-white">Dr. Shahnawaz Kazi - Gold Medalist</Link></li>
               <li><Link to="/technology" className="hover:text-white">Our Technology - Pentacam OCT Femto</Link></li>
+              <li><Link to="/blogs" className="hover:text-white">Patient Education Blogs</Link></li>
               <li><Link to="/contact" className="hover:text-white">Book Appointment</Link></li>
               <li><Link to="/services" className="hover:text-white">All {services.length} Services</Link></li>
             </ul>

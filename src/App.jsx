@@ -13,6 +13,8 @@ import ServiceDetail from './pages/ServiceDetail';
 import DoctorPage from './pages/DoctorPage';
 import ContactPage from './pages/ContactPage';
 import TechnologyPage from './pages/TechnologyPage';
+import BlogsPage from './pages/BlogsPage';
+import BlogPostDetail from './pages/BlogPostDetail';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -25,6 +27,10 @@ function AnimatedRoutes() {
         <Route path="/services/:id" element={<ServiceDetail />} />
         <Route path="/doctor" element={<DoctorPage />} />
         <Route path="/technology" element={<TechnologyPage />} />
+        <Route path="/blogs" element={<BlogsPage />} />
+        <Route path="/blog" element={<BlogsPage />} />
+        <Route path="/blogs/:id" element={<BlogPostDetail />} />
+        <Route path="/blog/:id" element={<BlogPostDetail />} />
         <Route path="/contact" element={<ContactPage />} />
         {/* fallback */}
         <Route path="*" element={<Home />} />
@@ -36,10 +42,10 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-white antialiased selection:bg-[#0B4DA2] selection:text-white overflow-x-hidden w-full relative">
+      <div className="min-h-screen flex flex-col bg-white antialiased selection:bg-[#0B4DA2] selection:text-white w-full relative">
         <TopBar />
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 overflow-x-hidden">
           <AnimatedRoutes />
         </main>
         <Footer />
