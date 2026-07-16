@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Calendar, Eye, Search, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Calendar, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { services, categories } from '../../data/content';
+import { services } from '../../data/content';
 
 const mainMenu = [
   { label: "Home", path: "/" },
@@ -54,9 +54,15 @@ export default function Header() {
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[72px] lg:h-[84px] gap-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 shrink-0">
-            <div className="w-11 h-11 lg:w-12 lg:h-12 rounded-xl bg-[#0B4DA2] flex items-center justify-center text-white">
-              <Eye size={26} />
+          <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Ashu Laser Vision home">
+            <div className="w-11 h-12 lg:w-12 lg:h-14 flex items-center justify-center">
+              <img
+                src="/images/ashu-logo-mark.png"
+                alt=""
+                className="w-full h-full object-contain"
+                width="146"
+                height="211"
+              />
             </div>
             <div className="leading-tight">
               <div className="font-bold text-[18px] lg:text-[20px] tracking-tight text-[#0B4DA2] font-display">Ashu Laser Vision</div>

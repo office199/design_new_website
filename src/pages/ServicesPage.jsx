@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import SEO from '../components/SEO';
 import Services from '../components/sections/Services';
 import { services } from '../data/content';

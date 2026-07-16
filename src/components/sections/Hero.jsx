@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, ShieldCheck, Star, CheckCircle2 } from 'lucide-react';
 
+const patientInitials = ['AM', 'DV', 'NT'];
+
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#F8FAFF]">
@@ -41,9 +43,11 @@ export default function Hero() {
 
             <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4}} className="flex flex-wrap items-center gap-6 pt-2">
               <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  {[1,2,3].map(i=>(
-                    <img key={i} src={`https://i.pravatar.cc/100?img=${10+i}`} alt="patient" className="w-8 h-8 rounded-full border-2 border-white" />
+                <div className="flex -space-x-2" aria-label="Verified patient reviews">
+                  {patientInitials.map((initials, i) => (
+                    <span key={initials} className={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[9px] font-extrabold text-white ${i === 0 ? 'bg-[#0B4DA2]' : i === 1 ? 'bg-[#00A6CB]' : 'bg-[#00A67E]'}`} aria-hidden="true">
+                      {initials}
+                    </span>
                   ))}
                 </div>
                 <div className="text-xs leading-tight">
@@ -73,7 +77,14 @@ export default function Hero() {
             <motion.div initial={{opacity:0,scale:0.95}} animate={{opacity:1,scale:1}} transition={{delay:0.2}} className="relative h-[420px] md:h-[520px] lg:h-full">
               {/* main image card */}
               <div className="absolute inset-0 rounded-[28px] overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=900&q=80" alt="Doctor checking patient eye" className="w-full h-full object-cover" />
+                <img
+                  src="/images/clinic/hero-consultation.webp"
+                  alt="Dr. Shahnawaz Kazi examining a patient at Ashu Laser Vision"
+                  className="w-full h-full object-cover object-center"
+                  width="700"
+                  height="900"
+                  fetchPriority="high"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B4DA2]/60 via-transparent to-transparent" />
               </div>
 
@@ -97,7 +108,9 @@ export default function Hero() {
               </motion.div>
 
               <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur rounded-2xl p-4 shadow-xl border border-white flex items-center gap-4">
-                <img src="https://i.pravatar.cc/100?img=12" alt="doctor" className="w-12 h-12 rounded-full" />
+                <div className="w-12 h-12 rounded-full bg-white border border-slate-200 p-1.5 flex items-center justify-center shrink-0">
+                  <img src="/images/ashu-logo-mark.png" alt="Ashu Laser Vision" className="w-full h-full object-contain" width="146" height="211" />
+                </div>
                 <div className="leading-tight">
                   <div className="font-bold text-sm">Dr. Shahnawaz Kazi</div>
                   <div className="text-[11px] text-slate-600">Retina, Cataract & LASIK Surgeon<br/>17+ Years Experience</div>
