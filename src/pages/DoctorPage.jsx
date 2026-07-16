@@ -11,7 +11,7 @@ export default function DoctorPage() {
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5">
               <div className="bg-white rounded-[28px] border border-slate-200 p-8">
-                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt={doctor.name} className="w-full aspect-[3/4] object-cover rounded-2xl" />
+                <img src="https://ashulaservision.com/wp-content/uploads/2024/11/about-h.jpg" alt={doctor.name} className="w-full aspect-[3/4] object-cover rounded-2xl" />
                 <div className="mt-6">
                   <h1 className="text-[28px] font-bold leading-tight">{doctor.name}</h1>
                   <div className="text-[#0B4DA2] font-semibold text-sm mt-1">{doctor.role}</div>
