@@ -67,7 +67,7 @@ export default function ServiceDetail() {
 
       {/* Hero Breadcrumb */}
       <div className="bg-[#F8FAFF] border-b border-slate-100">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-4 flex items-center gap-2 text-xs">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-4 flex flex-wrap items-center gap-2 text-xs">
           <Link to="/" className="text-slate-500 hover:text-[#0B4DA2]">Home</Link>
           <span className="text-slate-300">/</span>
           <Link to="/services" className="text-slate-500 hover:text-[#0B4DA2]">Services</Link>
@@ -111,9 +111,9 @@ export default function ServiceDetail() {
                   {service.symptoms && (
                     <div className="mt-10">
                       <h3 className="font-bold text-lg flex items-center gap-2"><AlertCircle size={18} className="text-amber-500"/> Symptoms of {service.title}</h3>
-                      <div className="grid sm:grid-cols-2 gap-3 mt-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                         {service.symptoms.map(s=>(
-                          <div key={s} className="bg-amber-50/50 border border-amber-100 rounded-xl px-4 py-3 text-sm flex gap-2"><span className="text-amber-500">•</span> {s}</div>
+                          <div key={s} className="bg-amber-50/50 border border-amber-100 rounded-xl px-4 py-3 text-sm flex gap-2"><span className="text-amber-500 shrink-0">•</span> <span>{s}</span></div>
                         ))}
                       </div>
                     </div>
@@ -122,7 +122,7 @@ export default function ServiceDetail() {
                   {service.treatments && (
                     <div className="mt-10">
                       <h3 className="font-bold text-lg flex items-center gap-2"><ShieldCheck size={18} className="text-emerald-600"/> Treatment Options at Ashu Laser Vision</h3>
-                      <div className="grid sm:grid-cols-2 gap-3 mt-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                         {service.treatments.map(t=>(
                           <div key={t} className="flex items-start gap-3 bg-emerald-50/50 border border-emerald-100 rounded-xl px-4 py-3 text-sm">
                             <CheckCircle2 size={16} className="text-emerald-600 mt-0.5 shrink-0"/> <span>{t}</span>
@@ -136,9 +136,9 @@ export default function ServiceDetail() {
                     <div className="mt-10 bg-[#0B4DA2] rounded-[20px] p-6 lg:p-8 text-white relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                       <h3 className="font-bold text-lg flex items-center gap-2 relative z-10"><Award size={18}/> Why Ashu Laser Vision for {service.title}?</h3>
-                      <div className="grid sm:grid-cols-2 gap-3 mt-5 relative z-10">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5 relative z-10">
                         {service.benefits.map(b=>(
-                          <div key={b} className="flex gap-2 text-sm text-blue-100"><span className="text-white">✓</span> {b}</div>
+                          <div key={b} className="flex gap-2 text-sm text-blue-100"><span className="text-white shrink-0">✓</span> <span>{b}</span></div>
                         ))}
                       </div>
                       <div className="mt-6 flex flex-wrap gap-2 text-xs relative z-10">

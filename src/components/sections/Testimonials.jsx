@@ -32,9 +32,9 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-4 mt-10 bg-white rounded-[20px] border border-slate-200 p-6 lg:p-8 items-center">
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-4 mt-10 bg-white rounded-[20px] border border-slate-200 p-6 lg:p-8 items-center">
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center sm:justify-start gap-3">
               <div className="w-8 h-8 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center font-extrabold text-lg text-[#4285F4]" aria-hidden="true">G</div>
               <div>
                 <div className="font-bold flex items-center gap-1">Google <Star size={14} className="fill-amber-400 text-amber-400"/> 4.9</div>
@@ -46,7 +46,7 @@ export default function Testimonials() {
             <div className="text-sm font-semibold">Trusted by families across Mumbai for 20 years</div>
             <div className="text-xs text-slate-500">Verified patient reviews • No fake testimonials</div>
           </div>
-          <div className="lg:col-span-1 text-right">
+          <div className="lg:col-span-1 text-center sm:text-right lg:text-right">
             <a href="https://www.google.com/maps/search/Ashu+Laser+Vision+Andheri+West" target="_blank" rel="noopener noreferrer" className="inline-flex bg-[#0F172A] text-white px-5 py-2.5 rounded-full text-xs font-bold">Read All Reviews on Google</a>
           </div>
         </div>

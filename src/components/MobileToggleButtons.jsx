@@ -32,10 +32,10 @@ export default function MobileToggleButtons() {
   return (
     <div className="fixed bottom-5 right-5 z-[50]">
       <div className="relative">
-        {/* Expanded buttons expanding to the left */}
+        {/* Expanded buttons expanding vertically on mobile and horizontally on desktop */}
         <div
-          className={`absolute right-full top-1/2 -translate-y-1/2 mr-2.5 flex items-center gap-2 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-            isOpen ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-6 scale-95 pointer-events-none'
+          className={`absolute bottom-full right-0 mb-3 sm:bottom-auto sm:right-full sm:top-1/2 sm:-translate-y-1/2 sm:mr-2.5 sm:mb-0 flex flex-col sm:flex-row items-center gap-2.5 sm:gap-2 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+            isOpen ? 'opacity-100 translate-y-0 sm:translate-x-0 scale-100' : 'opacity-0 translate-y-4 sm:translate-y-0 sm:translate-x-6 scale-95 pointer-events-none'
           }`}
         >
           {/* Facebook Button */}
@@ -47,7 +47,7 @@ export default function MobileToggleButtons() {
             className="w-11 h-11 rounded-full bg-[#1877F2] shadow-[0_6px_20px_rgba(24,119,242,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
           >
             <FacebookIcon size={20} />
-            <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            <span className="absolute right-full mr-2.5 top-1/2 -translate-y-1/2 sm:right-auto sm:top-auto sm:bottom-full sm:mb-2 sm:left-1/2 sm:-translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
               Facebook
             </span>
           </a>
@@ -61,7 +61,7 @@ export default function MobileToggleButtons() {
             className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] shadow-[0_6px_20px_rgba(220,39,67,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
           >
             <InstagramIcon size={20} />
-            <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            <span className="absolute right-full mr-2.5 top-1/2 -translate-y-1/2 sm:right-auto sm:top-auto sm:bottom-full sm:mb-2 sm:left-1/2 sm:-translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
               Instagram
             </span>
           </a>
@@ -75,7 +75,7 @@ export default function MobileToggleButtons() {
             className="w-11 h-11 rounded-full bg-[#0A66C2] shadow-[0_6px_20px_rgba(10,102,194,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
           >
             <LinkedinIcon size={20} />
-            <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            <span className="absolute right-full mr-2.5 top-1/2 -translate-y-1/2 sm:right-auto sm:top-auto sm:bottom-full sm:mb-2 sm:left-1/2 sm:-translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
               LinkedIn
             </span>
           </a>
@@ -89,7 +89,7 @@ export default function MobileToggleButtons() {
             className="w-11 h-11 rounded-full bg-[#25D366] shadow-[0_6px_20px_rgba(37,211,102,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
           >
             <WhatsAppIcon size={22} />
-            <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            <span className="absolute right-full mr-2.5 top-1/2 -translate-y-1/2 sm:right-auto sm:top-auto sm:bottom-full sm:mb-2 sm:left-1/2 sm:-translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
               WhatsApp
             </span>
             <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 -z-10"></span>
@@ -102,7 +102,7 @@ export default function MobileToggleButtons() {
             className="w-11 h-11 rounded-full bg-[#0B4DA2] shadow-[0_6px_20px_rgba(11,77,162,0.4)] flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 group relative shrink-0"
           >
             <Phone size={20} strokeWidth={2} />
-            <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
+            <span className="absolute right-full mr-2.5 top-1/2 -translate-y-1/2 sm:right-auto sm:top-auto sm:bottom-full sm:mb-2 sm:left-1/2 sm:-translate-x-1/2 bg-[#0A1931] text-white text-[11px] font-bold px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-lg z-10">
               Call Now
             </span>
           </a>

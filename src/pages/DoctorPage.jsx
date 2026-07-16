@@ -38,12 +38,12 @@ export default function DoctorPage() {
 
             <Reveal>
             <div className="lg:col-span-7 space-y-6">
-              <div className="bg-white rounded-[28px] border border-slate-200 p-8 lg:p-10">
+              <div className="bg-white rounded-[28px] border border-slate-200 p-6 sm:p-8 lg:p-10">
                 <h2 className="text-2xl font-bold">About Doctor</h2>
                 <p className="text-[15px] text-slate-600 leading-relaxed mt-4">Welcome to Ashu Laser Vision, our Ophthalmologist, Eye Surgeon & Retina Specialist Dr. Shahnawaz Kazi, specializes in surgically correcting disorders and diseases of the eye affecting vision like Lasik, Cataract, Glaucoma, Cornea, Age Related Macular Disease, Retinopathy of Prematurity, Diabetic Retinopathy, Squint, Retinal Detachment, Ocular Injuries, Oculoplastic, Kid’s Eye Problems etc.</p>
                 <p className="text-[15px] text-slate-600 leading-relaxed mt-4">To advance in the field of vitreoretinal sciences with an institute with overall development in the different sub-specialities in ophthalmology in keeping with the latest technological advancements.</p>
 
-                <div className="grid sm:grid-cols-2 gap-4 mt-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                   <div className="bg-[#F8FAFF] border border-slate-200 rounded-xl p-4">
                     <GraduationCap className="text-[#0B4DA2] mb-2" size={20} />
                     <div className="font-bold text-sm">Education</div>

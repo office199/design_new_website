@@ -74,7 +74,7 @@ export default function TechnologyPage() {
             ))}
           </div>
 
-          <div className="mt-12 bg-[#0A1931] rounded-[24px] p-8 lg:p-10 text-white grid lg:grid-cols-2 gap-8 items-center">
+          <div className="mt-12 bg-[#0A1931] rounded-[24px] p-6 sm:p-8 lg:p-10 text-white grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-xl font-bold">Micron M7 - Fastest LASIK Laser Machine in Mumbai 800Hz</h3>
               <p className="text-sm text-blue-100 mt-3 leading-relaxed">Precise Safe Compact & Patient Comfort. Factors: Presbyopia PTK with Topography Guided, Fractional Ablation Flying Spot Scanning. Correction range: Myopia -0.25 to -12.0 D, Hyperopia +0.25 to +6.0 D, Astigmatism -6 to +6 D. Robotic application, safe fractional ablation with dynamic matrix pulse ~0.02mm for smooth precise ablation, thermal impact minimized, less haze risk.</p>

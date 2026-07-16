@@ -21,9 +21,9 @@ export default function AppointmentCTA() {
               </div>
             </div>
 
-            <div className="flex gap-3">
-              <Link to="/contact" className="bg-[#0B4DA2] text-white px-6 py-3.5 rounded-full font-bold text-sm">Book Appointment</Link>
-              <a href="tel:+919322364002" className="bg-white border border-slate-200 px-6 py-3.5 rounded-full font-bold text-sm flex items-center gap-2"><Phone size={16}/> Call Now</a>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+              <Link to="/contact" className="bg-[#0B4DA2] text-white px-6 py-3.5 rounded-full font-bold text-sm text-center w-full sm:w-auto">Book Appointment</Link>
+              <a href="tel:+919322364002" className="bg-white border border-slate-200 px-6 py-3.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 w-full sm:w-auto"><Phone size={16}/> Call Now</a>
             </div>
           </div>
 

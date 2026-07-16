@@ -28,7 +28,7 @@ export default function Hero() {
               A Super Multi Specialty <span className="text-[#0B4DA2]">Eye & Retina</span> Clinic / Hospital
             </motion.h1>
 
-            <motion.p initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}} className="text-[15px] md:text-[17px] leading-relaxed text-slate-600 max-w-[600px]">
+            <motion.p initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.2}} className="text-[15px] md:text-[17px] leading-relaxed text-slate-600 w-full max-w-[600px]">
               Trusted center for advanced eye and retina care offering world-class treatments with modern technology and compassionate expertise. Comprehensive services including <span className="font-semibold text-slate-800">Advanced Cataract, Retina, Diabetic Retinopathy, Glaucoma & LASIK.</span>
             </motion.p>
 
@@ -89,19 +89,19 @@ export default function Hero() {
               </div>
 
               {/* floating stats - like ASG & Dr Agarwal */}
-              <motion.div animate={{y:[0,-8,0]}} transition={{repeat:Infinity,duration:4}} className="absolute top-6 left-4 md:-left-8 bg-white rounded-2xl p-4 shadow-xl border border-slate-100 w-[190px]">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">✓</div>
+              <motion.div animate={{y:[0,-8,0]}} transition={{repeat:Infinity,duration:4}} className="absolute top-6 left-3 sm:left-4 md:-left-8 bg-white rounded-2xl p-3 sm:p-4 shadow-xl border border-slate-100 w-[170px] sm:w-[190px] max-w-[calc(100%-1.5rem)] z-10">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">✓</div>
                   <div>
-                    <div className="font-bold text-sm">98% Success</div>
-                    <div className="text-[11px] text-slate-500">Cataract Surgery Rate</div>
+                    <div className="font-bold text-xs sm:text-sm">98% Success</div>
+                    <div className="text-[10px] sm:text-[11px] text-slate-500">Cataract Surgery Rate</div>
                   </div>
                 </div>
               </motion.div>
 
-              <motion.div animate={{y:[0,8,0]}} transition={{repeat:Infinity,duration:5}} className="absolute bottom-24 right-4 md:-right-6 bg-white rounded-2xl p-4 shadow-xl border border-slate-100 w-[220px]">
-                <div className="text-xs text-slate-500 mb-1">Next Available Slot</div>
-                <div className="font-bold text-sm">Today, 4:30 PM</div>
+              <motion.div animate={{y:[0,8,0]}} transition={{repeat:Infinity,duration:5}} className="absolute bottom-24 right-3 sm:right-4 md:-right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-xl border border-slate-100 w-[190px] sm:w-[220px] max-w-[calc(100%-1.5rem)] z-10">
+                <div className="text-[11px] sm:text-xs text-slate-500 mb-1">Next Available Slot</div>
+                <div className="font-bold text-xs sm:text-sm">Today, 4:30 PM</div>
                 <div className="mt-2 flex gap-2">
                   <span className="text-[10px] bg-blue-50 text-[#0B4DA2] px-2 py-1 rounded-full font-semibold">Dr. Kazi Available</span>
                 </div>

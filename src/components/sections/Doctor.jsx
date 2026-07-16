@@ -29,9 +29,9 @@ export default function Doctor() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3 mt-8">
-                <Link to="/doctor" className="bg-white text-[#0F172A] px-6 py-3 rounded-full font-bold text-sm">View Full Profile</Link>
-                <Link to="/contact" className="bg-[#0B4DA2] text-white px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2"><Calendar size={16}/> Book Consultation</Link>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-8">
+                <Link to="/doctor" className="bg-white text-[#0F172A] px-6 py-3 rounded-full font-bold text-sm text-center w-full sm:w-auto">View Full Profile</Link>
+                <Link to="/contact" className="bg-[#0B4DA2] text-white px-6 py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2 w-full sm:w-auto"><Calendar size={16}/> Book Consultation</Link>
               </div>
             </div>
 
