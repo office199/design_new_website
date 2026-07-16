@@ -27,37 +27,54 @@ function LinkedinIcon({ size = 14, className = "" }) {
 export default function TopBar() {
   return (
     <div className="bg-[#0B4DA2] text-white text-[13px] relative z-50">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-2 flex flex-wrap justify-between items-center gap-2">
-        {/* Contact Information */}
-        <div className="hidden lg:flex items-center gap-6">
-          <a href="tel:+919322364002" className="flex items-center gap-2 hover:text-blue-200 transition">
-            <Phone size={14} /> +91 93223 64002
-          </a>
-          <span className="flex items-center gap-2">
-            <Mail size={14} /> info@ashulaservision.com
-          </span>
-          <span className="flex items-center gap-2">
-            <Clock size={14} /> Mon-Sat: 10AM - 8PM
-          </span>
-          <span className="flex items-center gap-2">
-            <MapPin size={14} /> Andheri West, Mumbai
-          </span>
+      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-2 flex flex-wrap justify-between items-center gap-x-4 gap-y-2">
+        {/* Left side: Shifted Emergency word & Call Now with both numbers */}
+        <div className="flex items-center flex-wrap gap-x-4 gap-y-1.5 w-full lg:w-auto justify-between sm:justify-start">
+          <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-xs sm:text-[13px] font-medium">
+            <span className="bg-red-600 text-white px-2 sm:px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase flex items-center gap-1 shadow-xs shrink-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+              Emergency
+            </span>
+            <span className="flex items-center gap-1 text-white font-semibold shrink-0">
+              <Phone size={13} className="text-blue-200 shrink-0" />
+              <span>Call Now :</span>
+            </span>
+            <div className="flex items-center gap-1 text-white font-bold flex-wrap">
+              <a href="tel:+919322364002" className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap">
+                +91 93223 64002
+              </a>
+              <span className="text-blue-300 font-normal">/</span>
+              <a href="tel:+917506509666" className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap">
+                +91 75065 09666
+              </a>
+            </div>
+          </div>
+
+          {/* Additional Contact Info on Extra Large screens */}
+          <div className="hidden xl:flex items-center gap-5 text-blue-100 border-l border-white/20 pl-4 text-xs font-normal">
+            <span className="flex items-center gap-1.5 hover:text-white transition">
+              <Mail size={13} className="text-blue-200 shrink-0" /> info@ashulaservision.com
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock size={13} className="text-blue-200 shrink-0" /> Mon-Sat: 10AM - 8PM
+            </span>
+            <span className="flex items-center gap-1.5">
+              <MapPin size={13} className="text-blue-200 shrink-0" /> Andheri West, Mumbai
+            </span>
+          </div>
         </div>
 
-        {/* Right side: Mobile Quick Buttons, Social Icons & Emergency */}
-        <div className="flex items-center justify-between w-full lg:w-auto gap-3">
+        {/* Right side: Mobile Quick WhatsApp, Social Icons & Emergency Pill */}
+        <div className="flex items-center justify-between w-full lg:w-auto gap-2 sm:gap-3">
           <div className="flex items-center gap-2 lg:hidden text-xs">
-            <a href="tel:+919322364002" className="flex items-center gap-1.5 bg-white/15 px-2.5 py-1 rounded-full font-medium hover:bg-white/20 transition">
-              <Phone size={12} /> Call
-            </a>
-            <a href="https://wa.me/919322364002" className="flex items-center gap-1.5 bg-green-500 px-2.5 py-1 rounded-full font-medium hover:bg-green-600 transition">
+            <a href="https://wa.me/919322364002" className="flex items-center gap-1.5 bg-[#25D366] px-3 py-1 rounded-full font-bold text-white hover:bg-[#1ebe5d] transition shadow-xs">
               WhatsApp
             </a>
           </div>
 
-          <div className="flex items-center gap-3 ml-auto">
+          <div className="flex items-center gap-2 sm:gap-3 ml-auto flex-wrap justify-end">
             {/* Social Media Links with Icons */}
-            <div className="flex items-center gap-1.5 border-r border-white/20 pr-3 mr-0.5">
+            <div className="flex items-center gap-1.5 border-r border-white/20 pr-2 sm:pr-3 mr-0.5">
               <a
                 href="https://www.facebook.com/AshuLaserVision/"
                 target="_blank"
@@ -90,10 +107,23 @@ export default function TopBar() {
               </a>
             </div>
 
-            <span className="hidden md:inline opacity-80 text-xs">For Emergency:</span>
-            <a href="tel:+919322364002" className="bg-white text-[#0B4DA2] px-3 py-1 rounded-full text-xs font-bold hover:bg-blue-50 transition shadow-xs">
-              Emergency: +91 93223 64002
-            </a>
+            {/* Emergency Wording & Numbers on Right side for desktop/tablet */}
+            <div className="hidden lg:flex items-center gap-1.5">
+              <span className="hidden 2xl:inline opacity-80 text-xs font-medium">For Emergency:</span>
+              <div className="bg-white text-[#0B4DA2] px-3 py-1 rounded-full text-xs font-bold shadow-xs flex items-center gap-1.5 flex-wrap">
+                <span className="text-red-600 font-extrabold flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
+                  Emergency:
+                </span>
+                <a href="tel:+919322364002" className="hover:text-blue-700 underline-offset-2 hover:underline transition whitespace-nowrap">
+                  +91 93223 64002
+                </a>
+                <span className="text-slate-400 font-normal">/</span>
+                <a href="tel:+917506509666" className="hover:text-blue-700 underline-offset-2 hover:underline transition whitespace-nowrap">
+                  +91 75065 09666
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
