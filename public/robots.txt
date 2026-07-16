@@ -1,4 +1,35 @@
 User-agent: *
 Allow: /
 
+# Disallow WP paths if any residual
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /*?*
+Disallow: /cgi-bin/
+
+# Sitemap
 Sitemap: https://ashulaservision.com/sitemap.xml
+
+# Host
+Host: https://ashulaservision.com
+
+# Crawl-delay
+Crawl-delay: 2
+
+# Major pages - encourage crawl
+# - Cataract: /services/cataract
+# - LASIK: /services/lasik
+# - Retina: /services/retina
+# - Glaucoma: /services/glaucoma
+# - Diabetic Retinopathy: /services/diabetic-retinopathy
+# - Squint: /services/squint
+# - All 28 services
+
+# For Googlebot Image
+User-agent: Googlebot-Image
+Allow: /
+
+# For Bing
+User-agent: bingbot
+Allow: /
+Crawl-delay: 2
