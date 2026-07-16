@@ -28,103 +28,121 @@ function LinkedinIcon({ size = 14, className = "" }) {
 export default function TopBar() {
   return (
     <div className="bg-[#0B4DA2] text-white text-[13px] relative z-50">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-2.5">
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 lg:gap-4">
-
-          {/* Left Section */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-            {/* Phone Numbers */}
-            <div className="flex items-center gap-2 text-xs sm:text-[13px]">
-              <span className="flex items-center gap-1.5 text-white font-semibold shrink-0">
-                <Phone size={13} className="text-blue-200 shrink-0" />
-                Call No.:
+      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-2">
+        {/* Desktop Layout */}
+        <div className="hidden lg:flex items-center justify-between gap-4">
+          {/* Left: Contact Info */}
+          <div className="flex items-center gap-6 text-xs">
+            {/* Phones */}
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1.5 text-white font-semibold">
+                <Phone size={14} className="text-blue-200" />
+                Call:
               </span>
               <div className="flex items-center gap-1.5 font-bold">
-                <a
-                  href="tel:+919322364002"
-                  className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap"
-                >
+                <a href="tel:+919322364002" className="hover:text-blue-200 hover:underline transition">
                   +91 93223 64002
                 </a>
-                <span className="text-blue-300 font-normal">/</span>
-                <a
-                  href="tel:+917506509666"
-                  className="hover:text-blue-200 underline-offset-2 hover:underline transition whitespace-nowrap"
-                >
+                <span className="text-blue-300">/</span>
+                <a href="tel:+917506509666" className="hover:text-blue-200 hover:underline transition">
                   +91 75065 09666
                 </a>
               </div>
             </div>
 
-            {/* WhatsApp Button - Mobile Only */}
-            <div className="sm:hidden">
-              <a
-                href="https://wa.me/919322364002"
-                className="inline-flex items-center gap-1.5 bg-[#25D366] px-4 py-1.5 rounded-full font-bold text-white hover:bg-[#1ebe5d] transition shadow-sm"
-                aria-label="Chat on WhatsApp"
-              >
-                <WhatsAppIcon size={14} />
-                WhatsApp
-              </a>
-            </div>
+            {/* Email */}
+            <a href="mailto:info@ashulaservision.com" className="flex items-center gap-1.5 text-blue-100 hover:text-white transition">
+              <Mail size={14} className="text-blue-200" />
+              info@ashulaservision.com
+            </a>
 
-            {/* Additional Info - XL screens */}
-            <div className="hidden xl:flex items-center gap-6 text-blue-100 border-l border-white/20 pl-6 text-xs">
-              <a
-                href="mailto:info@ashulaservision.com"
-                className="flex items-center gap-1.5 hover:text-white transition"
-              >
-                <Mail size={13} className="text-blue-200 shrink-0" />
-                info@ashulaservision.com
-              </a>
-              <span className="flex items-center gap-1.5">
-                <Clock size={13} className="text-blue-200 shrink-0" />
-                Mon-Sat: 10AM - 8PM
-              </span>
-              <span className="flex items-center gap-1.5">
-                <MapPin size={13} className="text-blue-200 shrink-0" />
-                Andheri West, Mumbai
-              </span>
-            </div>
+            {/* Hours */}
+            <span className="flex items-center gap-1.5 text-blue-100">
+              <Clock size={14} className="text-blue-200" />
+              Mon-Sat: 10AM - 8PM
+            </span>
+
+            {/* Location */}
+            <span className="flex items-center gap-1.5 text-blue-100">
+              <MapPin size={14} className="text-blue-200" />
+              Andheri West, Mumbai
+            </span>
           </div>
 
-          {/* Right Section - Social Media Only */}
-          <div className="flex items-center justify-between sm:justify-end">
-            {/* Social Media Icons */}
-            <div className="flex items-center gap-2">
-              <a
-                href="https://www.facebook.com/AshuLaserVision/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                title="Facebook"
-                className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#1877F2] flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
-              >
+          {/* Right: WhatsApp + Socials */}
+          <div className="flex items-center gap-3">
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/919322364002"
+              className="inline-flex items-center gap-1.5 bg-[#25D366] px-3.5 py-1 rounded-full text-xs font-semibold hover:bg-[#1ebe5d] transition"
+              aria-label="Chat on WhatsApp"
+            >
+              <WhatsAppIcon size={14} /> WhatsApp
+            </a>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-1.5 pl-2 border-l border-white/20">
+              <a href="https://www.facebook.com/AshuLaserVision/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#1877F2] flex items-center justify-center transition hover:scale-110">
                 <FacebookIcon size={13} />
               </a>
-              <a
-                href="https://www.instagram.com/ashueyehospital/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                title="Instagram"
-                className="w-7 h-7 rounded-full bg-white/10 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
-              >
+              <a href="https://www.instagram.com/ashueyehospital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-7 h-7 rounded-full bg-white/10 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] flex items-center justify-center transition hover:scale-110">
                 <InstagramIcon size={13} />
               </a>
-              <a
-                href="https://www.linkedin.com/in/shahnawaz-kazi-971a067b/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                title="LinkedIn"
-                className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#0A66C2] flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
-              >
+              <a href="https://www.linkedin.com/in/shahnawaz-kazi-971a067b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#0A66C2] flex items-center justify-center transition hover:scale-110">
                 <LinkedinIcon size={13} />
               </a>
             </div>
           </div>
+        </div>
 
+        {/* Mobile Layout */}
+        <div className="lg:hidden flex flex-col gap-2.5">
+          {/* Row 1: Phones + WhatsApp */}
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5 text-xs">
+              <span className="flex items-center gap-1 text-white font-semibold">
+                <Phone size={13} className="text-blue-200" /> Call:
+              </span>
+              <div className="flex items-center gap-1 font-bold">
+                <a href="tel:+919322364002" className="hover:text-blue-200 hover:underline transition">93223 64002</a>
+                <span className="text-blue-300">/</span>
+                <a href="tel:+917506509666" className="hover:text-blue-200 hover:underline transition">75065 09666</a>
+              </div>
+            </div>
+
+            <a
+              href="https://wa.me/919322364002"
+              className="inline-flex items-center gap-1.5 bg-[#25D366] px-3 py-1 rounded-full text-xs font-bold hover:bg-[#1ebe5d] transition"
+              aria-label="Chat on WhatsApp"
+            >
+              <WhatsAppIcon size={13} /> WhatsApp
+            </a>
+          </div>
+
+          {/* Row 2: Email + Hours + Location + Socials */}
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[11px] text-blue-100">
+            <a href="mailto:info@ashulaservision.com" className="flex items-center gap-1 hover:text-white transition">
+              <Mail size={12} /> info@ashulaservision.com
+            </a>
+            <span className="flex items-center gap-1">
+              <Clock size={12} /> Mon-Sat 10AM-8PM
+            </span>
+            <span className="flex items-center gap-1">
+              <MapPin size={12} /> Andheri West
+            </span>
+
+            <div className="flex items-center gap-1 ml-auto">
+              <a href="https://www.facebook.com/AshuLaserVision/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-6 h-6 rounded-full bg-white/10 hover:bg-[#1877F2] flex items-center justify-center">
+                <FacebookIcon size={11} />
+              </a>
+              <a href="https://www.instagram.com/ashueyehospital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-6 h-6 rounded-full bg-white/10 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] flex items-center justify-center">
+                <InstagramIcon size={11} />
+              </a>
+              <a href="https://www.linkedin.com/in/shahnawaz-kazi-971a067b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-6 h-6 rounded-full bg-white/10 hover:bg-[#0A66C2] flex items-center justify-center">
+                <LinkedinIcon size={11} />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
