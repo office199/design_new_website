@@ -99,14 +99,6 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              <motion.div animate={{y:[0,8,0]}} transition={{repeat:Infinity,duration:5}} className="absolute bottom-24 right-3 sm:right-4 md:-right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-xl border border-slate-100 w-[190px] sm:w-[220px] max-w-[calc(100%-1.5rem)] z-10">
-                <div className="text-[11px] sm:text-xs text-slate-500 mb-1">Next Available Slot</div>
-                <div className="font-bold text-xs sm:text-sm">Today, 4:30 PM</div>
-                <div className="mt-2 flex gap-2">
-                  <span className="text-[10px] bg-blue-50 text-[#0B4DA2] px-2 py-1 rounded-full font-semibold">Dr. Kazi Available</span>
-                </div>
-              </motion.div>
-
               <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur rounded-2xl p-4 shadow-xl border border-white flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white border border-slate-200 p-1.5 flex items-center justify-center shrink-0">
                   <img src="/images/ashu-logo-mark.png" alt="Ashu Laser Vision" className="w-full h-full object-contain" width="146" height="211" />

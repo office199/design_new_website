@@ -56,17 +56,6 @@ export default function TopBar() {
               info@ashulaservision.com
             </a>
 
-            {/* Hours */}
-            <span className="flex items-center gap-1.5 text-blue-100">
-              <Clock size={14} className="text-blue-200" />
-              Mon-Sat: 10AM - 8PM
-            </span>
-
-            {/* Location */}
-            <span className="flex items-center gap-1.5 text-blue-100">
-              <MapPin size={14} className="text-blue-200" />
-              Andheri West, Mumbai
-            </span>
           </div>
 
           {/* Right: WhatsApp + Socials */}
@@ -124,12 +113,7 @@ export default function TopBar() {
             <a href="mailto:info@ashulaservision.com" className="flex items-center gap-1 hover:text-white transition">
               <Mail size={12} /> info@ashulaservision.com
             </a>
-            <span className="flex items-center gap-1">
-              <Clock size={12} /> Mon-Sat 10AM-8PM
-            </span>
-            <span className="flex items-center gap-1">
-              <MapPin size={12} /> Andheri West
-            </span>
+
 
             <div className="flex items-center gap-1 ml-auto">
               <a href="https://www.facebook.com/AshuLaserVision/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-6 h-6 rounded-full bg-white/10 hover:bg-[#1877F2] flex items-center justify-center">
