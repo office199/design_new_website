@@ -536,3 +536,355 @@ export const categories = [
   { id: "Laser", name: "Laser" },
   { id: "Oculoplasty", name: "Oculoplasty" }
 ];
+
+export const blogs = [
+  {
+    id: "cataract-surgery-recovery-guide",
+    title: "10 Essential Tips for a Speedy Recovery After Cataract Surgery",
+    short: "Discover what to expect post-op and how to care for your eyes after micro-incision, bladeless cataract surgery to ensure crystal-clear vision without complications.",
+    category: "Cataract",
+    date: "June 14, 2026",
+    readTime: "6 min read",
+    author: "Dr. Shahnawaz Kazi",
+    authorRole: "Founder & Medical Director | Gold Medalist Eye Surgeon",
+    authorImg: "/images/clinic/hero-consultation.webp",
+    image: "/images/services/cataract.webp",
+    tags: ["Cataract Surgery", "Eye Recovery", "Phacoemulsification", "Premium IOLs"],
+    metaDescription: "Read Dr. Shahnawaz Kazi's expert recovery tips after micro-incision cataract surgery at Ashu Laser Vision, Andheri West Mumbai. Learn post-op care, dos & don'ts.",
+    keyTakeaways: [
+      "Use prescribed antibiotic and steroid eye drops strictly on schedule without skipping.",
+      "Avoid rubbing, pressing, or touching the operated eye for at least 2 to 3 weeks.",
+      "Wear protective sunglasses or night shields during the first week to guard against accidental trauma and bright glare.",
+      "Skip heavy lifting, intense gym workouts, and swimming in pools or sea water for 3 to 4 weeks."
+    ],
+    sections: [
+      {
+        heading: "Why Modern Cataract Surgery Has a Rapid Recovery",
+        paragraphs: [
+          "Cataract surgery has evolved dramatically over the past two decades. At Ashu Laser Vision in Andheri West, we utilize 2.2mm micro-incision phacoemulsification and Femtosecond Laser-Assisted Cataract Surgery (FLACS). Because the incision is microscopic and self-sealing, no stitches or bandages are typically required. This allows our patients to walk out of the hospital within hours and experience noticeable visual improvement by the very next morning.",
+          "However, even though the procedure takes barely 15 minutes per eye and involves no injections, your eye still undergoes surgical trauma on a microscopic level. Adhering to structured post-operative guidelines is critical to prevent infection, minimize inflammation, and allow the new Intraocular Lens (IOL) to settle perfectly within the capsular bag."
+        ]
+      },
+      {
+        heading: "Crucial Dos and Don'ts During the First 14 Days",
+        paragraphs: [
+          "The first two weeks following surgery are the most important for healing. During this window, your eye's natural barriers are delicate. Here is your essential daily checklist:"
+        ],
+        list: [
+          "DO apply eye drops exactly as prescribed: Wash your hands thoroughly with soap and water before instilling drops. Keep the bottle tip at least half an inch above your eye so it never touches your lashes or eyelids.",
+          "DO wear eye protection outdoors: Bright sunlight and dust in Mumbai traffic can cause irritation or foreign body sensation. Use dark UV-protective sunglasses whenever you step outside.",
+          "DON'T rub your eye: Mild itching or a gritty sensation is completely normal as the micro-incision heals. Rubbing can displace the self-sealing wound or introduce harmful bacteria.",
+          "DON'T splash tap water directly into the eye: When bathing or washing your face, wipe gently around your face with a clean, damp towel. Avoid getting unboiled tap water inside your operated eye for at least 10 days.",
+          "DON'T lift heavy weights (>10 kg) or strain: Heavy physical exertion increases intraocular pressure (IOP), which can delay wound sealing or cause micro-bleeds inside the anterior chamber."
+        ]
+      },
+      {
+        heading: "Understanding Normal vs. Abnormal Symptoms",
+        paragraphs: [
+          "It is reassuring to know what to expect during recovery. It is entirely normal to experience slight watering, mild light sensitivity, a pinkish tinge in the white of your eye, and a feeling like a small eyelash is stuck inside your lid. These sensations fade steadily over 3 to 7 days.",
+          "Conversely, you should contact our emergency helpline (+91 93223 64002) immediately if you experience: sudden severe eye pain not relieved by mild analgesics, sudden darkening or significant drop in vision, increasing redness with yellowish discharge, or persistent flashes of light and floaters."
+        ]
+      },
+      {
+        heading: "When Can You Resume Normal Activities?",
+        paragraphs: [
+          "Most patients can return to light desk work, watching television, using smartphones, and reading within 24 to 48 hours after surgery. Gentle walks are encouraged immediately. Driving should only be resumed once your eye doctor confirms your vision meets legal safety standards during your first follow-up exam.",
+          "By following these simple guidelines and attending your scheduled checkups at Ashu Laser Vision, you ensure that your premium monofocal, toric, or multifocal IOL delivers decades of brilliant, crystal-clear vision."
+        ]
+      }
+    ],
+    faq: [
+      { q: "When can I wash my hair after cataract surgery?", a: "You can take a head bath after 7 to 10 days, provided you tilt your head backward like in a salon so shampoo and water do not enter the operated eye." },
+      { q: "Is it safe to cook near a gas stove after surgery?", a: "Avoid direct hot steam or smoke from gas stoves and frying for the first 4 to 5 days, as heat and fumes can cause severe watering and irritation." }
+    ]
+  },
+  {
+    id: "contoura-vision-vs-standard-lasik",
+    title: "Contoura Vision vs. Standard LASIK: Which Bladeless Surgery is Right for You?",
+    short: "Explore the differences between traditional wavefront LASIK and Contoura Vision topography-guided laser eye surgery to find out how you can achieve superior 20/16 high-definition vision.",
+    category: "LASIK & Refractive",
+    date: "May 28, 2026",
+    readTime: "7 min read",
+    author: "Dr. Shahnawaz Kazi",
+    authorRole: "Founder & Medical Director | Refractive Surgery Specialist",
+    authorImg: "/images/clinic/hero-consultation.webp",
+    image: "https://ashulaservision.com/wp-content/uploads/2025/06/lasik-banner-blog-1.jpg",
+    tags: ["Contoura Vision", "LASIK", "Specs Removal", "Corneal Topography"],
+    metaDescription: "Discover how Contoura Vision differs from standard LASIK at Ashu Laser Vision Mumbai. Learn about 22,000 elevation points mapping & 800Hz Micron M7 laser.",
+    keyTakeaways: [
+      "Standard LASIK treats only your spectacle prescription (myopia, hyperopia, astigmatism), whereas Contoura Vision treats both your prescription and microscopic irregularities on your unique cornea.",
+      "Contoura Vision maps over 22,000 unique elevation points on the cornea using advanced Pentacam and Topolyzer diagnostics before laser treatment.",
+      "Patients undergoing Contoura Vision have significantly lower incidence of night halos, glare, and starbursts when driving at night.",
+      "Over 65% of patients treated with Contoura achieve better vision without glasses than they previously had with their exact spectacle prescription (20/16 or 6/5 vision)."
+    ],
+    sections: [
+      {
+        heading: "The Evolution of Laser Vision Correction",
+        paragraphs: [
+          "For decades, traditional LASIK has freed millions of people from spectacles and contact lenses. By using an excimer laser to reshape the underlying corneal stroma, standard LASIK accurately neutralizes nearsightedness (myopia), farsightedness (hyperopia), and astigmatism.",
+          "However, no two corneas are identical. Just like your fingerprints, your cornea possesses unique microscopic hills, valleys, and surface irregularities known as 'higher-order aberrations.' While standard LASIK treats your general eye prescription (like -3.00 Diopters), it treats the cornea as a symmetric dome and cannot address these subtle surface imperfections."
+        ]
+      },
+      {
+        heading: "What Makes Contoura Vision (Topography-Guided LASIK) Superior?",
+        paragraphs: [
+          "Contoura Vision represents the pinnacle of FDA-approved refractive surgery technology available at Ashu Laser Vision. Before you enter the laser suite, our diagnostic suite captures a ultra-high-resolution 3D topographic map of your eye. The system analyzes more than 22,000 distinct elevation points across your corneal surface.",
+          "During surgery, this personalized topographical data is fed directly into our high-speed excimer laser system (such as the 800Hz Micron M7). The laser executes a customized ablation pattern that not only corrects your refractive error but also smooths out the microscopic irregularities across your visual axis. The result is what ophthalmologists call 'Super Vision' or 'High-Definition Vision'."
+        ]
+      },
+      {
+        heading: "Key Comparison: Contoura Vision vs. Traditional LASIK",
+        paragraphs: [
+          "When deciding between these technologies during your pre-operative assessment at our Andheri West center, consider these three clinical distinctions:"
+        ],
+        list: [
+          "Quality of Night Vision: Traditional LASIK patients occasionally report mild halos around headlights or starbursts at night. Contoura Vision actively eliminates pre-existing higher-order aberrations, resulting in dramatically clearer night driving and sharper contrast sensitivity.",
+          "Visual Acuity Potential: While standard LASIK aims for 20/20 (or 6/6) vision—the standard definition of normal eyesight—clinical trials demonstrate that up to 65% of Contoura patients achieve 20/16 or even 20/12.5 (6/5) vision, exceeding normal human standards.",
+          "Safety and Customization: Standard LASIK uses identical ablation profiles for all patients with the same spectacle power. Contoura is 100% tailor-made to your individual corneal contour, preserving healthier corneal tissue distribution."
+        ]
+      },
+      {
+        heading: "Are You a Good Candidate for Contoura Vision?",
+        paragraphs: [
+          "You are likely an excellent candidate if you are at least 18 years old, have had a stable spectacle prescription for at least 12 continuous months, and possess healthy corneal thickness (measured via ultrasound Pachymetry and Pentacam HR). During your comprehensive screening at Ashu Laser Vision, Dr. Shahnawaz Kazi and our refractive team will evaluate your corneal maps to recommend the safest and most effective procedure—whether that is Contoura Vision, SMILE Pro, or Trans-PRK (ASA)."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Is Contoura Vision surgery painful?", a: "No. The procedure is performed under topical numbing drops. You feel only mild pressure for a few seconds. The actual laser reshaping takes less than 15 seconds per eye." },
+      { q: "How quickly will my vision clear after Contoura?", a: "Most patients experience remarkable visual clarity within 4 to 6 hours after surgery and can return to work, computers, and driving the very next day." }
+    ]
+  },
+  {
+    id: "diabetic-retinopathy-prevention-tips",
+    title: "Why Diabetic Patients Need Yearly Eye Screenings: Understanding Diabetic Retinopathy",
+    short: "Uncontrolled diabetes can silently damage retinal blood vessels long before you notice blurry vision. Learn how early OCT and FFA diagnostics prevent permanent vision loss.",
+    category: "Retina & Vitreous",
+    date: "May 10, 2026",
+    readTime: "6 min read",
+    author: "Dr. Shahnawaz Kazi",
+    authorRole: "Founder & Medical Director | Vitreo-Retina Specialist (Sankara Nethralaya)",
+    authorImg: "/images/clinic/hero-consultation.webp",
+    image: "https://ashulaservision.com/wp-content/uploads/2024/10/blog-image-2.jpg",
+    tags: ["Diabetic Retinopathy", "Retina Care", "FFA", "OCT Macula", "Anti-VEGF"],
+    metaDescription: "Learn why yearly dilated retina checkups are vital for diabetes patients in Mumbai. Early screening with OCT & Green Laser prevents diabetic retinopathy blindness.",
+    keyTakeaways: [
+      "Diabetic retinopathy is completely asymptomatic in its early and moderate stages; by the time you experience floaters or blurry vision, significant damage has occurred.",
+      "Yearly dilated fundus examinations after 5 years of diabetes duration (or immediately upon diagnosis for Type 2 diabetes) reduce the risk of severe blindness by over 95%.",
+      "Modern retinal diagnostics like Optical Coherence Tomography (OCT) and Fundus Fluorescein Angiography (FFA) pinpoint microaneurysms and macular leakage instantly.",
+      "Timely intervention with Green Laser photocoagulation (PRP) and painless Anti-VEGF injections (Avastin/Eylea) can arrest vascular leakage and restore useful vision."
+    ],
+    sections: [
+      {
+        heading: "How Diabetes Affects the Back of Your Eye",
+        paragraphs: [
+          "When blood sugar levels remain persistently elevated over several years, the delicate capillaries nourishing your retina—the light-sensitive photographic film at the back of your eye—begin to weaken. Initially, these tiny blood vessels balloon out (microaneurysms), leak fluid and proteins into the retinal tissue, and cause localized swelling known as Diabetic Macular Edema (DME).",
+          "As the disease progresses to Proliferative Diabetic Retinopathy (PDR), chronic oxygen deprivation (ischemia) forces the retina to grow abnormal, fragile new blood vessels (neovascularization). These fragile vessels easily rupture, pouring blood into the clear vitreous gel of the eye (vitreous hemorrhage) and pulling on the retina until it detaches—causing irreversible blindness."
+        ]
+      },
+      {
+        heading: "The 'Silent Threat': Why You Must Not Wait for Symptoms",
+        paragraphs: [
+          "The most dangerous aspect of diabetic retinopathy is that peripheral retinal bleeding and early macular leakage cause zero pain and zero change in your day-to-day reading vision. Many patients wrongly assume that because their glasses still work well, their eyes are healthy.",
+          "By the time a patient notices symptoms such as dark floating spots, spider-web shadows, wavy lines when reading, or a sudden curtain blocking their vision, the retinopathy has already reached an advanced stage requiring emergency laser or complex 25G/27G stitchless vitrectomy surgery."
+        ]
+      },
+      {
+        heading: "Advanced Retina Diagnostics at Ashu Laser Vision",
+        paragraphs: [
+          "At our specialized retina clinic opposite Andheri Railway Station, Dr. Shahnawaz Kazi utilizes state-of-the-art diagnostic imaging to detect retinopathy years before vision is lost:"
+        ],
+        list: [
+          "Optical Coherence Tomography (OCT): This non-invasive, 5-minute scan acts like an optical biopsy, measuring retinal thickness to the exact micron. It identifies early fluid pockets in the macula that cannot be seen with standard clinical examination.",
+          "Fundus Fluorescein Angiography (FFA): We inject a safe fluorescent dye into an arm vein and take high-speed digital fundus photographs as the dye circulates through retinal vessels. FFA reveals hidden ischemic areas, capillary dropouts, and active leakage points, allowing us to map out precise laser treatments."
+        ]
+      },
+      {
+        heading: "Gold-Standard Treatment Options to Preserve Sight",
+        paragraphs: [
+          "Depending on your angiography and OCT findings, our specialized retina interventions include exact, painless outpatient procedures. Intravitreal Anti-VEGF injections (such as Avastin, Lucentis, or Eylea) administered under sterile OT conditions rapidly seal leaking vessels and reduce macular swelling. For proliferative disease, precision Green Argon Laser Pan-Retinal Photocoagulation (PRP) cauterizes oxygen-starved peripheral retina, preventing blinding vitreous hemorrhages."
+        ]
+      }
+    ],
+    faq: [
+      { q: "How often should a diabetic person get an eye exam?", a: "Every person with diabetes must undergo a comprehensive dilated retina checkup at least once every 12 months. If active diabetic retinopathy or macular edema is detected, checkups may be scheduled every 2 to 4 months." },
+      { q: "Can controlling my blood sugar reverse existing retinal damage?", a: "Strict glycemic control (HbA1c < 7.0%), along with controlled blood pressure and cholesterol, halts further vascular damage. However, existing significant leakage or new vessel growth requires medical interventions like laser or Anti-VEGF injections." }
+    ]
+  },
+  {
+    id: "myopia-control-in-children-ortho-k",
+    title: "Protecting Your Child's Vision: How Ortho-K & Vision Therapy Control Myopia Progression",
+    short: "With children spending more time on smartphones and tablets, myopia (nearsightedness) is soaring. Discover how Orthokeratology overnight lenses and vision therapy stop high minus numbers.",
+    category: "Pediatric",
+    date: "April 22, 2026",
+    readTime: "5 min read",
+    author: "Dr. Shahnawaz Kazi",
+    authorRole: "Founder & Medical Director | Pediatric Eye Specialist",
+    authorImg: "/images/clinic/hero-consultation.webp",
+    image: "/images/services/pediatric.webp",
+    tags: ["Myopia Control", "Ortho-K", "Kids Eye Care", "Vision Therapy", "Pediatric Ophthalmology"],
+    metaDescription: "Discover proven myopia control methods for children in Mumbai. Learn about overnight Ortho-K lenses, low-dose atropine & vision therapy at Ashu Laser Vision.",
+    keyTakeaways: [
+      "High myopia (-6.00D or more) in childhood significantly increases the risk of retinal detachment, glaucoma, and myopic maculopathy later in adulthood.",
+      "Orthokeratology (Ortho-K) involves custom breathable overnight contact lenses that gently reshape the cornea while your child sleeps, giving them 20/20 vision during the day without glasses.",
+      "Clinical research shows Ortho-K and low-dose Atropine eye drops can slow down eye elongation and myopia progression by 50% to 60% in children aged 6 to 16.",
+      "Digital screen breaks (the 20-20-20 rule) and at least 90 minutes of daily outdoor sunlight exposure are crucial natural defenses against progressive myopia."
+    ],
+    sections: [
+      {
+        heading: "The Global Myopia Epidemic Among Children",
+        paragraphs: [
+          "Over the last decade, ophthalmologists across Mumbai have witnessed a startling surge in childhood nearsightedness. Excessive screen time on smartphones, prolonged indoor reading without natural sunlight, and genetic predisposition are causing children's eyeballs to elongate abnormally during their growth years.",
+          "When an eyeball grows too long from front to back, light entering the eye focuses in front of the retina instead of directly on it. Every year, a child's minus prescription jumps higher—from -1.00 to -3.00, and often past -6.00 by their teenage years. This is not just about thicker glasses; high axial length stretches and thins the retina, leading to lifelong risks of retinal tears and glaucoma."
+        ]
+      },
+      {
+        heading: "What is Orthokeratology (Ortho-K) and How Does It Work?",
+        paragraphs: [
+          "Orthokeratology, commonly called Ortho-K or 'Corneal Reshaping Therapy,' is one of the most effective non-surgical breakthroughs in pediatric optometry and ophthalmology.",
+          "Ortho-K uses ultra-high oxygen-permeable, rigid gas permeable contact lenses designed precisely from your child's 3D Pentacam corneal topography map. Your child wears these specialized lenses only when they go to sleep at night. While they sleep, the lenses gently and safely flatten the microscopic central curve of the front cornea by a few microns."
+        ]
+      },
+      {
+        heading: "The Dual Benefits of Ortho-K for Active Kids",
+        paragraphs: [
+          "When the child wakes up and removes the lenses in the morning, two remarkable things happen:"
+        ],
+        list: [
+          "Complete Freedom from Glasses During the Day: The temporarily reshaped cornea provides sharp, clear 20/20 distance vision throughout the entire day. Children can participate in swimming, football, martial arts, and dancing without glasses slipping or breaking.",
+          "Proven Arrest of Myopia Progression: Unlike regular glasses or standard daytime contact lenses—which only correct central vision while allowing peripheral rays to focus behind the retina (encouraging further eyeball elongation)—Ortho-K creates 'peripheral myopic defocus.' This optical signal tells the eye's growth mechanism to stop elongating, effectively halting prescription jumps by 50% to 60%."
+        ]
+      },
+      {
+        heading: "Comprehensive Myopia Management Protocol at Ashu Laser Vision",
+        paragraphs: [
+          "At our specialized pediatric clinic in Andheri West, Dr. Shahnawaz Kazi combines Ortho-K with complementary clinical protocols:",
+          "For younger children or specific cases, we prescribe ultra-dilute Low-Dose Atropine drops (0.01% to 0.05%) at bedtime, which relaxation studies show significantly dampens axial growth with virtually no pupil dilation side effects. Additionally, if a child shows eye teaming or convergence issues, our supervised Vision Therapy computer exercises train ocular muscle balance and accommodation, easing digital fatigue."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Is Ortho-K safe for a 8-year-old child?", a: "Yes, when fitted precisely by an eye specialist and maintained with proper hygiene and cleaning solutions, Ortho-K is exceptionally safe. The changes to the cornea are 100% reversible upon discontinuing lens wear." },
+      { q: "What is the 20-20-20 rule for screen time?", a: "Every 20 minutes of close screen work, your child should look at an object at least 20 feet away for at least 20 full seconds. This relaxes the ciliary focusing muscle inside the eye." }
+    ]
+  },
+  {
+    id: "silent-thief-of-sight-glaucoma-early-detection",
+    title: "The Silent Thief of Sight: Why Early Glaucoma Screening Can Save Your Vision",
+    short: "Glaucoma damages your optic nerve without pain or warning signs, stealing peripheral vision before central vision falls. Discover how OCT RNFL and automated perimetry detect it early.",
+    category: "Glaucoma",
+    date: "April 5, 2026",
+    readTime: "6 min read",
+    author: "Dr. Shahnawaz Kazi",
+    authorRole: "Founder & Medical Director | Senior Glaucoma & Retina Surgeon",
+    authorImg: "/images/clinic/hero-consultation.webp",
+    image: "/images/services/glaucoma.webp",
+    tags: ["Glaucoma", "Optic Nerve", "Perimetry", "OCT RNFL", "IOP Screening"],
+    metaDescription: "Understand glaucoma symptoms and diagnosis at Ashu Laser Vision Mumbai. Early screening with Humphrey Perimetry, OCT & Pachymetry stops irreversible optic nerve loss.",
+    keyTakeaways: [
+      "Primary Open-Angle Glaucoma progresses completely silently without headache, eye redness, or blurry central vision until over 40% of optic nerve fibers are destroyed.",
+      "Vision lost to glaucoma is permanent and cannot be restored; treatment focuses on lowering intraocular pressure (IOP) to preserve remaining sight.",
+      "A comprehensive screening requires five clinical evaluations: Applanation Tonometry (IOP), Pachymetry (corneal thickness), Gonioscopy (drainage angle check), OCT RNFL, and Visual Field Perimetry.",
+      "When diagnosed early, glaucoma can be controlled effectively using once-daily preservative-free eye drops or painless 10-minute Selective Laser Trabeculoplasty (SLT)."
+    ],
+    sections: [
+      {
+        heading: "Why Glaucoma is Called the 'Silent Thief of Sight'",
+        paragraphs: [
+          "Inside your eye, a clear fluid called aqueous humor is constantly produced to nourish internal structures. This fluid must drain out through a microscopic meshwork at the angle where your cornea meets your iris. If this drainage pathway becomes clogged or stiff over time, fluid pressure builds up inside the eye—just like an over-inflated tire.",
+          "This elevated Intraocular Pressure (IOP) presses directly against the fragile optic nerve at the back of the eye. The optic nerve contains over a million nerve fibers transmitting visual images to your brain. As elevated pressure slowly crushes these fibers, your side (peripheral) vision begins to disappear in a circular pattern."
+        ]
+      },
+      {
+        heading: "Why You Don't Notice Peripheral Vision Loss",
+        paragraphs: [
+          "Because your central reading vision (the macula) remains sharp until the very final stages of glaucoma, and because your brain automatically fills in missing peripheral blind spots using your other eye, you will not notice side vision loss in daily life. Patients often discover they have advanced glaucoma only after repeatedly bumping into doorways, missing cars when changing lanes on the highway, or failing a routine eye screening after age 40."
+        ]
+      },
+      {
+        heading: "The 5-Step Glaucoma Diagnostic Workup at Ashu Laser Vision",
+        paragraphs: [
+          "To catch glaucoma years before vision is compromised, our diagnostic wing conducts a meticulous 5-part evaluation:"
+        ],
+        list: [
+          "Goldmann Applanation Tonometry: The clinical gold standard for checking precise eye pressure in millimeters of mercury (mmHg). Normal pressure ranges from 10 to 21 mmHg.",
+          "Ultrasound Pachymetry: Measures central corneal thickness. Patients with naturally thin corneas have falsely low pressure readings on standard tonometers and face significantly higher risk of optic nerve damage.",
+          "Gonioscopy: Using a specialized mirrored contact lens, we examine your internal drainage angle to distinguish between Open-Angle Glaucoma and dangerous Angle-Closure Glaucoma.",
+          "Optical Coherence Tomography (OCT RNFL): Maps out the thickness of the Retinal Nerve Fiber Layer around the optic disc with micron accuracy, identifying early nerve thinning long before blind spots appear.",
+          "Humphrey Automated Perimetry: Maps your entire visual field by testing your sensitivity to faint light flashes across 54+ visual points, establishing a baseline to monitor stability over decades."
+        ]
+      },
+      {
+        heading: "Modern Medical, Laser, and Surgical Solutions",
+        paragraphs: [
+          "If diagnosed early, glaucoma management is straightforward and highly successful. We initiate therapy with targeted daily eye drops that either reduce fluid production or improve outflow. For patients seeking freedom from daily drop routines, our 10-minute outpatient Selective Laser Trabeculoplasty (SLT) uses gentle laser energy to rejuvenate drainage cells without incisions.",
+          "For advanced or refractory cases, Dr. Shahnawaz Kazi performs sophisticated surgical interventions including GATT (Gonioscopy-Assisted Transluminal Trabeculotomy MIGS), Trabeculectomy, and Ahmed Glaucoma Valve (AGV) implantation to secure lifelong eye pressure stability."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Who is at highest risk for developing glaucoma?", a: "Anyone over the age of 40, individuals with a family history of glaucoma in parents or siblings, high myopes (minus glasses > -4D), diabetics, and anyone who has used steroid eye drops or skin creams for extended periods." },
+      { q: "Can acute angle-closure glaucoma occur suddenly?", a: "Yes. Acute angle closure is a sudden medical emergency where the drainage angle shuts completely. Symptoms include severe eye pain, excruciating headache, nausea, rainbow halos around lights, and rapid vision blur. Seek hospital care immediately if this occurs." }
+    ]
+  },
+  {
+    id: "computer-vision-syndrome-dry-eye-relief",
+    title: "Digital Eye Strain & Dry Eyes: Practical Habits and Clinical Remedies for IT Professionals",
+    short: "Staring at laptop monitors and office screens for 8 to 12 hours causes eye burning, redness, and chronic dry eye syndrome. Learn evidence-based habits and clinical treatments to restore comfort.",
+    category: "Diagnostics",
+    date: "March 18, 2026",
+    readTime: "5 min read",
+    author: "Dr. Shahnawaz Kazi",
+    authorRole: "Founder & Medical Director | Super Specialty Eye Specialist",
+    authorImg: "/images/clinic/hero-consultation.webp",
+    image: "https://ashulaservision.com/wp-content/uploads/2025/07/ashu-blog-1.jpg",
+    tags: ["Computer Vision Syndrome", "Dry Eye", "Digital Eye Strain", "Meibomian Gland", "Eye Hygiene"],
+    metaDescription: "Relieve digital eye strain and dry eye symptoms in Mumbai. Discover the 20-20-20 rule, punctal plugs & Meibomian gland therapy at Ashu Laser Vision.",
+    keyTakeaways: [
+      "When concentrating on digital screens, human blinking frequency drops dramatically from 18 times per minute down to just 4 or 5 times per minute, causing rapid tear film evaporation.",
+      "Chronic dry eye is often caused by Meibomian Gland Dysfunction (MGD)—clogged oil glands in your eyelids that lead to unstable, quickly evaporating tears.",
+      "Ergonomic adjustments such as placing your monitor 20 degrees below eye level and using humidifiers in air-conditioned offices significantly reduce ocular surface drying.",
+      "Preservative-free lubricating drops, warm lid compresses, and clinical Punctal Plugs provide lasting relief from burning, redness, and foreign-body sensations."
+    ],
+    sections: [
+      {
+        heading: "Why Screens Cause Burning, Gritty, and Red Eyes",
+        paragraphs: [
+          "Whether you are coding software, trading stocks, or managing corporate operations across Mumbai, prolonged computer work takes a heavy toll on your ocular surface. Normally, your eyelids blink roughly 15 to 20 times every minute. Each blink acts like a windshield wiper, spreading a smooth, three-layered tear film across the cornea to keep it moist and optically clear.",
+          "Scientific studies prove that when we stare intensely at computers, tablets, or smartphones, our blink rate plummets by nearly 70%. Furthermore, many blinks become incomplete—the upper eyelid does not touch the lower eyelid completely. As a result, dry spots form on the cornea within seconds, leading to burning, stinging, fluctuating blurry vision, and chronic eye redness."
+        ]
+      },
+      {
+        heading: "Understanding Meibomian Gland Dysfunction (MGD)",
+        paragraphs: [
+          "Your tear film is not just water; it consists of an inner mucous layer, a middle watery layer, and a vital outer lipid (oil) layer produced by Meibomian glands lining your upper and lower eyelids. This oil layer prevents the underlying water from evaporating into dry, air-conditioned office air.",
+          "When you don't blink fully and frequently, the oil inside these tiny lid glands stagnates, thickens like toothpaste, and eventually blocks the gland openings. Without that protective oil layer, your tears evaporate almost instantly—a condition known as Evaporative Dry Eye Syndrome or Meibomian Gland Dysfunction."
+        ]
+      },
+      {
+        heading: "5 Actionable Habits to Defend Your Eyes at Work",
+        paragraphs: [
+          "Incorporate these ergonomic and hygiene adjustments into your daily work routine immediately:"
+        ],
+        list: [
+          "Practice the 20-20-20 Rule: Set a recurring timer. Every 20 minutes, look away from your screen at a target 20 feet (6 meters) away for 20 seconds while doing 5 deliberate, slow, full blinks.",
+          "Optimize Monitor Position: Position the top of your computer screen slightly below eye level (around 15 to 20 degrees down) and roughly 25 inches from your face. When you look downward slightly, less of your eye surface is exposed to dry room air.",
+          "Control Ambient Air and Humidity: Never sit directly facing an air-conditioning duct or ceiling fan blowing dry air onto your face. Keep a small desk humidifier running in your office to maintain healthy room humidity.",
+          "Perform Daily Warm Lid Compresses: Every evening before bed, hold a warm towel over your closed eyelids for 5 to 7 minutes. The gentle heat melts stagnant oils inside blocked Meibomian glands, allowing them to flow freely again.",
+          "Use Only Preservative-Free Lubricants: If you need artificial tears more than 4 times a day, always use single-dose vials or preservative-free multi-dose bottles (like Sodium Hyaluronate 0.1% / 0.18%). Avoid over-the-counter redness-relieving drops that contain vasoconstrictors, which cause rebound redness and long-term toxicity."
+        ]
+      },
+      {
+        heading: "Specialized Dry Eye Clinic Services in Andheri West",
+        paragraphs: [
+          "If home care is insufficient, Dr. Shahnawaz Kazi offers specialized dry eye interventions at Ashu Laser Vision. We perform precise Tear Film Break-Up Time (TBUT) assessments, Schirmer's tear volume testing, Meibomian gland expression therapy, and microscopic Punctal Plug insertions—tiny biocompatible plugs placed in the tear drain ducts to retain your natural tears on your eye surface all day long."
+        ]
+      }
+    ],
+    faq: [
+      { q: "Do blue light blocking glasses actually cure dry eyes?", a: "Blue light filters help reduce perceived glare and improve sleep quality by limiting evening blue light exposure, but they do NOT prevent tear evaporation or blinking reduction. Regular blinking habits and lubrication remain essential." },
+      { q: "Can dry eyes cause watery tears?", a: "Yes! When your eyes become critically dry, the exposed corneal nerves trigger an emergency reflex, causing your lacrimal gland to flood the eye with watery tears. Because these reflex tears lack the essential lipid (oil) layer, they do not coat the eye properly and simply roll down your cheeks." }
+    ]
+  }
+];
+
