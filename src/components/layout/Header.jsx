@@ -126,9 +126,9 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-2 shrink-0">
-            <a href="https://wa.me/919322364002" className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-105 transition shadow-sm" title="WhatsApp" aria-label="Chat on WhatsApp">
-              <WhatsAppIcon size={22} />
-            </a>
+            {/*<a href="https://wa.me/919322364002" className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-105 transition shadow-sm" title="WhatsApp" aria-label="Chat on WhatsApp">*/}
+            {/*  <WhatsAppIcon size={22} />*/}
+            {/*</a>*/}
             <Link to="/contact" className="flex items-center gap-2 bg-[#0B4DA2] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-[#083A7A] transition shadow-lg shadow-blue-900/20">
               <Calendar size={16} /> Book Appointment
             </Link>
