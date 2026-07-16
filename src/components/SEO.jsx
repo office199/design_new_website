@@ -44,9 +44,10 @@ export default function SEO({
       },
       {
         "@type": "PostalAddress",
-        "streetAddress": "Ashu Eye Hospital, Yari Road, Versova",
-        "addressLocality": "Andheri West",
-        "addressRegion": "Mumbai",
+        "streetAddress": "Premises No. 9, 1st Floor, Silver Streak Apartments, Yari Road, Opposite Madina Masjid",
+        "addressLocality": "Versova, Andheri West",
+        "addressRegion": "Mumbai, Maharashtra",
+        "postalCode": "400061",
         "addressCountry": "IN"
       }
     ],
