@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ashulaservision.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://ashulaservision.com/about</loc><priority>0.8</priority></url>
-  <url><loc>https://ashulaservision.com/services</loc><priority>0.9</priority></url>
-  <url><loc>https://ashulaservision.com/services/cataract</loc><priority>0.8</priority></url>
-  <url><loc>https://ashulaservision.com/services/lasik</loc><priority>0.8</priority></url>
-  <url><loc>https://ashulaservision.com/services/retina</loc><priority>0.8</priority></url>
-  <url><loc>https://ashulaservision.com/doctor</loc><priority>0.8</priority></url>
-  <url><loc>https://ashulaservision.com/technology</loc><priority>0.7</priority></url>
-  <url><loc>https://ashulaservision.com/contact</loc><priority>0.9</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Main -->
+  <url><loc>https://ashulaservision.com/</loc><priority>1.0</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://ashulaservision.com/about</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services</loc><priority>0.9</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://ashulaservision.com/doctor</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/technology</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/contact</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <!-- High Priority Services from ashulaservision.com -->
+  <url><loc>https://ashulaservision.com/services/cataract</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/lasik</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/retina</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/glaucoma</loc><priority>0.85</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/diabetic-retinopathy</loc><priority>0.85</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/retinal-detachment</loc><priority>0.85</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/squint</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/kids-eye-problem</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/pediatric</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/cornea</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <!-- All Other Services from ashulaservision.com/our-services -->
+  <url><loc>https://ashulaservision.com/services/age-related-macular-degeneration</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/retinopathy-of-prematurity</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/ocular-injuries</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/oculoplastics</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/eye-tumors</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/hypertensive-retinopathy</loc><priority>0.65</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/anti-vegf-treatment</loc><priority>0.75</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/advanced-surface-laser-ablation</loc><priority>0.75</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/laser-dcr</loc><priority>0.65</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/pachymetry</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/laser</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/topography</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/perimetry</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/care-at-home</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/botox</loc><priority>0.55</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/yag-laser</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/fundus-fluorescein-angiography</loc><priority>0.65</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/optical-coherence-tomography</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/selective-laser-trabeculoplasty</loc><priority>0.65</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/orthokeratology</loc><priority>0.65</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://ashulaservision.com/services/vision-therapy</loc><priority>0.65</priority><changefreq>weekly</changefreq></url>
 </urlset>
