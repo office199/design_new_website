@@ -20,7 +20,9 @@ export default function Testimonials() {
               </div>
               <p className="text-[13px] leading-relaxed text-slate-700">"{t.text}"</p>
               <div className="mt-5 flex items-center gap-3">
-                <img src={`https://i.pravatar.cc/100?img=${20+i}`} alt={t.name} className="w-9 h-9 rounded-full" />
+                <div className={`w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-extrabold text-white ${i % 3 === 0 ? 'bg-[#0B4DA2]' : i % 3 === 1 ? 'bg-[#00A6CB]' : 'bg-[#00A67E]'}`} aria-hidden="true">
+                  {t.name.split(' ').map(part => part[0]).slice(0, 2).join('')}
+                </div>
                 <div>
                   <div className="font-semibold text-sm leading-none">{t.name}</div>
                   <div className="text-[11px] text-slate-500 mt-1">{t.location} • {t.service}</div>
@@ -33,7 +35,7 @@ export default function Testimonials() {
         <div className="grid lg:grid-cols-3 gap-4 mt-10 bg-white rounded-[20px] border border-slate-200 p-6 lg:p-8 items-center">
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="google" className="w-8 h-8" />
+              <div className="w-8 h-8 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center font-extrabold text-lg text-[#4285F4]" aria-hidden="true">G</div>
               <div>
                 <div className="font-bold flex items-center gap-1">Google <Star size={14} className="fill-amber-400 text-amber-400"/> 4.9</div>
                 <div className="text-xs text-slate-500">1,247 Reviews</div>
@@ -45,7 +47,7 @@ export default function Testimonials() {
             <div className="text-xs text-slate-500">Verified patient reviews • No fake testimonials</div>
           </div>
           <div className="lg:col-span-1 text-right">
-            <a href="#" className="inline-flex bg-[#0F172A] text-white px-5 py-2.5 rounded-full text-xs font-bold">Read All Reviews on Google</a>
+            <a href="https://www.google.com/maps/search/Ashu+Laser+Vision+Andheri+West" target="_blank" rel="noopener noreferrer" className="inline-flex bg-[#0F172A] text-white px-5 py-2.5 rounded-full text-xs font-bold">Read All Reviews on Google</a>
           </div>
         </div>
       </div>

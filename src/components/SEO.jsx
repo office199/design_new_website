@@ -8,7 +8,7 @@ export default function SEO({
   title = "Ashu Laser Vision - Best Eye Hospital in Andheri Mumbai | Cataract, LASIK & Retina Specialist",
   description = "Ashu Laser Vision is a Super Multi-Specialty Eye & Retina Hospital in Andheri Mumbai since 2004. Led by Dr. Shahnawaz Kazi - FMRF Sankara, FRCS Glasgow, Gold Medalist. Advanced Cataract, LASIK Contoura SMILE, Retina, Glaucoma, Diabetic Retinopathy, Pediatric Squint care with 50K+ surgeries.",
   keywords = "Eye Hospital Mumbai, Best Eye Hospital Andheri, Cataract Surgery Mumbai, LASIK Surgery Mumbai, Retina Specialist Mumbai, Glaucoma Treatment Mumbai, Diabetic Retinopathy Mumbai, Pediatric Eye Doctor Mumbai, Squint Surgery Mumbai, Ashu Laser Vision, Dr Shahnawaz Kazi",
-  image = "https://ashulaservision.com/wp-content/uploads/2024/11/banner-home.jpg",
+  image = "https://ashulaservision.com/images/clinic/hero-og.jpg",
   url = "https://ashulaservision.com/",
   type = "website",
   jsonLd = null,
@@ -20,14 +20,15 @@ export default function SEO({
   faqSchema = null
 }) {
   const canonical = url;
+  const imageUrl = image.startsWith('http') ? image : `https://ashulaservision.com${image.startsWith('/') ? image : `/${image}`}`;
   const defaultJsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
     "name": "Ashu Laser Vision - Super Multi Specialty Eye & Retina Hospital",
     "alternateName": "Ashu Eye Hospital",
     "image": [
-      "https://ashulaservision.com/wp-content/uploads/2024/11/banner-home.jpg",
-      "https://ashulaservision.com/wp-content/uploads/2024/11/about-h.jpg"
+      "https://ashulaservision.com/images/clinic/hero-og.jpg",
+      "https://ashulaservision.com/images/clinic/about-exam.webp"
     ],
     "description": description,
     "url": "https://ashulaservision.com",
@@ -139,7 +140,7 @@ export default function SEO({
       <meta property="og:site_name" content="Ashu Laser Vision" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={imageUrl} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:url" content={canonical} />
@@ -152,7 +153,7 @@ export default function SEO({
       <meta name="twitter:site" content="@ashulaservision" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={imageUrl} />
 
       {/* Geo / Local SEO */}
       <meta name="geo.region" content="IN-MH" />
@@ -173,7 +174,6 @@ export default function SEO({
 
       {/* Preconnects for speed */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://images.unsplash.com" />
     </Helmet>
   );
 }

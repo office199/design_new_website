@@ -9,7 +9,14 @@ export default function About() {
           <div className="lg:col-span-6 relative">
             <div className="relative">
               <div className="rounded-[32px] overflow-hidden aspect-[4/3] bg-white shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80" alt="Eye hospital interior" className="w-full h-full object-cover" />
+                <img
+                  src="/images/clinic/about-exam.webp"
+                  alt="Advanced retina examination at Ashu Laser Vision in Andheri"
+                  className="w-full h-full object-cover"
+                  width="800"
+                  height="720"
+                  loading="lazy"
+                />
               </div>
               <div className="absolute -bottom-8 -right-4 md:-right-8 bg-white rounded-[20px] p-5 shadow-2xl border border-slate-100 w-[260px]">
                 <div className="flex items-center gap-3 mb-3">

@@ -37,7 +37,14 @@ export default function Doctor() {
 
             <div className="lg:col-span-4 relative lg:h-auto h-[380px]">
               <div className="absolute inset-0 lg:inset-6 bg-gradient-to-t from-[#0F172A] to-transparent z-10 lg:hidden" />
-              <img src="https://ashulaservision.com/wp-content/uploads/2024/11/about-h.jpg" alt={doctor.name} className="w-full h-full object-cover lg:rounded-[24px]" />
+              <img
+                src="/images/clinic/hero-consultation.webp"
+                alt={`${doctor.name} examining a patient at Ashu Laser Vision`}
+                className="w-full h-full object-cover lg:rounded-[24px]"
+                width="700"
+                height="900"
+                loading="lazy"
+              />
               <div className="absolute bottom-4 left-4 right-4 z-20 bg-white rounded-2xl p-4 shadow-xl lg:hidden">
                 <div className="text-xs font-bold">Available Today</div>
                 <div className="text-[11px] text-slate-500">10:00 AM - 8:00 PM at Andheri Clinic</div>

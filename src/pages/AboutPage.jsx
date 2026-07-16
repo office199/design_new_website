@@ -1,5 +1,5 @@
 import SEO from '../components/SEO';
-import { Check, Award, Heart, Users, Lightbulb, MapPin, Phone, GraduationCap, Briefcase } from 'lucide-react';
+import { Check, Award, Heart, Users, Lightbulb, MapPin, GraduationCap, Briefcase } from 'lucide-react';
 import { doctor, stats } from '../data/content';
 
 export default function AboutPage() {
@@ -81,7 +81,14 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-white rounded-[32px] border border-slate-200 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="Ashu Laser Vision Hospital Andheri Mumbai" className="w-full aspect-[16/10] object-cover" />
+                <img
+                  src="/images/clinic/interior.webp"
+                  alt="Ashu Laser Vision clinic interior and advanced diagnostic equipment in Andheri"
+                  className="w-full aspect-[16/10] object-cover"
+                  width="1000"
+                  height="570"
+                  loading="lazy"
+                />
                 <div className="p-6">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#0B4DA2]"><GraduationCap size={18}/></div>

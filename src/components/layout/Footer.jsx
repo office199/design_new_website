@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Eye, Phone, Mail, MapPin, Clock, ArrowUpRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ArrowUpRight } from 'lucide-react';
 import { services } from '../../data/content';
 
 function FacebookIcon({ size = 16, className = "" }) {
@@ -54,8 +54,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center text-[#0B4DA2]">
-                <Eye size={24} />
+              <div className="w-11 h-14 rounded-xl bg-white p-1 flex items-center justify-center">
+                <img src="/images/ashu-logo-mark.png" alt="" className="w-full h-full object-contain" width="146" height="211" loading="lazy" />
               </div>
               <div>
                 <div className="font-bold text-lg leading-none font-display">Ashu Laser Vision</div>

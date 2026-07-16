@@ -26,12 +26,24 @@ export default function TechnologyPage() {
         jsonLd={jsonLd}
       />
       <div className="bg-[#F8FAFF] py-10 border-b">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
-          <div className="inline-flex bg-blue-50 text-[#0B4DA2] px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">US FDA Approved • Since 2004</div>
-          <h1 className="text-[32px] md:text-[48px] font-bold leading-[0.9] tracking-tight mt-4">Precision Technology for <span className="text-[#0B4DA2]">Better Vision</span> & Safer Surgery</h1>
-          <p className="text-sm text-slate-600 mt-3 max-w-3xl leading-relaxed">We invest in advanced US FDA approved platforms for accurate diagnostics & safe surgeries - Pentacam HR, OCT Angio, Micron M7 800Hz fastest LASIK laser in Mumbai, Femto, Green Diode, YAG SLT, Humphrey Visual Field, IOL Master 700, FFA, 25G vitrectomy with BIOM wide-angle. 50K+ surgeries backed by tech + trust.</p>
-          <div className="flex flex-wrap gap-2 mt-4">
-            {technologies.slice(0,5).map(t=><span key={t.name} className="bg-white border border-slate-200 px-3 py-1.5 rounded-full text-xs font-medium">{t.name}</span>)}
+        <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8">
+            <div className="inline-flex bg-blue-50 text-[#0B4DA2] px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">US FDA Approved • Since 2004</div>
+            <h1 className="text-[32px] md:text-[48px] font-bold leading-[0.9] tracking-tight mt-4">Precision Technology for <span className="text-[#0B4DA2]">Better Vision</span> & Safer Surgery</h1>
+            <p className="text-sm text-slate-600 mt-3 max-w-3xl leading-relaxed">We invest in advanced US FDA approved platforms for accurate diagnostics & safe surgeries - Pentacam HR, OCT Angio, Micron M7 800Hz fastest LASIK laser in Mumbai, Femto, Green Diode, YAG SLT, Humphrey Visual Field, IOL Master 700, FFA, 25G vitrectomy with BIOM wide-angle. 50K+ surgeries backed by tech + trust.</p>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {technologies.slice(0,5).map(t=><span key={t.name} className="bg-white border border-slate-200 px-3 py-1.5 rounded-full text-xs font-medium">{t.name}</span>)}
+            </div>
+          </div>
+          <div className="lg:col-span-4 rounded-[24px] overflow-hidden shadow-lg border-4 border-white h-[240px] lg:h-[280px]">
+            <img
+              src="/images/clinic/retina-diagnostic.webp"
+              alt="Retina diagnostic imaging at Ashu Laser Vision"
+              className="w-full h-full object-cover"
+              width="1430"
+              height="528"
+              fetchPriority="high"
+            />
           </div>
         </div>
       </div>
@@ -66,7 +78,14 @@ export default function TechnologyPage() {
                 <li>• FDA approved excimer + femto combo</li>
               </ul>
             </div>
-            <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=600&q=80" alt="Micron M7 Laser" className="rounded-2xl w-full aspect-[4/3] object-cover" />
+            <img
+              src="/images/clinic/laser-system.webp"
+              alt="Advanced excimer laser system used for vision correction"
+              className="rounded-2xl w-full aspect-[4/3] object-cover"
+              width="1000"
+              height="570"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>

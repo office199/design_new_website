@@ -1,5 +1,5 @@
 import { technologies } from '../../data/content';
-import { Cpu, Scan, Eye, Zap } from 'lucide-react';
+import { Cpu, Eye, Zap } from 'lucide-react';
 
 export default function Technology() {
   return (
@@ -23,7 +23,14 @@ export default function Technology() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="rounded-[20px] overflow-hidden h-[220px] bg-slate-100">
-                  <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80" alt="Eye tech" className="w-full h-full object-cover" />
+                  <img
+                    src="/images/clinic/laser-surgery.webp"
+                    alt="Advanced laser eye surgery equipment at Ashu Laser Vision"
+                    className="w-full h-full object-cover"
+                    width="1000"
+                    height="570"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="bg-[#0B4DA2] rounded-[20px] p-6 text-white">
                   <Zap size={28} className="mb-3" />
@@ -38,7 +45,14 @@ export default function Technology() {
                   <div className="text-xs text-slate-400 mt-2">For ultra-precise retina surgery</div>
                 </div>
                 <div className="rounded-[20px] overflow-hidden h-[220px] bg-slate-100">
-                  <img src="https://images.unsplash.com/photo-1559757138-b6dbed2c3603?w=600&q=80" alt="Eye tech 2" className="w-full h-full object-cover" />
+                  <img
+                    src="/images/clinic/laser-exam.webp"
+                    alt="Laser eye treatment at Ashu Laser Vision"
+                    className="w-full h-full object-cover"
+                    width="1000"
+                    height="570"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </div>
