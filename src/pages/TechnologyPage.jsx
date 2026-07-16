@@ -1,4 +1,6 @@
 import SEO from '../components/SEO';
+import PageTransition from '../components/animations/PageTransition';
+import { Reveal } from '../components/animations/Reveal';
 import Technology from '../components/sections/Technology';
 import { technologies } from '../data/content';
 import { CheckCircle2, Cpu } from 'lucide-react';
@@ -17,7 +19,7 @@ export default function TechnologyPage() {
   };
 
   return (
-    <>
+    <PageTransition>
       <SEO
         title="Advanced Eye Technology in Mumbai - Pentacam OCT Femto Micron M7 - Ashu Laser Vision"
         description="World-class eye technology at Ashu Laser Vision Andheri Mumbai - Pentacam HR tomography, OCT Angio RNFL, Micron M7 800Hz fastest excimer LASIK, Femto laser, Green/Diode/YAG/SLT laser, Humphrey perimetry, IOL Master 700 Biometry, FFA, 23/25/27G vitrectomy BIOM. US FDA approved since 2004."
@@ -25,6 +27,7 @@ export default function TechnologyPage() {
         url="https://ashulaservision.com/technology"
         jsonLd={jsonLd}
       />
+      <Reveal>
       <div className="bg-[#F8FAFF] py-10 border-b">
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8">
@@ -47,9 +50,12 @@ export default function TechnologyPage() {
           </div>
         </div>
       </div>
-      <Technology />
+      </Reveal>
+
+      <Reveal><Technology /></Reveal>
 
       {/* Detailed Table */}
+      <Reveal>
       <div className="bg-white py-12 border-t">
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight flex items-center gap-2"><Cpu className="text-[#0B4DA2]"/> Technology Comparison - Why Ashu Laser Vision Leads</h2>
@@ -89,6 +95,7 @@ export default function TechnologyPage() {
           </div>
         </div>
       </div>
-    </>
+      </Reveal>
+    </PageTransition>
   );
 }

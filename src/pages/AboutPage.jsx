@@ -1,10 +1,12 @@
 import SEO from '../components/SEO';
+import PageTransition from '../components/animations/PageTransition';
+import { Reveal } from '../components/animations/Reveal';
 import { Check, Award, Heart, Users, Lightbulb, MapPin, GraduationCap, Briefcase } from 'lucide-react';
 import { doctor, stats } from '../data/content';
 
 export default function AboutPage() {
   return (
-    <>
+    <PageTransition>
       <SEO
         title="About Ashu Laser Vision - Best Eye Hospital in Andheri Mumbai Since 2004 - 28+ Services"
         description="Learn about Ashu Laser Vision - Premium eye hospital in Andheri West Mumbai since 2004. 20+ years, 50K+ surgeries, 28+ services Cataract LASIK Retina Glaucoma Squint Oculoplasty, US FDA tech Pentacam OCT Femto Micron M7 800Hz, Dr Shahnawaz Kazi FMRF FRCS Gold Medalist. 4.9★ 1200+ reviews. Pearl Plaza Opp Andheri Railway Platform 1."
@@ -31,6 +33,7 @@ export default function AboutPage() {
             </div>
           </div>
 
+          <Reveal>
           <div className="grid md:grid-cols-3 gap-6 mt-12">
             {[
               { title: "Our Vision & Values", desc: "Dedicated to enhancing patient care, exploring medical challenges, and advancing education of healthcare. Life is beautiful, why not see it clearly.", icon: Heart },
@@ -44,7 +47,9 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+          </Reveal>
 
+          <Reveal>
           <div className="grid lg:grid-cols-2 gap-8 mt-12 items-start">
             <div className="bg-white rounded-[32px] border border-slate-200 p-8 lg:p-10">
               <h2 className="text-[28px] font-bold leading-tight">Life is beautiful,<br/>why not see it clearly?</h2>
@@ -108,8 +113,9 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
-    </>
+    </PageTransition>
   );
 }

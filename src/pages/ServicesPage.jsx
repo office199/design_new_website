@@ -1,4 +1,6 @@
 import SEO from '../components/SEO';
+import PageTransition from '../components/animations/PageTransition';
+import { Reveal } from '../components/animations/Reveal';
 import Services from '../components/sections/Services';
 import { services } from '../data/content';
 
@@ -17,7 +19,7 @@ export default function ServicesPage() {
   };
 
   return (
-    <>
+    <PageTransition>
       <SEO
         title={`Eye Care Services in Mumbai - ${services.length}+ Treatments | Ashu Laser Vision`}
         description={`Complete eye care at Ashu Laser Vision Andheri Mumbai - ${services.length}+ services: Cataract phaco femto, LASIK Contoura SMILE ASA ICL, Retina detachment vitrectomy, Diabetic retinopathy anti-VEGF, Glaucoma AGV GATT SLT, Pediatric squint myopia control Ortho-K, Cornea OCT FFA topography pachymetry perimetry. Since 2004, 50K+ surgeries by Dr Shahnawaz Kazi.`}
@@ -26,6 +28,7 @@ export default function ServicesPage() {
         jsonLd={jsonLd}
       />
 
+      <Reveal>
       <div className="bg-[#0A1931] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B4DA2]/50 to-transparent" />
         <div className="absolute -right-20 top-0 w-[500px] h-[500px] bg-[#0B4DA2]/30 rounded-full blur-[100px]" />
@@ -47,10 +50,12 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
+      </Reveal>
 
-      <Services showCategoryFilter={true} />
+      <Reveal><Services showCategoryFilter={true} /></Reveal>
 
       {/* SEO content block */}
+      <Reveal>
       <div className="bg-slate-50 border-t border-slate-200 py-12">
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-8 text-sm leading-relaxed text-slate-600">
@@ -68,6 +73,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
-    </>
+      </Reveal>
+    </PageTransition>
   );
 }

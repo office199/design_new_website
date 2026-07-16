@@ -1,5 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import PageTransition from '../components/animations/PageTransition';
+import { Reveal } from '../components/animations/Reveal';
 import { services } from '../data/content';
 import { CheckCircle2, ArrowLeft, Calendar, Phone, ShieldCheck, Clock, Award, Eye, AlertCircle, HeartPulse } from 'lucide-react';
 
@@ -9,12 +11,14 @@ export default function ServiceDetail() {
 
   if (!service) {
     return (
+      <PageTransition>
       <div className="py-20 text-center max-w-xl mx-auto px-4">
         <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4"><AlertCircle className="text-slate-400" /></div>
         <h2 className="text-xl font-bold">Service not found</h2>
         <p className="text-sm text-slate-600 mt-2">The service "{id}" doesn't exist. We have {services.length} eye services - check our complete list.</p>
         <Link to="/services" className="inline-block mt-6 bg-[#0B4DA2] text-white px-6 py-3 rounded-full font-bold text-sm">View All {services.length} Services</Link>
       </div>
+      </PageTransition>
     );
   }
 
@@ -48,7 +52,7 @@ export default function ServiceDetail() {
   };
 
   return (
-    <>
+    <PageTransition>
       <SEO
         title={`${service.title} in Andheri Mumbai - Best Treatment | Ashu Laser Vision`}
         description={service.metaDescription || service.desc}
@@ -81,6 +85,7 @@ export default function ServiceDetail() {
 
         <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 pb-16">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
+            <Reveal>
             <div className="lg:col-span-8 space-y-8">
               <div className="bg-white rounded-[28px] border border-slate-200 overflow-hidden shadow-sm">
                 <div className="aspect-[16/9] overflow-hidden bg-slate-100 relative">
@@ -183,6 +188,9 @@ export default function ServiceDetail() {
               </div>
             </div>
 
+            </Reveal>
+
+            <Reveal>
             <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-[100px] h-fit">
               <div className="bg-[#0B4DA2] rounded-[24px] p-6 lg:p-8 text-white relative overflow-hidden">
                 <div className="absolute -right-16 -top-16 w-56 h-56 bg-white/10 rounded-full blur-2xl" />
@@ -218,9 +226,10 @@ export default function ServiceDetail() {
                 <a href="tel:+919322364002" className="mt-3 block bg-[#0B4DA2] text-white text-center py-3 rounded-full text-sm font-bold">Emergency Call +91 93223 64002</a>
               </div>
             </div>
+            </Reveal>
           </div>
         </div>
       </div>
-    </>
+    </PageTransition>
   );
 }
