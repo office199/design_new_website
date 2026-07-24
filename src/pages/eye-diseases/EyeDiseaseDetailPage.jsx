@@ -12,12 +12,12 @@ import { motion, useScroll, useTransform } from 'framer-motion';
  * aesthetic. Warm paper, ink hairlines, sharp corners, hard offset shadows,
  * figure-captioned plates and an index-style related list.
  */
-const PAPER = '#FAF8F4';
-const NOISE = {
-  backgroundImage:
-    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.045'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
-};
-const HAIRLINE = 'border-slate-950/15';
+// Keep the detail page visually consistent with the original guide/index design:
+// clean white surfaces, soft blue accents and rounded cards rather than the
+// newer editorial "dossier" treatment.
+const PAPER = '#F8FAFC';
+const NOISE = {};
+const HAIRLINE = 'border-slate-200';
 const pad = (n) => String(n ?? 0).padStart(3, '0');
 
 // Heading detection
@@ -475,7 +475,7 @@ export default function EyeDiseaseDetailPage() {
   const activeChapterIdx = Math.max(0, tocItems.findIndex(t => t.id === activeId));
 
   return (
-    <PageTransition>
+    <PageTransition className="legacy-detail-page">
       <SEO
         title={disease.seoTitle}
         description={disease.seoDescription}
