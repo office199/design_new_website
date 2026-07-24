@@ -180,5 +180,5 @@ console.log(`Generated ${data.length} eye diseases to ${outPath}`);
 
 // Also generate a simple json for public use maybe
 const publicJsonPath = '/home/user/design_new_website/public/eye-diseases/index.json';
-fs.writeFileSync(publicJsonPath, JSON.stringify(data.map(d => ({ slug: d.slug, title: d.title, shortDesc: d.shortDesc, folder: d.folder, index: d.index })), null, 2));
+fs.writeFileSync(publicJsonPath, JSON.stringify(data.map(d => ({ slug: d.slug, title: d.title, shortDesc: d.shortDesc, folder: d.folder, index: d.index, pages: d.pages, images: d.images })), null, 2));
 console.log(`Generated public index json`);
