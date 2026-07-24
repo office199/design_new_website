@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, ArrowUpRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ArrowUpRight, Eye } from 'lucide-react';
 import { services } from '../../data/content';
+import { eyeDiseaseGroups, eyeDiseases } from '../../data/eyeDiseasesMeta';
 
 function FacebookIcon({ size = 16, className = "" }) {
   return (
@@ -29,6 +30,7 @@ function LinkedinIcon({ size = 16, className = "" }) {
 export default function Footer() {
   const retinaServices = services.filter(s=>s.category==="Retina").slice(0,5);
   const pediatric = services.filter(s=>s.category==="Pediatric").slice(0,5);
+  const topEyeDiseases = eyeDiseases.filter(d => ['cataracts','glaucoma','diabetic-retinopathy','age-related-macular-degeneration-amd','dry-eyes','conjunctivitis','keratoconus','myopia-nearsightedness','retinal-detachment','blepharitis'].includes(d.slug)).slice(0,10);
 
   return (
     <footer className="bg-[#0A1931] text-white pt-12 lg:pt-16 relative overflow-hidden">
@@ -39,10 +41,10 @@ export default function Footer() {
         <div className="bg-gradient-to-br from-[#0B4DA2] to-[#083A7A] rounded-[24px] lg:rounded-[32px] p-6 lg:p-10 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-12 lg:mb-16 shadow-[0_20px_60px_rgba(11,77,162,0.3)] border border-white/10">
           <div>
             <h3 className="text-2xl lg:text-3xl font-bold font-display leading-tight">Ready to See Life Clearly?</h3>
-            <p className="text-blue-100 mt-2 text-sm lg:text-[15px] max-w-2xl">Book your comprehensive eye checkup today at Ashu Laser Vision Andheri West - 28+ services, same-day appointments, 20+ years excellence, 50K+ surgeries by Dr. Shahnawaz Kazi Gold Medalist.</p>
+            <p className="text-blue-100 mt-2 text-sm lg:text-[15px] max-w-2xl">Book your comprehensive eye checkup today at Ashu Laser Vision Andheri West - 28+ services, 151 eye disease guides, same-day appointments, 20+ years excellence, 50K+ surgeries by Dr. Shahnawaz Kazi Gold Medalist.</p>
             <div className="flex flex-wrap gap-2 mt-4">
               <span className="bg-white/15 border border-white/20 text-xs px-3 py-1 rounded-full">Cataract • LASIK • Retina • Glaucoma</span>
-              <span className="bg-white/15 border border-white/20 text-xs px-3 py-1 rounded-full">Pediatric • Squint • Oculoplasty • DCR</span>
+              <span className="bg-white/15 border border-white/20 text-xs px-3 py-1 rounded-full">Pediatric • Squint • Oculoplasty • DCR • 151 Conditions</span>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 shrink-0 w-full lg:w-auto">
@@ -51,8 +53,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 lg:gap-8 pb-12 border-b border-white/10">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+          <div className="lg:col-span-4">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-11 h-14 rounded-xl bg-white p-1 flex items-center justify-center">
                 <img src="/images/ashu-logo-mark.png" alt="" className="w-full h-full object-contain" width="146" height="211" loading="lazy" />
@@ -63,42 +65,59 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-slate-300 text-[13.5px] leading-relaxed">
-              Trusted center for advanced eye and retina care since 2004 at Pearl Plaza, Opp Andheri Railway Platform No.1, Next to McDonald's, Andheri West Mumbai 400058. Led by Dr. Shahnawaz Kazi FMRF FRCS Gold Medalist. 28+ services: Cataract Lasik Retina Glaucoma Pediatric Cornea Oculoplasty OCT FFA Pentacam Pachymetry Perimetry Laser DCR Ortho-K Vision Therapy Botox Care at Home. 50,000+ successful surgeries, 1L+ happy patients, 4.9★ rating.
+              Trusted center for advanced eye and retina care since 2004 at Pearl Plaza, Opp Andheri Railway Platform No.1, Next to McDonald's, Andheri West Mumbai 400058. Led by Dr. Shahnawaz Kazi FMRF FRCS Gold Medalist. 28+ services + 151 eye disease guides: Cataract Lasik Retina Glaucoma Pediatric Cornea Oculoplasty OCT FFA Pentacam Pachymetry Perimetry Laser DCR Ortho-K Vision Therapy Botox Care at Home. 50,000+ successful surgeries, 1L+ happy patients, 4.9★ rating.
             </p>
 
             <div className="flex items-center gap-3 mt-6">
-              <span className="text-xs font-semibold text-slate-300">Connect with us:</span>
-              <a href="https://www.facebook.com/AshuLaserVision/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1877F2] hover:scale-110 transition"><FacebookIcon size={16}/></a>
-              <a href="https://www.instagram.com/ashueyehospital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:scale-110 transition"><InstagramIcon size={16}/></a>
-              <a href="https://www.linkedin.com/in/shahnawaz-kazi-971a067b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#0A66C2] hover:scale-110 transition"><LinkedinIcon size={16}/></a>
+              <span className="text-xs font-semibold text-slate-300">Connect:</span>
+              <a href="https://www.facebook.com/AshuLaserVision/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1877F2] hover:scale-110 transition"><FacebookIcon size={16}/></a>
+              <a href="https://www.instagram.com/ashueyehospital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:scale-110 transition"><InstagramIcon size={16}/></a>
+              <a href="https://www.linkedin.com/in/shahnawaz-kazi-971a067b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#0A66C2] hover:scale-110 transition"><LinkedinIcon size={16}/></a>
             </div>
 
             <div className="mt-6 bg-white/5 border border-white/10 rounded-2xl p-4">
               <div className="text-xs font-bold tracking-widest uppercase text-blue-200">Hospitals & Associations</div>
               <div className="text-[12px] text-slate-300 mt-2 leading-relaxed">Bhabha Hospital HOD Professor, Saifee Hospital, Wockhardt, Shushrusha, GSBS Medical Trust, Central Railway, Saifee Polyclinic, Kalsekar, Jashem Eye Institute Retina Clinic, Sadhu Kamal, Vardhamaan</div>
             </div>
+
+            {/* Eye Diseases Top in footer */}
+            <div className="mt-6 bg-white/5 border border-white/10 rounded-2xl p-4">
+              <div className="text-xs font-bold tracking-widest uppercase text-blue-200 flex items-center gap-2"><Eye size={12} /> Top Eye Conditions (151 guides)</div>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {topEyeDiseases.map(d=>(
+                  <Link key={d.slug} to={`/eye-diseases/${d.slug}`} className="bg-white/10 hover:bg-white/20 border border-white/10 text-[11px] px-2.5 py-1 rounded-full transition">{d.title}</Link>
+                ))}
+                <Link to="/eye-diseases" className="bg-[#0B4DA2] hover:bg-[#083A7A] text-[11px] px-2.5 py-1 rounded-full font-bold transition">View All 151 →</Link>
+              </div>
+            </div>
           </div>
 
-          <div className="lg:col-span-1">
-            <h4 className="font-bold mb-5 text-white text-sm">Retina Services</h4>
-            <ul className="space-y-2.5 text-[13px] text-slate-300">
-              {retinaServices.map(s=><li key={s.id}><Link to={`/services/${s.id}`} className="hover:text-white hover:translate-x-0.5 transition inline-block">{s.title}</Link></li>)}
-              <li><Link to="/services/anti-vegf-treatment" className="hover:text-white">Anti-VEGF Injections</Link></li>
-              <li><Link to="/services/fundus-fluorescein-angiography" className="hover:text-white">FFA Angiography</Link></li>
-              <li><Link to="/services/hypertensive-retinopathy" className="hover:text-white">Hypertensive Retinopathy</Link></li>
-            </ul>
-
-            <h4 className="font-bold mt-8 mb-3 text-white text-sm">Laser</h4>
+          <div className="lg:col-span-2">
+            <h4 className="font-bold mb-5 text-white text-sm">Eye Diseases & Conditions</h4>
             <ul className="space-y-2 text-[13px] text-slate-300">
-              <li><Link to="/services/laser" className="hover:text-white">Green & Diode Laser</Link></li>
-              <li><Link to="/services/yag-laser" className="hover:text-white">YAG Laser</Link></li>
-              <li><Link to="/services/selective-laser-trabeculoplasty" className="hover:text-white">SLT Laser</Link></li>
+              <li><Link to="/eye-diseases" className="hover:text-white font-semibold text-white flex items-center gap-1"><Eye size={12} /> All 151 Conditions</Link></li>
+              {eyeDiseaseGroups.slice(0,6).map(g=>(
+                <li key={g.id}><Link to={`/eye-diseases`} className="hover:text-white">{g.label} ({g.slugs.length})</Link></li>
+              ))}
+              <li className="pt-2 border-t border-white/10 mt-3"><span className="text-[11px] uppercase tracking-widest text-blue-200">Popular</span></li>
+              <li><Link to="/eye-diseases/cataracts" className="hover:text-white">Cataracts Guide</Link></li>
+              <li><Link to="/eye-diseases/glaucoma" className="hover:text-white">Glaucoma Guide</Link></li>
+              <li><Link to="/eye-diseases/diabetic-retinopathy" className="hover:text-white">Diabetic Retinopathy</Link></li>
+              <li><Link to="/eye-diseases/dry-eyes" className="hover:text-white">Dry Eyes Management</Link></li>
+              <li><Link to="/eye-diseases/keratoconus" className="hover:text-white">Keratoconus C3R</Link></li>
+            </ul>
+
+            <h4 className="font-bold mt-8 mb-3 text-white text-sm">Retina Services</h4>
+            <ul className="space-y-2 text-[13px] text-slate-300">
+              {retinaServices.map(s=><li key={s.id}><Link to={`/services/${s.id}`} className="hover:text-white hover:translate-x-0.5 transition inline-block">{s.title}</Link></li>)}
+              <li><Link to="/services/anti-vegf-treatment" className="hover:text-white">Anti-VEGF</Link></li>
+              <li><Link to="/services/fundus-fluorescein-angiography" className="hover:text-white">FFA Angiography</Link></li>
             </ul>
           </div>
 
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <h4 className="font-bold mb-5 text-white text-sm">Cataract & Refractive</h4>
-            <ul className="space-y-2.5 text-[13px] text-slate-300">
+            <ul className="space-y-2 text-[13px] text-slate-300">
               <li><Link to="/services/cataract" className="hover:text-white">Cataract Surgery</Link></li>
               <li><Link to="/services/lasik" className="hover:text-white">LASIK Contoura SMILE</Link></li>
               <li><Link to="/services/advanced-surface-laser-ablation" className="hover:text-white">ASA PRK</Link></li>
@@ -109,16 +128,25 @@ export default function Footer() {
               <li><Link to="/services/perimetry" className="hover:text-white">Perimetry Visual Field</Link></li>
             </ul>
 
-            <h4 className="font-bold mt-8 mb-3 text-white text-sm">Glaucoma</h4>
+            <h4 className="font-bold mt-8 mb-3 text-white text-sm">Laser & Glaucoma</h4>
             <ul className="space-y-2 text-[13px] text-slate-300">
-              <li><Link to="/services/glaucoma" className="hover:text-white">Glaucoma Management</Link></li>
-              <li><Link to="/services/selective-laser-trabeculoplasty" className="hover:text-white">SLT & AGV GATT</Link></li>
+              <li><Link to="/services/laser" className="hover:text-white">Green & Diode Laser</Link></li>
+              <li><Link to="/services/yag-laser" className="hover:text-white">YAG Laser</Link></li>
+              <li><Link to="/services/selective-laser-trabeculoplasty" className="hover:text-white">SLT Laser</Link></li>
+              <li><Link to="/services/glaucoma" className="hover:text-white">Glaucoma AGV GATT</Link></li>
+            </ul>
+
+            <h4 className="font-bold mt-8 mb-3 text-white text-sm">More Eye Diseases</h4>
+            <ul className="space-y-2 text-[13px] text-slate-300">
+              {eyeDiseaseGroups.slice(6).map(g=>(
+                <li key={g.id}><Link to="/eye-diseases" className="hover:text-white">{g.label}</Link></li>
+              ))}
             </ul>
           </div>
 
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <h4 className="font-bold mb-5 text-white text-sm">Pediatric & Oculoplasty</h4>
-            <ul className="space-y-2.5 text-[13px] text-slate-300">
+            <ul className="space-y-2 text-[13px] text-slate-300">
               {pediatric.map(s=><li key={s.id}><Link to={`/services/${s.id}`} className="hover:text-white">{s.title}</Link></li>)}
               <li><Link to="/services/kids-eye-problem" className="hover:text-white">Kids Eye Problem</Link></li>
               <li><Link to="/services/orthokeratology" className="hover:text-white">Ortho-K Myopia Control</Link></li>
@@ -131,7 +159,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <h4 className="font-bold mb-5 text-sm">Contact & Location</h4>
             <ul className="space-y-4 text-[13px] text-slate-300">
               <li className="flex gap-3"><MapPin size={18} className="shrink-0 text-blue-400" /> 701/2/3 Pearl Plaza, Opp Andheri Rly Platform 1, Next to McDonald's, Andheri West Mumbai 400058. Yari Road Versova.</li>
@@ -145,6 +173,7 @@ export default function Footer() {
               <li><Link to="/about" className="hover:text-white">About Hospital Since 2004</Link></li>
               <li><Link to="/doctor" className="hover:text-white">Dr. Shahnawaz Kazi - Gold Medalist</Link></li>
               <li><Link to="/technology" className="hover:text-white">Our Technology - Pentacam OCT Femto</Link></li>
+              <li><Link to="/eye-diseases" className="hover:text-white font-bold text-white">Eye Diseases 151 Guides</Link></li>
               <li><Link to="/blogs" className="hover:text-white">Patient Education Blogs</Link></li>
               <li><Link to="/contact" className="hover:text-white">Book Appointment</Link></li>
               <li><Link to="/services" className="hover:text-white">All {services.length} Services</Link></li>
@@ -153,7 +182,7 @@ export default function Footer() {
         </div>
 
         <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-3 text-[11px] text-slate-400 border-t border-white/5 mt-0">
-          <p>© {new Date().getFullYear()} Ashu Laser Vision - Super Multi Specialty Eye & Retina Hospital. All rights reserved. | Eye Hospital Near DN Nagar Metro Andheri Mumbai 400058 | 28+ Services • 20+ Years • 50K+ Surgeries • 4.9★ 1200+ Reviews</p>
+          <p>© {new Date().getFullYear()} Ashu Laser Vision - Super Multi Specialty Eye & Retina Hospital. All rights reserved. | Eye Hospital Near DN Nagar Metro Andheri Mumbai 400058 | 28+ Services • 151 Eye Disease Guides • 20+ Years • 50K+ Surgeries • 4.9★ 1200+ Reviews</p>
           <div className="flex gap-4 shrink-0">
             <a href="#" className="hover:text-white">Privacy Policy</a>
             <a href="#" className="hover:text-white">Terms</a>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Calendar, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Calendar, ArrowRight, BookOpen, Eye, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { services } from '../../data/content';
-import WhatsAppIcon from '../icons/WhatsAppIcon';
+import { eyeDiseases, eyeDiseaseGroups } from '../../data/eyeDiseasesMeta';
 
 const mainMenu = [
   { label: "Home", path: "/" },
@@ -37,7 +37,10 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
+  const [eyeOpen, setEyeOpen] = useState(false);
   const [mobileServiceOpen, setMobileServiceOpen] = useState(false);
+  const [mobileEyeOpen, setMobileEyeOpen] = useState(false);
+  const [eyeSearch, setEyeSearch] = useState('');
   const location = useLocation();
 
   useEffect(() => {
@@ -49,11 +52,23 @@ export default function Header() {
   useEffect(() => setMobileOpen(false), [location.pathname]);
 
   const getServiceById = (id) => services.find(s=>s.id===id);
+  const getDiseaseBySlug = (slug) => eyeDiseases.find(d=>d.slug===slug);
+
+  const filteredGroups = eyeDiseaseGroups.map(g => {
+    if (!eyeSearch.trim()) return g;
+    const q = eyeSearch.toLowerCase();
+    const filteredSlugs = g.slugs.filter(slug => {
+      const d = getDiseaseBySlug(slug);
+      if (!d) return false;
+      return d.title.toLowerCase().includes(q) || d.slug.toLowerCase().includes(q);
+    });
+    return { ...g, slugs: filteredSlugs };
+  }).filter(g => g.slugs.length > 0);
 
   return (
     <header className={`sticky top-0 z-50 bg-white transition-all duration-300 ${scrolled ? 'shadow-lg border-b border-slate-100' : 'shadow-sm'}`}>
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[72px] lg:h-[84px] gap-4">
+        <div className="flex items-center justify-between h-[72px] lg:h-[84px] gap-2">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 shrink-0 min-w-0" aria-label="Ashu Laser Vision home">
             <div className="w-11 h-12 lg:w-12 lg:h-14 flex items-center justify-center shrink-0">
@@ -65,19 +80,101 @@ export default function Header() {
                 height="211"
               />
             </div>
-            <div className="leading-tight min-w-0">
+            <div className="leading-tight min-w-0 hidden sm:block">
               <div className="font-bold text-[17px] sm:text-[18px] lg:text-[20px] tracking-tight text-[#0B4DA2] font-display truncate">Ashu Laser Vision</div>
               <div className="text-[10px] sm:text-[11px] lg:text-[12px] text-slate-500 font-medium tracking-widest uppercase truncate">Super Specialty Eye Hospital</div>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-1">
             {mainMenu.map((item) => (
-              <Link key={item.label} to={item.path} className={`px-4 py-2.5 rounded-full text-[14px] font-medium transition ${location.pathname === item.path ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>
+              <Link key={item.label} to={item.path} className={`px-3 py-2.5 rounded-full text-[13px] font-medium transition ${location.pathname === item.path ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>
                 {item.label}
               </Link>
             ))}
+
+            {/* Eye Diseases Mega Menu */}
+            <div className="relative"
+              onMouseEnter={() => setEyeOpen(true)}
+              onMouseLeave={() => setEyeOpen(false)}
+            >
+              <button
+                className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full text-[13px] font-semibold transition ${location.pathname.startsWith('/eye-diseases') ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100 border border-slate-200'}`}
+              >
+                <Eye size={14} /> Eye Diseases & Conditions <span className="bg-[#E6F0FF] text-[#0B4DA2] text-[10px] px-1.5 py-0.5 rounded-full font-bold ml-1">151</span> <ChevronDown size={14} className={`transition ${eyeOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 ${eyeOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-3'}`}>
+                <div className="bg-white rounded-[24px] shadow-[0_25px_90px_rgba(0,0,0,0.18)] border border-slate-100 w-[1080px] max-w-[calc(100vw-2rem)] overflow-hidden max-h-[78vh] flex flex-col">
+                  {/* Top bar inside mega */}
+                  <div className="p-5 border-b border-slate-100 bg-[#F8FAFC] flex items-center justify-between gap-4 shrink-0">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-[#0B4DA2] text-white flex items-center justify-center"><BookOpen size={18} /></div>
+                      <div>
+                        <div className="font-bold text-slate-900 text-[15px] leading-none">Eye Diseases & Conditions</div>
+                        <div className="text-[11px] text-slate-500 mt-1">151 expert-reviewed guides by Dr. Shahnawaz Kazi FMRF FRCS Gold Medalist • Since 2004</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="relative hidden lg:block">
+                        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <input value={eyeSearch} onChange={e=>setEyeSearch(e.target.value)} placeholder="Search 151 guides..." className="bg-white border border-slate-200 rounded-full pl-8 pr-3 py-2 text-xs w-[220px] focus:outline-none focus:border-[#0B4DA2] focus:ring-2 focus:ring-[#0B4DA2]/10" />
+                      </div>
+                      <Link to="/eye-diseases" className="bg-[#0B4DA2] text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-[#083A7A] transition flex items-center gap-1 shrink-0" onClick={()=>setEyeOpen(false)}>
+                        View All <ArrowRight size={12} />
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="flex-1 overflow-auto p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredGroups.map(group => (
+                      <div key={group.id} className="min-w-0">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="text-[11px] font-bold tracking-widest uppercase text-[#0B4DA2] bg-blue-50 px-2.5 py-1 rounded-full inline-block">{group.label}</div>
+                          <span className="text-[10px] text-slate-400">{group.slugs.length}</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 mb-3 leading-snug">{group.description}</div>
+                        <div className="space-y-1">
+                          {group.slugs.slice(0, 12).map(slug => {
+                            const d = getDiseaseBySlug(slug);
+                            if(!d) return null;
+                            return (
+                              <Link key={slug} to={`/eye-diseases/${slug}`} onClick={()=>setEyeOpen(false)} className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-[#E6F0FF] text-[13px] font-medium text-slate-700 hover:text-[#0B4DA2] group/item transition">
+                                <span className="truncate pr-2">{d.title}</span>
+                                <ArrowRight size={12} className="opacity-0 group-hover/item:opacity-100 transition shrink-0"/>
+                              </Link>
+                            );
+                          })}
+                          {group.slugs.length > 12 && (
+                            <div className="px-3 py-1 text-[11px] text-slate-400">+{group.slugs.length - 12} more in {group.label}</div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                    {filteredGroups.length===0 && (
+                      <div className="col-span-3 py-12 text-center">
+                        <div className="text-sm text-slate-500">No results for "{eyeSearch}"</div>
+                        <button onClick={()=>setEyeSearch('')} className="mt-3 text-xs bg-slate-100 px-3 py-1.5 rounded-full">Clear search</button>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="p-4 border-t border-slate-100 bg-slate-50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shrink-0">
+                    <div className="text-xs text-slate-500">
+                      <span className="font-semibold text-slate-700">151 Conditions</span> • Cataracts • Glaucoma • Diabetic Retinopathy • AMD • Dry Eyes • Keratoconus • Conjunctivitis & more • Expert reviewed
+                    </div>
+                    <div className="flex gap-2 shrink-0">
+                      <Link to="/eye-diseases" onClick={()=>setEyeOpen(false)} className="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-full text-xs font-semibold hover:bg-slate-50 transition">
+                        Browse A-Z List
+                      </Link>
+                      <Link to="/contact" onClick={()=>setEyeOpen(false)} className="bg-[#0B4DA2] text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-[#083A7A] transition">
+                        Book Consultation
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* Mega Services */}
             <div className="relative"
@@ -85,7 +182,7 @@ export default function Header() {
               onMouseLeave={() => setServiceOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 px-4 py-2.5 rounded-full text-[14px] font-medium transition ${location.pathname.startsWith('/services') ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}
+                className={`flex items-center gap-1 px-3 py-2.5 rounded-full text-[13px] font-medium transition ${location.pathname.startsWith('/services') ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}
               >
                 Services <ChevronDown size={14} className={`transition ${serviceOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -118,24 +215,28 @@ export default function Header() {
               </div>
             </div>
 
-            <Link to="/doctor" className={`px-4 py-2.5 rounded-full text-[14px] font-medium transition ${location.pathname === '/doctor' ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>Doctor</Link>
-            <Link to="/technology" className={`px-4 py-2.5 rounded-full text-[14px] font-medium transition ${location.pathname === '/technology' ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>Technology</Link>
-            <Link to="/blogs" className={`px-4 py-2.5 rounded-full text-[14px] font-medium transition ${location.pathname.startsWith('/blog') ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>Blogs</Link>
-            <Link to="/contact" className={`px-4 py-2.5 rounded-full text-[14px] font-medium transition ${location.pathname === '/contact' ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>Contact</Link>
+            <Link to="/doctor" className={`px-3 py-2.5 rounded-full text-[13px] font-medium transition ${location.pathname === '/doctor' ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>Doctor</Link>
+            <Link to="/technology" className={`px-3 py-2.5 rounded-full text-[13px] font-medium transition ${location.pathname === '/technology' ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>Technology</Link>
+            <Link to="/blogs" className={`px-3 py-2.5 rounded-full text-[13px] font-medium transition ${location.pathname.startsWith('/blog') ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>Blogs</Link>
+            <Link to="/contact" className={`px-3 py-2.5 rounded-full text-[13px] font-medium transition ${location.pathname === '/contact' ? 'bg-[#0B4DA2] text-white' : 'text-slate-700 hover:bg-slate-100'}`}>Contact</Link>
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
-            {/*<a href="https://wa.me/919322364002" className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-105 transition shadow-sm" title="WhatsApp" aria-label="Chat on WhatsApp">*/}
-            {/*  <WhatsAppIcon size={22} />*/}
-            {/*</a>*/}
+          <div className="hidden xl:flex items-center gap-2 shrink-0">
             <Link to="/contact" className="flex items-center gap-2 bg-[#0B4DA2] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-[#083A7A] transition shadow-lg shadow-blue-900/20">
               <Calendar size={16} /> Book Appointment
             </Link>
           </div>
 
+          {/* Tablet Eye Diseases quick access */}
+          <div className="hidden lg:flex xl:hidden items-center gap-2">
+            <Link to="/eye-diseases" className="flex items-center gap-1.5 bg-slate-900 text-white px-4 py-2.5 rounded-full text-xs font-bold">
+              <Eye size={14} /> Eye Diseases 151
+            </Link>
+          </div>
+
           {/* Mobile */}
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden w-11 h-11 rounded-full bg-slate-100 flex items-center justify-center">
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden w-11 h-11 rounded-full bg-slate-100 flex items-center justify-center">
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -148,7 +249,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t bg-white overflow-hidden max-h-[85vh] overflow-y-auto"
+            className="xl:hidden border-t bg-white overflow-hidden max-h-[85vh] overflow-y-auto"
           >
             <div className="px-4 py-6 space-y-1">
               {mainMenu.map(item => (
@@ -156,6 +257,38 @@ export default function Header() {
                   {item.label}
                 </Link>
               ))}
+
+              {/* Eye Diseases Mobile */}
+              <div>
+                <button onClick={()=>setMobileEyeOpen(!mobileEyeOpen)} className={`w-full flex justify-between items-center px-4 py-3.5 rounded-xl font-bold ${location.pathname.startsWith('/eye-diseases') ? 'bg-[#0B4DA2] text-white' : 'bg-slate-900 text-white'}`}>
+                  <span className="flex items-center gap-2"><Eye size={16} /> Eye Diseases & Conditions (151)</span> <ChevronDown size={16} className={`transition ${mobileEyeOpen?'rotate-180':''}`}/>
+                </button>
+                <AnimatePresence>
+                  {mobileEyeOpen && (
+                    <motion.div initial={{height:0, opacity:0}} animate={{height:'auto', opacity:1}} exit={{height:0, opacity:0}} className="overflow-hidden">
+                      <div className="pl-2 mt-3 space-y-4">
+                        <div className="relative">
+                          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                          <input value={eyeSearch} onChange={e=>setEyeSearch(e.target.value)} placeholder="Search 151 guides..." className="w-full bg-slate-50 border border-slate-200 rounded-full pl-8 pr-3 py-2.5 text-xs focus:outline-none focus:border-[#0B4DA2]" />
+                        </div>
+                        {filteredGroups.map(g=>(
+                          <div key={g.cat || g.id}>
+                            <div className="text-[11px] font-bold tracking-widest uppercase text-[#0B4DA2] mb-2">{g.label} ({g.slugs.length})</div>
+                            <div className="grid gap-1 max-h-[200px] overflow-auto pr-1">
+                              {g.slugs.map(slug=>{
+                                const d=getDiseaseBySlug(slug);
+                                if(!d) return null;
+                                return <Link key={slug} to={`/eye-diseases/${slug}`} className="block px-3 py-2.5 text-[13px] text-slate-600 hover:text-[#0B4DA2] bg-slate-50/50 rounded-xl">• {d.title}</Link>
+                              })}
+                            </div>
+                          </div>
+                        ))}
+                        <Link to="/eye-diseases" className="block mt-3 bg-[#0B4DA2] text-white px-4 py-3 rounded-xl text-sm font-semibold text-center">View All 151 Eye Diseases</Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <div>
                 <button onClick={()=>setMobileServiceOpen(!mobileServiceOpen)} className={`w-full flex justify-between items-center px-4 py-3.5 rounded-xl font-medium ${location.pathname.startsWith('/services') ? 'bg-[#0B4DA2] text-white' : 'bg-slate-50'}`}>

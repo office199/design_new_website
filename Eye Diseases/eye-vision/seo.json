@@ -1,0 +1,30 @@
+{
+  "slug": "eye-vision",
+  "title": "Eye Vision - Causes, Symptoms, Diagnosis & Treatment | Ashu Laser Vision Mumbai",
+  "description": "Learn about Eye Vision: causes, symptoms, diagnosis, treatment, prevention & FAQs. Expert eye care by Dr. Shahnawaz Kazi at Ashu Laser Vision, Andheri Mumbai.",
+  "canonical": "https://ashulaservision.com/eye-diseases/eye-vision",
+  "breadcrumbs": [
+    {
+      "name": "Home",
+      "url": "https://ashulaservision.com/"
+    },
+    {
+      "name": "Eye Diseases & Conditions",
+      "url": "https://ashulaservision.com/eye-diseases"
+    },
+    {
+      "name": "Eye Vision",
+      "url": "https://ashulaservision.com/eye-diseases/eye-vision"
+    }
+  ],
+  "images": [
+    "https://ashulaservision.com/eye-diseases/004-eye-vision/images/page-019-image-01.jpg",
+    "https://ashulaservision.com/eye-diseases/004-eye-vision/images/page-022-image-01.jpg"
+  ],
+  "folder": "004-eye-vision",
+  "index": 4,
+  "pages": [
+    19,
+    23
+  ]
+}
