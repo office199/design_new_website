@@ -1,24 +1,11 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Eye, ShieldCheck, Share2, Phone, Calendar, AlertTriangle, CheckCircle2, HelpCircle, Stethoscope, Loader2, BookOpen, MapPin, Clock, Plus, Sparkles, ClipboardCheck, X, ScrollText } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronRight, Eye, ShieldCheck, BookOpen, Share2, Phone, Calendar, AlertTriangle, CheckCircle2, HelpCircle, Stethoscope, Loader2, ScrollText, MapPin, Clock, Plus, Sparkles, FileText, ClipboardCheck, Activity, X } from 'lucide-react';
 import SEO from '../../components/SEO';
 import PageTransition from '../../components/animations/PageTransition';
 import { getDiseaseBySlug as getMetaBySlug, eyeDiseases, eyeDiseaseGroups } from '../../data/eyeDiseasesMeta';
 import WhatsAppIcon from '../../components/icons/WhatsAppIcon';
-import { motion, useScroll, useTransform } from 'framer-motion';
-
-/*
- * Design language: "The Condition Dossier" — an editorial medical-journal
- * aesthetic. Warm paper, ink hairlines, sharp corners, hard offset shadows,
- * figure-captioned plates and an index-style related list.
- */
-// Keep the detail page visually consistent with the original guide/index design:
-// clean white surfaces, soft blue accents and rounded cards rather than the
-// newer editorial "dossier" treatment.
-const PAPER = '#F8FAFC';
-const NOISE = {};
-const HAIRLINE = 'border-slate-200';
-const pad = (n) => String(n ?? 0).padStart(3, '0');
+import { motion, useScroll } from 'framer-motion';
 
 // Heading detection
 const KNOWN_HEADINGS = [
@@ -119,15 +106,6 @@ function parseContent(md) {
   return merged;
 }
 
-// Turn the raw multi-line short description into a clean one-paragraph lede.
-function cleanLede(title, shortDesc) {
-  if (!shortDesc) return '';
-  const lines = shortDesc.split('\n').map(s => s.replace(/\s+/g, ' ').trim()).filter(Boolean);
-  const meaningful = lines.filter(l => l !== title && l.length > 60 && !l.endsWith(':'));
-  const text = meaningful.slice(0, 2).join(' ');
-  return text.length > 340 ? `${text.slice(0, 340).replace(/\s+\S*$/, '')}…` : text;
-}
-
 const scrollToId = (id) => {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -135,21 +113,20 @@ const scrollToId = (id) => {
 
 function ContentRenderer({ blocks }) {
   let h2Count = 0;
-  let firstParaDone = false;
   return (
     <div>
       {blocks.map((block, idx) => {
         if (block.type === 'h2') {
           h2Count += 1;
-          const num = String(h2Count).padStart(2, '0');
           return (
-            <div key={idx} id={`sec-${idx}`} data-toc="h2" className="scroll-mt-[150px] lg:scroll-mt-[170px] mt-14 first:mt-0">
-              <div className="flex items-center gap-4">
-                <span className="text-[10.5px] font-bold uppercase tracking-[0.32em] text-[#0B4DA2]">Chapter {num}</span>
-                <span className="h-px flex-1 bg-slate-950/10" />
-                <span className="font-display text-[32px] font-extrabold leading-none text-slate-950/10 select-none">{num}</span>
+            <div key={idx} id={`sec-${idx}`} data-toc="h2" className="scroll-mt-[100px] lg:scroll-mt-[124px] mt-14 first:mt-0 mb-6 flex items-start gap-4">
+              <span className="shrink-0 w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0B4DA2] to-[#00A6CB] text-white flex items-center justify-center font-bold font-display text-[15px] shadow-lg shadow-blue-900/25">
+                {String(h2Count).padStart(2, '0')}
+              </span>
+              <div className="min-w-0 pt-0.5">
+                <h2 className="text-[22px] lg:text-[26px] font-bold font-display tracking-tight text-slate-900 leading-tight">{block.text}</h2>
+                <div className="h-1 w-16 rounded-full bg-gradient-to-r from-[#00A6CB] to-[#00D4AA] mt-2.5" />
               </div>
-              <h2 className="mt-4 font-display text-[24px] md:text-[28px] lg:text-[32px] font-bold leading-[1.08] tracking-tight text-slate-950">{block.text}</h2>
             </div>
           );
         }
@@ -157,27 +134,28 @@ function ContentRenderer({ blocks }) {
           const isFAQ = /^\d+\.|^Q\d+:|^\?|faq|questions/i.test(block.text);
           if (isFAQ) {
             return (
-              <h3 key={idx} id={`sec-${idx}`} data-toc="h3" className="scroll-mt-[150px] lg:scroll-mt-[170px] mt-8 mb-4 flex items-center gap-3 border border-slate-950/15 bg-[#F1EDE6] px-4 py-3 font-display text-[14px] lg:text-[15px] font-bold text-[#0B4DA2]">
-                <HelpCircle size={15} className="shrink-0" />
+              <h3 key={idx} id={`sec-${idx}`} data-toc="h3" className="scroll-mt-[100px] lg:scroll-mt-[124px] mt-8 mb-4 flex items-center gap-3 text-[15px] lg:text-base font-bold font-display text-[#0B4DA2] bg-gradient-to-r from-[#F0FAFF] to-[#E6F0FF] px-5 py-3.5 rounded-2xl border border-cyan-100">
+                <HelpCircle size={17} className="text-[#00A6CB] shrink-0" />
                 <span>{block.text}</span>
               </h3>
             );
           }
           return (
-            <h3 key={idx} id={`sec-${idx}`} data-toc="h3" className="scroll-mt-[150px] lg:scroll-mt-[170px] mt-10 mb-3.5 border-l-[3px] border-[#0B4DA2] pl-4 font-display text-[17px] lg:text-[19px] font-bold tracking-tight text-slate-950">
-              {block.text}
+            <h3 key={idx} id={`sec-${idx}`} data-toc="h3" className="scroll-mt-[100px] lg:scroll-mt-[124px] text-[17px] lg:text-lg font-bold font-display mt-9 mb-4 flex items-center gap-3 text-slate-900">
+              <span className="w-1.5 h-6 rounded-full bg-gradient-to-b from-[#0B4DA2] to-[#00D4AA] shrink-0" />
+              <span>{block.text}</span>
             </h3>
           );
         }
         if (block.type === 'list') {
           return (
-            <ul key={idx} className="my-7 border-t border-slate-950/15">
+            <ul key={idx} className="space-y-2.5 my-7">
               {block.items.map((it, i2) => (
-                <li key={i2} className="group flex gap-4 border-b border-slate-950/15 py-4">
-                  <span className="mt-[2px] flex h-6 w-6 shrink-0 items-center justify-center border border-slate-950/20 text-[#0B4DA2] transition-colors duration-300 group-hover:border-[#0B4DA2] group-hover:bg-[#0B4DA2] group-hover:text-white">
-                    <CheckCircle2 size={13} />
+                <li key={i2} className="group flex gap-3.5 text-[14.5px] leading-relaxed text-slate-700 bg-white border border-slate-200/80 rounded-2xl px-4.5 py-4 hover:border-[#0B4DA2]/30 hover:shadow-md hover:shadow-blue-900/5 transition-all duration-300">
+                  <span className="w-7 h-7 rounded-lg bg-[#E6F0FF] text-[#0B4DA2] flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#0B4DA2] group-hover:text-white transition-colors duration-300">
+                    <CheckCircle2 size={15} />
                   </span>
-                  <span className="text-[14.5px] leading-relaxed text-slate-700">{it}</span>
+                  <span>{it}</span>
                 </li>
               ))}
             </ul>
@@ -185,25 +163,14 @@ function ContentRenderer({ blocks }) {
         }
         if (block.type === 'para') {
           if (block.text.startsWith('A:') || block.text.startsWith('Ans:')) {
-            const note = block.text.replace(/^A(?:ns)?:\s*/, '');
             return (
-              <div key={idx} className="my-8 border border-slate-950/15 border-l-[3px] border-l-[#0B4DA2] bg-[#F4F7FB] px-6 py-5">
-                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.28em] text-[#0B4DA2]">
-                  <Stethoscope size={12} /> Doctor&rsquo;s note
-                </div>
-                <p className="mt-2.5 text-[14px] leading-[1.8] text-slate-700">{note}</p>
+              <div key={idx} className="my-6 relative overflow-hidden rounded-2xl border border-cyan-100 bg-[#F0FAFF] p-5 pl-6 text-[14px] leading-relaxed text-slate-700">
+                <span className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#00A6CB] to-[#0B4DA2]" />
+                {block.text}
               </div>
             );
           }
-          if (!firstParaDone) {
-            firstParaDone = true;
-            return (
-              <p key={idx} className="my-6 text-[16.5px] leading-[1.9] text-slate-700 first-letter:float-left first-letter:mr-3 first-letter:mt-[6px] first-letter:font-display first-letter:text-[54px] first-letter:font-extrabold first-letter:leading-[0.8] first-letter:text-[#0B4DA2]">
-                {block.text}
-              </p>
-            );
-          }
-          return <p key={idx} className="my-5 text-[15.5px] leading-[1.9] text-slate-700">{block.text}</p>;
+          return <p key={idx} className="text-[15.5px] leading-[1.85] text-slate-600 my-5">{block.text}</p>;
         }
         return null;
       })}
@@ -224,12 +191,8 @@ export default function EyeDiseaseDetailPage() {
   const [showMobileCta, setShowMobileCta] = useState(true);
   const { scrollYProgress } = useScroll();
 
-  const RING_C = 2 * Math.PI * 24;
-  const ringOffset = useTransform(scrollYProgress, [0, 1], [RING_C, 0]);
-  const progressPct = useTransform(scrollYProgress, v => `${Math.round(v * 100)}%`);
-
   const shareGuide = async () => {
-    const shareData = { title: fullData?.title || 'Eye health guide', url: window.location.href };
+    const shareData = { title: disease?.title || 'Eye health guide', url: window.location.href };
     try {
       if (navigator.share) await navigator.share(shareData);
       else if (navigator.clipboard) {
@@ -273,7 +236,6 @@ export default function EyeDiseaseDetailPage() {
                 slug: meta.slug,
                 folder: meta.folder,
                 index: meta.index,
-                pages: meta.pages,
                 images: [],
                 shortDesc: meta.shortDesc,
                 seoTitle: `${meta.title} - Causes, Symptoms, Diagnosis & Treatment | Ashu Laser Vision Mumbai`,
@@ -300,7 +262,6 @@ export default function EyeDiseaseDetailPage() {
                 slug: meta.slug,
                 folder: meta.folder,
                 index: meta.index,
-                pages: meta.pages,
                 images: [],
                 shortDesc: meta.shortDesc,
                 seoTitle: `${meta.title} - Causes, Symptoms, Diagnosis & Treatment | Ashu Laser Vision Mumbai`,
@@ -339,14 +300,6 @@ export default function EyeDiseaseDetailPage() {
   const tocItems = useMemo(() => blocks
     .map((b, idx) => (b.type === 'h2' || b.type === 'h3') ? { id: `sec-${idx}`, text: b.text, level: b.type } : null)
     .filter(t => t && t.text.toLowerCase() !== 'extracted text' && !t.text.endsWith('.')), [blocks]);
-  const tocH2 = useMemo(() => tocItems.filter(t => t.level === 'h2'), [tocItems]);
-
-  // "At a glance" — first bullet list of the article, reduced to three key points.
-  const glance = useMemo(() => {
-    const firstList = blocks.find(b => b.type === 'list');
-    if (!firstList) return [];
-    return firstList.items.slice(0, 3).map(s => s.replace(/\s+/g, ' ').trim());
-  }, [blocks]);
 
   // Scroll-spy for the TOC
   useEffect(() => {
@@ -356,7 +309,7 @@ export default function EyeDiseaseDetailPage() {
         .filter(e => e.isIntersecting)
         .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
       if (visible[0]) setActiveId(visible[0].target.id);
-    }, { rootMargin: '-150px 0px -62% 0px', threshold: 0 });
+    }, { rootMargin: '-110px 0px -62% 0px', threshold: 0 });
     tocItems.forEach(t => {
       const el = document.getElementById(t.id);
       if (el) observer.observe(el);
@@ -364,21 +317,16 @@ export default function EyeDiseaseDetailPage() {
     return () => observer.disconnect();
   }, [tocItems]);
 
-  /* ---------- States: not found / loading / error ---------- */
-
   if (!meta && !loading) {
     return (
-      <div className="min-h-[70vh]" style={{ backgroundColor: PAPER, ...NOISE }}>
-        <div className="mx-auto flex min-h-[70vh] max-w-[1440px] items-center justify-center px-6 py-20">
-          <div className={`w-full max-w-lg border ${HAIRLINE} bg-white p-10 text-center shadow-[12px_12px_0_rgba(16,20,24,0.06)]`}>
-            <div className="text-[10.5px] font-bold uppercase tracking-[0.32em] text-[#0B4DA2]">Dossier unavailable</div>
-            <div className="mx-auto mt-6 flex h-16 w-16 items-center justify-center border border-slate-950/15 text-[#0B4DA2]"><Eye size={26} /></div>
-            <h1 className="mt-6 font-display text-2xl font-bold tracking-tight text-slate-950">Condition not found</h1>
-            <p className="mt-3 text-sm leading-relaxed text-slate-500">The eye condition &ldquo;{slug}&rdquo; does not exist in the index. Browse all {eyeDiseases.length} expert-reviewed guides instead.</p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link to="/eye-diseases" className="flex items-center gap-2 bg-[#101418] px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#0B4DA2]">Browse the index <ArrowRight size={13} /></Link>
-              <Link to="/" className="border border-slate-950/20 px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-950 transition-colors hover:border-slate-950">Go home</Link>
-            </div>
+      <div className="min-h-[70vh] flex items-center justify-center p-8 bg-[#F8FAFC]">
+        <div className="text-center max-w-md bg-white border border-slate-200 rounded-[32px] p-10 shadow-xl shadow-blue-900/5">
+          <div className="w-20 h-20 bg-gradient-to-br from-[#E6F0FF] to-[#F0FAFF] rounded-full flex items-center justify-center mx-auto mb-6 border border-blue-100"><Eye size={32} className="text-[#0B4DA2]" /></div>
+          <h1 className="text-2xl font-bold font-display tracking-tight">Condition not found</h1>
+          <p className="text-slate-500 mt-3 text-sm leading-relaxed">The eye condition "{slug}" does not exist. Browse all {eyeDiseases.length} expert-reviewed conditions.</p>
+          <div className="mt-7 flex gap-3 justify-center">
+            <Link to="/eye-diseases" className="bg-[#0B4DA2] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-[#083A7A] transition shadow-lg shadow-blue-900/20">Browse All Conditions</Link>
+            <Link to="/" className="bg-slate-100 px-6 py-3 rounded-full font-semibold text-sm hover:bg-slate-200 transition">Go Home</Link>
           </div>
         </div>
       </div>
@@ -387,14 +335,15 @@ export default function EyeDiseaseDetailPage() {
 
   if (loading || !fullData) {
     return (
-      <div className="min-h-[70vh]" style={{ backgroundColor: PAPER, ...NOISE }}>
-        <div className="mx-auto flex min-h-[70vh] max-w-[1440px] flex-col items-center justify-center px-6 py-20 text-center">
-          <div className="text-[10.5px] font-bold uppercase tracking-[0.32em] text-slate-500">Preparing dossier — Nº {meta ? pad(meta.index) : '···'}</div>
-          <div className="mt-8 flex h-16 w-16 items-center justify-center border border-slate-950/15 bg-white shadow-[8px_8px_0_rgba(16,20,24,0.06)]">
-            <Loader2 size={22} className="animate-spin text-[#0B4DA2]" />
+      <div className="min-h-[70vh] flex items-center justify-center bg-[#F8FAFC]">
+        <div className="text-center">
+          <div className="relative w-16 h-16 mx-auto mb-5">
+            <div className="absolute inset-0 rounded-full border-4 border-[#E6F0FF]" />
+            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#0B4DA2] animate-spin" />
+            <Loader2 size={22} className="absolute inset-0 m-auto text-[#0B4DA2]" />
           </div>
-          <div className="mt-8 font-display text-xl font-bold tracking-tight text-slate-950">{meta?.title || slug}</div>
-          <div className="mt-2 text-[11px] uppercase tracking-[0.22em] text-slate-500">Reviewed by Dr. Shahnawaz Kazi — FMRF · FRCS</div>
+          <div className="font-bold font-display text-slate-900">Loading {meta?.title || slug} guide...</div>
+          <div className="text-xs text-slate-500 mt-1.5">Expert reviewed by Dr. Shahnawaz Kazi FMRF FRCS</div>
         </div>
       </div>
     );
@@ -402,28 +351,21 @@ export default function EyeDiseaseDetailPage() {
 
   if (error) {
     return (
-      <div className="min-h-[60vh]" style={{ backgroundColor: PAPER, ...NOISE }}>
-        <div className="mx-auto flex min-h-[60vh] max-w-[1440px] items-center justify-center px-6 py-20">
-          <div className={`border ${HAIRLINE} bg-white p-10 text-center shadow-[12px_12px_0_rgba(16,20,24,0.06)]`}>
-            <div className="mx-auto flex h-14 w-14 items-center justify-center border border-red-600/30 text-red-600"><AlertTriangle size={22} /></div>
-            <div className="mt-5 font-display text-lg font-bold text-slate-950">Failed to load content</div>
-            <p className="mt-2 text-sm text-slate-500">Please try again, or pick another guide from the index.</p>
-            <Link to="/eye-diseases" className="mt-6 inline-flex items-center gap-2 bg-[#101418] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#0B4DA2]">Back to index <ArrowRight size={13} /></Link>
-          </div>
+      <div className="min-h-[60vh] flex items-center justify-center p-8 bg-[#F8FAFC]">
+        <div className="text-center bg-white border border-slate-200 rounded-[32px] p-10">
+          <div className="w-14 h-14 rounded-full bg-red-50 border border-red-100 flex items-center justify-center mx-auto mb-4"><AlertTriangle size={22} className="text-red-500" /></div>
+          <div className="text-red-500 font-bold font-display">Failed to load content</div>
+          <Link to="/eye-diseases" className="mt-5 inline-block bg-[#0B4DA2] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Back to list</Link>
         </div>
       </div>
     );
   }
 
-  /* ---------- Derived content ---------- */
-
   const disease = fullData;
-  const pages = disease.pages || meta.pages || [null, null];
   const imageBase = `/eye-diseases/${disease.folder}/images`;
   const images = (disease.images || []).map(img => `${imageBase}/${img.file.split('/').pop()}`);
   const relatedThumb = (r) => r.images?.[0] ? `/eye-diseases/${r.folder}/images/${r.images[0].file.split('/').pop()}` : null;
   const readMinutes = Math.max(3, Math.round((contentMd || '').split(/\s+/).length / 180));
-  const lede = cleanLede(disease.title, disease.shortDesc);
 
   // SEO
   const breadcrumbs = [
@@ -472,10 +414,9 @@ export default function EyeDiseaseDetailPage() {
   const currentIdx = eyeDiseases.findIndex(d => d.slug === disease.slug);
   const prevDisease = eyeDiseases[currentIdx - 1];
   const nextDisease = eyeDiseases[currentIdx + 1];
-  const activeChapterIdx = Math.max(0, tocItems.findIndex(t => t.id === activeId));
 
   return (
-    <PageTransition className="legacy-detail-page">
+    <PageTransition>
       <SEO
         title={disease.seoTitle}
         description={disease.seoDescription}
@@ -488,264 +429,241 @@ export default function EyeDiseaseDetailPage() {
         type="article"
       />
 
-      {/* ================= HERO — THE DOSSIER COVER ================= */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: PAPER, ...NOISE }}>
-        {/* giant outlined index watermark */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-10 -right-4 select-none font-display text-[clamp(170px,23vw,340px)] font-extrabold leading-none text-transparent [-webkit-text-stroke:2px_rgba(16,20,24,0.07)]"
-        >
-          {pad(disease.index)}
+      {/* Reading progress bar */}
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="fixed left-0 right-0 top-[72px] lg:top-[84px] h-[3px] z-40 origin-left bg-gradient-to-r from-[#00A6CB] via-[#0B4DA2] to-[#00D4AA]"
+      />
+
+      {/* ---------- DARK HERO ---------- */}
+      <section className="relative overflow-hidden bg-[#07152E] text-white">
+        {/* glows + grid */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-40 -right-24 w-[560px] h-[560px] rounded-full bg-[#0B4DA2]/40 blur-[130px]" />
+          <div className="absolute bottom-[-180px] left-[-120px] w-[520px] h-[520px] rounded-full bg-[#00A6CB]/20 blur-[120px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:linear-gradient(to_bottom,black_0%,transparent_90%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#07152E] to-transparent" />
         </div>
 
-        <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-6 md:px-6 lg:px-8 lg:pt-9 lg:pb-20">
+        <div className="relative max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 pt-6 lg:pt-9 pb-12 lg:pb-16">
           {/* breadcrumb + actions */}
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <nav className="flex min-w-0 items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-              <Link to="/" className="shrink-0 transition-colors hover:text-[#0B4DA2]">Home</Link>
-              <ChevronRight size={11} className="shrink-0 text-slate-400" />
-              <Link to="/eye-diseases" className="shrink-0 transition-colors hover:text-[#0B4DA2]">Eye Diseases</Link>
-              <ChevronRight size={11} className="shrink-0 text-slate-400" />
-              <span className="max-w-[160px] truncate text-slate-950 md:max-w-md">{disease.title}</span>
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <nav className="flex items-center gap-1.5 text-[12px] text-slate-400 min-w-0">
+              <Link to="/" className="hover:text-white transition shrink-0">Home</Link>
+              <ChevronRight size={12} className="text-slate-600 shrink-0" />
+              <Link to="/eye-diseases" className="hover:text-white transition shrink-0">Eye Diseases</Link>
+              <ChevronRight size={12} className="text-slate-600 shrink-0" />
+              <span className="text-white font-semibold truncate max-w-[180px] md:max-w-md">{disease.title}</span>
             </nav>
-            <div className="flex shrink-0 items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               <button
                 type="button"
                 onClick={shareGuide}
                 aria-live="polite"
-                className="flex items-center gap-2 border border-slate-950/20 bg-white/60 px-3.5 py-2 text-[10.5px] font-bold uppercase tracking-[0.16em] text-slate-950 transition-colors hover:border-slate-950 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0B4DA2]"
+                className="hidden md:flex items-center gap-1.5 bg-white/[0.07] backdrop-blur border border-white/10 px-3.5 py-2 rounded-full text-xs font-medium hover:bg-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00D4AA] transition"
               >
-                {shareStatus === 'Link copied' ? <ClipboardCheck size={13} className="text-[#0B4DA2]" /> : <Share2 size={13} />}
-                <span className="hidden sm:inline">{shareStatus || 'Share this guide'}</span>
-                <span className="sm:hidden">{shareStatus || 'Share'}</span>
+                {shareStatus === 'Link copied' ? <ClipboardCheck size={13} className="text-[#00D4AA]" /> : <Share2 size={13} />}
+                {shareStatus || 'Share Guide'}
               </button>
-              <Link to="/eye-diseases" className="flex items-center gap-2 bg-[#101418] px-3.5 py-2 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#0B4DA2]">
-                <ArrowLeft size={13} /> <span className="hidden sm:inline">All {eyeDiseases.length} guides</span><span className="sm:hidden">Index</span>
+              <Link to="/eye-diseases" className="flex items-center gap-1.5 bg-white text-slate-900 px-3.5 py-2 rounded-full text-xs font-bold hover:bg-[#00D4AA] hover:text-slate-950 transition">
+                <ArrowLeft size={13} /> All {eyeDiseases.length}
               </Link>
             </div>
           </div>
 
-          {/* eyebrow strip */}
-          <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[10.5px] font-bold uppercase tracking-[0.28em] lg:mt-12">
-            <span className="bg-[#101418] px-3 py-1.5 text-[#FAF8F4]">Condition guide</span>
-            <span className="text-slate-500">Nº {pad(disease.index)} / {eyeDiseases.length}</span>
-            {group && (
-              <span className="flex items-center gap-3 text-slate-500">
-                <span className="h-3.5 w-px bg-slate-950/20" /> {group.label}
-              </span>
-            )}
-            <span className="flex items-center gap-2 text-slate-500">
-              <span className="h-3.5 w-px bg-slate-950/20" />
-              <ShieldCheck size={12} className="text-[#0B4DA2]" /> Expert reviewed
-            </span>
-          </div>
-
-          {/* headline + lede */}
-          <motion.h1
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-7 max-w-5xl font-display text-[clamp(2.6rem,6.2vw,5.25rem)] font-extrabold leading-[0.95] tracking-[-0.03em] text-slate-950"
-          >
-            {disease.title}
-          </motion.h1>
-          <div className="mt-7 h-[3px] w-24 bg-[#0B4DA2]" />
-          {lede && (
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 max-w-2xl text-[16px] leading-[1.85] text-slate-600 lg:text-[17px]"
-            >
-              {lede}
-            </motion.p>
-          )}
-
-          {/* spec sheet */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className={`mt-10 grid grid-cols-2 divide-x divide-y divide-slate-950/15 border ${HAIRLINE} bg-white/70 shadow-[10px_10px_0_rgba(16,20,24,0.05)] backdrop-blur-[2px] md:grid-cols-4 md:divide-y-0`}
-          >
-            {[
-              { k: 'Read time', v: `${readMinutes} min` },
-              { k: 'Source pages', v: pages[0] ? `p. ${pages[0]}–${pages[1]}` : 'p. —' },
-              { k: 'Reviewed by', v: 'Dr. S. Kazi, FRCS' },
-              { k: 'Guide Nº', v: `${pad(disease.index)} / ${eyeDiseases.length}` }
-            ].map(item => (
-              <div key={item.k} className="px-5 py-4 lg:px-6 lg:py-5">
-                <div className="text-[9.5px] font-bold uppercase tracking-[0.26em] text-slate-500">{item.k}</div>
-                <div className="mt-1.5 truncate font-display text-[15px] font-bold text-slate-950 lg:text-[16px]">{item.v}</div>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* CTA row */}
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/contact" className="flex items-center gap-3 bg-[#101418] px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#0B4DA2]">
-              <Calendar size={15} /> Book an eye exam
-            </Link>
-            <a href="tel:+919322364002" className="flex items-center gap-3 border border-slate-950/20 bg-white/60 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-950 transition-colors hover:border-slate-950 hover:bg-white">
-              <Phone size={15} className="text-[#0B4DA2]" /> +91 93223 64002
-            </a>
-          </div>
-
-          {/* image plate + figure captions */}
-          <div className="relative mt-14 lg:mt-16">
-            <div className={`relative border ${HAIRLINE} bg-[#101418] shadow-[14px_14px_0_rgba(16,20,24,0.07)]`}>
-              {images.length > 0 ? (
-                <div className="aspect-[16/10] overflow-hidden md:aspect-[21/9]">
-                  <motion.img
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    src={images[0]}
-                    alt={`${disease.title} — clinical overview`}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="relative flex aspect-[16/10] flex-col justify-between overflow-hidden p-6 text-[#FAF8F4] md:aspect-[21/9] md:p-10">
-                  <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -right-6 select-none font-display text-[220px] font-extrabold leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(250,248,244,0.16)] md:text-[300px]">
-                    {disease.title.charAt(0)}
-                  </div>
-                  <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.26em] text-white/50">
-                    <span>Ashu Laser Vision</span>
-                    <span>Visual atlas</span>
-                  </div>
-                  <div className="relative">
-                    <div className="flex h-14 w-14 items-center justify-center border border-white/25 text-[#9BE7D1]"><Eye size={26} strokeWidth={1.5} /></div>
-                    <p className="mt-5 max-w-md font-display text-[20px] font-bold leading-snug md:text-[24px]">Clear, specialist-led answers for your eye health.</p>
-                    <p className="mt-2 max-w-sm text-[12px] leading-relaxed text-slate-400">Personalised assessment available at our Andheri West clinic.</p>
-                  </div>
-                </div>
-              )}
-              <div className="flex items-center justify-between gap-4 border-t border-white/15 px-4 py-3 text-[9.5px] font-bold uppercase tracking-[0.24em] text-white/60 md:px-6">
-                <span className="truncate">Fig. 01 — {disease.title}, clinical reference</span>
-                <span className="hidden shrink-0 sm:block">Ashu Laser Vision · {images.length > 1 ? `${images.length} plates` : 'Visual atlas'}</span>
+          <div className="mt-9 lg:mt-12 grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] gap-12 lg:gap-14 items-center">
+            {/* Left: copy */}
+            <div>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="inline-flex items-center gap-1.5 bg-[#00D4AA]/15 text-[#00D4AA] border border-[#00D4AA]/30 text-[10.5px] font-bold tracking-[0.18em] uppercase px-3.5 py-1.5 rounded-full">
+                  <Sparkles size={11} /> Expert Reviewed • {disease.index}/151
+                </span>
+                {group && <span className="inline-flex items-center bg-white/[0.08] border border-white/15 text-slate-200 text-[10.5px] font-bold tracking-[0.18em] uppercase px-3.5 py-1.5 rounded-full">{group.label}</span>}
+                <span className="inline-flex items-center gap-1.5 bg-white/[0.08] border border-white/15 text-slate-200 text-[10.5px] font-bold px-3.5 py-1.5 rounded-full">
+                  <ShieldCheck size={12} className="text-[#00A6CB]" /> Dr. Shahnawaz Kazi • FMRF, FRCS
+                </span>
               </div>
 
-              {images[1] && (
-                <motion.div
-                  initial={{ opacity: 0, y: 18, rotate: 6 }}
-                  animate={{ opacity: 1, y: 0, rotate: 3 }}
-                  transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute -top-7 right-5 hidden w-36 rotate-3 border-[5px] border-[#FAF8F4] bg-slate-800 shadow-[8px_8px_0_rgba(16,20,24,0.18)] sm:block md:w-44 lg:w-52"
-                >
-                  <div className="aspect-square overflow-hidden">
-                    <img src={images[1]} alt={`${disease.title} — detail view`} className="h-full w-full object-cover" loading="lazy" />
-                  </div>
-                  <div className="bg-[#101418] px-2.5 py-1.5 text-[8.5px] font-bold uppercase tracking-[0.22em] text-white/60">Fig. 02</div>
-                </motion.div>
-              )}
+              <h1 className="mt-6 text-[40px] md:text-[54px] lg:text-[62px] font-bold font-display leading-[0.98] tracking-tight">
+                {disease.title}
+              </h1>
+              <div className="mt-5 h-1.5 w-24 rounded-full bg-gradient-to-r from-[#00A6CB] via-[#00D4AA] to-transparent" />
+
+              <p className="mt-6 text-[16px] lg:text-[17px] leading-relaxed text-slate-300 max-w-2xl">
+                {disease.shortDesc}
+              </p>
+
+              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2.5 text-[12.5px] text-slate-400">
+                <span className="flex items-center gap-1.5"><Clock size={13} className="text-[#00A6CB]" /> {readMinutes} min read</span>
+                <span className="flex items-center gap-1.5"><FileText size={13} className="text-[#00A6CB]" /> PDF Pages {disease.pages?.[0]}–{disease.pages?.[1]}</span>
+                <span className="flex items-center gap-1.5"><Eye size={13} className="text-[#00A6CB]" /> Condition #{String(disease.index).padStart(3, '0')}</span>
+                <span className="flex items-center gap-1.5"><Stethoscope size={13} className="text-[#00A6CB]" /> Medically reviewed</span>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link to="/contact" className="bg-white text-slate-950 px-7 py-3.5 rounded-full font-bold text-sm hover:bg-[#00D4AA] transition flex items-center gap-2 shadow-[0_10px_40px_rgba(0,212,170,0.25)]">
+                  <Calendar size={16} /> Book Eye Checkup
+                </Link>
+                <a href="tel:+919322364002" className="bg-white/[0.07] backdrop-blur border border-white/15 px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-white/[0.14] transition flex items-center gap-2">
+                  <Phone size={16} /> 93223 64002
+                </a>
+              </div>
             </div>
 
-            {/* At a glance — overlapping card */}
-            {glance.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className={`relative z-10 mx-3 -mt-10 border ${HAIRLINE} bg-white shadow-[12px_12px_0_rgba(11,77,162,0.10)] md:mx-8 md:-mt-12`}
-              >
-                <div className="flex items-center justify-between gap-4 border-b border-slate-950/15 px-5 py-3">
-                  <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#0B4DA2]"><Sparkles size={12} /> At a glance</span>
-                  <span className="text-[9.5px] font-bold uppercase tracking-[0.22em] text-slate-400">Key points from this guide</span>
-                </div>
-                <div className="grid divide-y divide-slate-950/10 md:grid-cols-3 md:divide-x md:divide-y-0">
-                  {glance.map((g, i) => (
-                    <div key={i} className="flex gap-4 px-5 py-4">
-                      <span className="font-display text-[22px] font-extrabold leading-none text-slate-950/15">0{i + 1}</span>
-                      <p className="line-clamp-3 text-[12.5px] leading-relaxed text-slate-600">{g}</p>
+            {/* Right: image collage */}
+            <div className="relative">
+              <div className="absolute -inset-10 bg-[#00A6CB]/10 blur-[80px] rounded-full pointer-events-none" />
+              {images.length > 0 ? (
+                <div className="relative max-w-[520px] mx-auto">
+                  <motion.div
+                    initial={{ opacity: 0, y: 24, rotate: 4 }}
+                    animate={{ opacity: 1, y: 0, rotate: 2 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative rounded-[28px] overflow-hidden ring-1 ring-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.5)] aspect-[4/3] bg-slate-800"
+                  >
+                    <img src={images[0]} alt={`${disease.title} - clinical overview`} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07152E]/80 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                      <span className="text-[12px] font-semibold text-white/90">{disease.title} • Clinical Reference</span>
+                      <span className="shrink-0 bg-white/15 backdrop-blur border border-white/20 text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full">Image 1/{images.length}</span>
                     </div>
-                  ))}
+                  </motion.div>
+
+                  {images[1] && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20, rotate: -10 }}
+                      animate={{ opacity: 1, y: 0, rotate: -6 }}
+                      transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                      className="absolute -bottom-8 -left-6 lg:-left-12 w-36 md:w-44 aspect-square rounded-3xl overflow-hidden border-[6px] border-[#0B1F42] shadow-[0_20px_60px_rgba(0,0,0,0.5)] bg-slate-800"
+                    >
+                      <img src={images[1]} alt={`${disease.title} - detail view`} className="w-full h-full object-cover" loading="lazy" />
+                    </motion.div>
+                  )}
+
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.35 }}
+                    className="absolute -top-4 -right-3 lg:-right-6 flex items-center gap-2 bg-white text-slate-900 rounded-2xl px-4 py-2.5 shadow-[0_15px_50px_rgba(0,0,0,0.4)]"
+                  >
+                    <span className="w-8 h-8 rounded-xl bg-[#E6F0FF] text-[#0B4DA2] flex items-center justify-center"><ShieldCheck size={15} /></span>
+                    <div>
+                      <div className="text-[11px] font-bold leading-tight">Expert Reviewed</div>
+                      <div className="text-[10px] text-slate-500 leading-tight">Dr. Kazi FMRF FRCS</div>
+                    </div>
+                  </motion.div>
+
+                  {images.length > 2 && (
+                    <div className="mt-12 ml-4 grid grid-cols-3 gap-3 max-w-[320px]">
+                      {images.slice(2, 5).map((src, i) => (
+                        <div key={i} className="rounded-xl overflow-hidden ring-1 ring-white/15 aspect-[4/3] bg-slate-800">
+                          <img src={src} alt={`${disease.title} - ${i + 3}`} className="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </motion.div>
-            )}
+              ) : (
+                <div className="relative isolate max-w-[520px] mx-auto rounded-[32px] border border-white/15 bg-gradient-to-br from-white/[0.10] to-white/[0.03] backdrop-blur p-7 md:p-10 aspect-[4/3] overflow-hidden flex flex-col justify-between shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+                  <div className="absolute -right-16 -top-16 h-72 w-72 rounded-full border border-[#00D4AA]/20" />
+                  <div className="absolute -right-4 -top-4 h-48 w-48 rounded-full border border-[#00A6CB]/25" />
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00D4AA]/70 to-transparent" />
+                  <div className="relative flex items-center justify-between">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-[#07152E]/30 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-300"><Activity size={13} className="text-[#00D4AA]" /> Clinical guide</span>
+                    <span className="text-[10px] font-semibold text-slate-400">ASHU LASER VISION</span>
+                  </div>
+                  <div className="relative">
+                    <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-[28px] border border-[#00D4AA]/30 bg-[#00A6CB]/10 shadow-[0_0_45px_rgba(0,166,203,0.22)]"><Eye size={37} strokeWidth={1.5} className="text-[#6BE5F4]" /></div>
+                    <p className="max-w-sm text-xl font-bold font-display leading-tight text-white">Clear, specialist-led answers for your eye health.</p>
+                    <p className="mt-2 max-w-xs text-xs leading-relaxed text-slate-400">A personalised assessment is available at our Andheri West clinic.</p>
+                  </div>
+                  <div className="relative flex items-center gap-2 text-[11px] font-medium text-[#A7F3D0]"><ClipboardCheck size={15} /> Reviewed patient education</div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* glass stats strip */}
+          <div className="mt-14 lg:mt-16 grid grid-cols-2 md:grid-cols-4 rounded-[22px] overflow-hidden bg-white/[0.05] backdrop-blur border border-white/10 divide-x divide-y md:divide-y-0 divide-white/10">
+            {[
+              { k: 'Guide Pages', v: `${disease.pages?.[0] || ''}–${disease.pages?.[1] || ''}`, icon: BookOpen },
+              { k: 'Guide Index', v: `#${String(disease.index).padStart(3, '0')} of 151`, icon: Eye },
+              { k: 'Reviewed By', v: 'Dr. Shahnawaz Kazi', icon: Stethoscope },
+              { k: 'Hospital Trust', v: 'Since 2004 • Mumbai', icon: ShieldCheck }
+            ].map(item => (
+              <div key={item.k} className="flex items-center gap-3.5 px-5 lg:px-6 py-4.5 hover:bg-white/[0.06] transition">
+                <span className="w-9 h-9 rounded-xl bg-white/[0.08] border border-white/10 text-[#00D4AA] flex items-center justify-center shrink-0"><item.icon size={16} /></span>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-bold tracking-[0.16em] uppercase text-slate-400">{item.k}</div>
+                  <div className="text-[13px] font-bold text-white mt-0.5 truncate">{item.v}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ================= STICKY CHAPTER BAR ================= */}
-      <div className="sticky top-[71px] z-30 border-b border-slate-950/15 bg-[#FAF8F4]/92 backdrop-blur-md lg:top-[83px]">
-        <div className="relative mx-auto flex max-w-[1440px] items-center gap-3 px-4 py-2.5 md:px-6 lg:px-8">
-          <div className="hidden shrink-0 items-center gap-3 md:flex">
-            <span className="bg-[#101418] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#FAF8F4]">Nº {pad(disease.index)}</span>
-            <span className="max-w-[220px] truncate font-display text-[13px] font-bold text-slate-950">{disease.title}</span>
-          </div>
-          <nav className="flex min-w-0 flex-1 items-center gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <span className="mr-1 hidden shrink-0 items-center gap-1.5 text-[9.5px] font-bold uppercase tracking-[0.24em] text-slate-400 lg:flex"><ScrollText size={12} /> Chapters</span>
-            {tocH2.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => scrollToId(t.id)}
-                className={`shrink-0 border px-3 py-1.5 text-[11px] font-semibold transition-colors ${activeId === t.id ? 'border-[#101418] bg-[#101418] text-[#FAF8F4]' : 'border-slate-950/15 bg-white/50 text-slate-600 hover:border-slate-950/40 hover:text-slate-950'}`}
-              >
-                {t.text}
-              </button>
-            ))}
-            {tocH2.length === 0 && <span className="text-[11px] text-slate-400">Reading guide…</span>}
-          </nav>
-          <Link to="/contact" className="hidden shrink-0 items-center gap-2 bg-[#0B4DA2] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#101418] md:flex">
-            <Calendar size={12} /> Book
-          </Link>
-          <motion.div style={{ scaleX: scrollYProgress }} className="absolute inset-x-0 bottom-[-1px] h-[2px] origin-left bg-[#0B4DA2]" />
-        </div>
-      </div>
+      {/* ---------- ARTICLE ---------- */}
+      <section className="bg-[#F8FAFC] py-10 lg:py-16">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[248px_minmax(0,1fr)_320px] gap-8 xl:gap-10 items-start">
 
-      {/* ================= BODY ================= */}
-      <section className="relative py-12 lg:py-16" style={{ backgroundColor: PAPER, ...NOISE }}>
-        <div className="mx-auto max-w-[1440px] px-4 md:px-6 lg:px-8">
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_300px] xl:grid-cols-[216px_minmax(0,1fr)_300px]">
-
-            {/* Chapter rail (desktop) */}
-            <aside className="sticky top-[160px] hidden self-start xl:block">
+            {/* TOC (desktop) */}
+            <aside className="hidden xl:block sticky top-[108px] self-start">
               {tocItems.length > 0 && (
-                <div>
-                  <h4 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-950">
-                    <ScrollText size={13} className="text-[#0B4DA2]" /> Chapters
+                <div className="bg-white border border-slate-200/80 rounded-[22px] p-5 shadow-sm">
+                  <h4 className="font-bold text-[11px] uppercase tracking-[0.18em] text-slate-900 flex items-center gap-2">
+                    <ScrollText size={14} className="text-[#0B4DA2]" /> On this page
                   </h4>
-                  <div className="relative mt-5">
-                    <span className="absolute bottom-1 left-[3.5px] top-1 w-px bg-slate-950/10" />
-                    <span
-                      className="absolute left-[3.5px] top-1 w-px bg-[#0B4DA2] transition-all duration-500"
-                      style={{ height: `${((activeChapterIdx + 1) / Math.max(1, tocItems.length)) * 100}%` }}
-                    />
-                    <nav className="max-h-[62vh] space-y-1 overflow-y-auto pr-2">
-                      {tocItems.map(t => (
-                        <button
-                          key={t.id}
-                          onClick={() => scrollToId(t.id)}
-                          className={`group relative flex w-full items-start gap-3 py-1.5 text-left leading-snug transition-colors ${t.level === 'h3' ? 'pl-9 text-[11px]' : 'pl-6 text-[12px] font-semibold'} ${activeId === t.id ? 'text-[#0B4DA2]' : 'text-slate-500 hover:text-slate-950'}`}
-                        >
-                          <span className={`absolute left-0 top-[9px] h-[7px] w-[7px] rotate-45 border transition-colors ${activeId === t.id ? 'border-[#0B4DA2] bg-[#0B4DA2]' : 'border-slate-950/25 bg-[#FAF8F4] group-hover:border-slate-950'}`} />
-                          {t.text}
-                        </button>
-                      ))}
-                    </nav>
-                  </div>
-                  <div className="mt-6 border-t border-slate-950/15 pt-4 text-[10px] uppercase tracking-[0.22em] text-slate-400">
-                    {tocItems.length} sections · {readMinutes} min read
+                  <nav className="mt-4 max-h-[58vh] overflow-y-auto pr-2 border-l border-slate-200">
+                    {tocItems.map(t => (
+                      <button
+                        key={t.id}
+                        onClick={() => scrollToId(t.id)}
+                        className={`block w-full text-left -ml-px border-l-2 transition leading-snug ${t.level === 'h3' ? 'pl-6 py-1.5 text-[11.5px]' : 'pl-3.5 py-1.5 text-[12.5px] font-semibold'} ${activeId === t.id ? 'border-[#0B4DA2] text-[#0B4DA2]' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
+                      >
+                        {t.text}
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+              )}
+              <div className="mt-5 bg-white border border-slate-200/80 rounded-[22px] p-5">
+                <h4 className="font-bold text-[11px] uppercase tracking-[0.18em] text-slate-900 flex items-center gap-2"><Sparkles size={13} className="text-[#00A6CB]" /> What you'll learn</h4>
+                <ul className="mt-3.5 space-y-2 text-[12px] text-slate-600">
+                  {['Overview & how common it is', 'Symptoms & early warning signs', 'Causes & risk factors', 'Diagnosis: OCT, FFA & more', 'Treatment & surgery options', 'Prevention & outlook'].map((t, i) => (
+                    <li key={i} className="flex items-center gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#00A6CB] to-[#00D4AA] shrink-0" />{t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
+
+            {/* Main article column */}
+            <div className="min-w-0">
+              {/* Mobile / tablet TOC pills */}
+              {tocItems.length > 0 && (
+                <div className="xl:hidden mb-6 -mx-4 px-4 md:mx-0 md:px-0">
+                  <div className="flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    {tocItems.filter(t => t.level === 'h2').map(t => (
+                      <button key={t.id} onClick={() => scrollToId(t.id)} className={`shrink-0 text-[11.5px] font-semibold px-4 py-2 rounded-full border transition ${activeId === t.id ? 'bg-[#0B4DA2] text-white border-[#0B4DA2]' : 'bg-white border-slate-200 text-slate-600 hover:border-[#0B4DA2]/40 hover:text-[#0B4DA2]'}`}>
+                        {t.text}
+                      </button>
+                    ))}
                   </div>
                 </div>
               )}
-            </aside>
 
-            {/* Article sheet */}
-            <div className="min-w-0">
-              <article className={`border ${HAIRLINE} bg-white p-6 shadow-[16px_16px_0_rgba(16,20,24,0.05)] md:p-10 lg:p-14`}>
-                <header className="border-b-2 border-slate-950 pb-8">
-                  <div className="flex flex-wrap items-center justify-between gap-3 text-[10px] font-bold uppercase tracking-[0.3em]">
-                    <span className="text-[#0B4DA2]">The complete guide</span>
-                    <span className="text-slate-400">{pages[0] ? `Source p. ${pages[0]}–${pages[1]}` : 'Ashu visual atlas'}</span>
+              <article className="bg-white rounded-[28px] lg:rounded-[36px] border border-slate-200/80 p-6 md:p-9 lg:p-12 shadow-[0_10px_50px_rgba(8,58,122,0.06)]">
+                <header className="flex items-center gap-4 pb-8 border-b border-slate-100">
+                  <div className="w-13 h-13 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-[#0B4DA2] to-[#00A6CB] text-white flex items-center justify-center shadow-lg shadow-blue-900/25 shrink-0 p-3.5">
+                    <BookOpen size={22} />
                   </div>
-                  <h2 className="mt-5 font-display text-[22px] font-bold leading-tight tracking-tight text-slate-950 lg:text-[28px]">
-                    {disease.title}: Causes, Symptoms, Diagnosis &amp; Treatment
-                  </h2>
-                  <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[12px] text-slate-500">
-                    <span className="flex items-center gap-1.5"><ShieldCheck size={13} className="text-[#0B4DA2]" /> Reviewed by Dr. Shahnawaz Kazi — FMRF, FRCS Glasgow</span>
-                    <span className="flex items-center gap-1.5"><Clock size={13} /> {readMinutes} min read</span>
+                  <div className="min-w-0">
+                    <div className="text-[10.5px] font-bold tracking-[0.2em] uppercase text-[#00A6CB]">The Complete Guide</div>
+                    <h2 className="font-bold font-display text-lg lg:text-xl text-slate-900 tracking-tight truncate">{disease.title}: Causes, Symptoms & Treatment</h2>
+                    <div className="text-[11px] text-slate-500 mt-0.5">Pages {disease.pages?.[0]}–{disease.pages?.[1]} • Reviewed by Dr. Shahnawaz Kazi FMRF FRCS</div>
                   </div>
                 </header>
 
@@ -753,244 +671,206 @@ export default function EyeDiseaseDetailPage() {
 
                 {/* FAQ accordion */}
                 {faqs.length > 0 && (
-                  <div className="mt-16">
-                    <div className="flex items-center gap-4">
-                      <span className="text-[10.5px] font-bold uppercase tracking-[0.32em] text-[#0B4DA2]">Answers</span>
-                      <span className="h-px flex-1 bg-slate-950/10" />
-                      <HelpCircle size={16} className="text-[#0B4DA2]" />
+                  <div className="mt-14">
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="shrink-0 w-11 h-11 rounded-2xl bg-gradient-to-br from-[#00A6CB] to-[#00D4AA] text-white flex items-center justify-center shadow-lg shadow-cyan-700/20">
+                        <HelpCircle size={19} />
+                      </span>
+                      <div>
+                        <h3 className="text-[22px] lg:text-[26px] font-bold font-display tracking-tight text-slate-900">Frequently Asked Questions</h3>
+                        <div className="h-1 w-16 rounded-full bg-gradient-to-r from-[#00A6CB] to-[#00D4AA] mt-2" />
+                      </div>
                     </div>
-                    <h3 className="mt-4 font-display text-[24px] font-bold tracking-tight text-slate-950 lg:text-[30px]">Frequently asked questions</h3>
-                    <div className="mt-7 border-t border-slate-950/15">
+                    <div className="space-y-3">
                       {faqs.map((f, i) => (
-                        <details key={i} className="group border-b border-slate-950/15 transition-colors open:bg-[#FAF8F4]">
-                          <summary className="flex cursor-pointer list-none items-center gap-4 px-2 py-5 [&::-webkit-details-marker]:hidden md:gap-6">
-                            <span className="w-8 shrink-0 font-display text-[14px] font-extrabold text-slate-300 transition-colors group-open:text-[#0B4DA2]">{String(i + 1).padStart(2, '0')}</span>
-                            <span className="flex-1 font-display text-[14.5px] font-bold leading-snug text-slate-950 md:text-[16px]">{f.q}</span>
-                            <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-slate-950/20 text-slate-950 transition-all duration-300 group-open:rotate-45 group-open:border-[#101418] group-open:bg-[#101418] group-open:text-white">
+                        <details key={i} className="group bg-[#F8FAFC] border border-slate-200/80 rounded-2xl px-5 py-4 open:bg-white open:border-[#0B4DA2]/25 open:shadow-lg open:shadow-blue-900/5 transition-all duration-300">
+                          <summary className="font-semibold text-[14px] text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4 [&::-webkit-details-marker]:hidden">
+                            <span className="flex items-start gap-3">
+                              <span className="shrink-0 w-6 h-6 rounded-lg bg-[#E6F0FF] text-[#0B4DA2] text-[11px] font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                              {f.q}
+                            </span>
+                            <span className="shrink-0 w-7 h-7 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center group-open:rotate-45 group-open:bg-[#0B4DA2] group-open:text-white group-open:border-[#0B4DA2] transition-all duration-300">
                               <Plus size={14} />
                             </span>
                           </summary>
-                          <p className="pb-6 pl-12 pr-8 text-[13.5px] leading-[1.85] text-slate-600 md:pl-[72px]">{f.a}</p>
+                          <p className="text-[13.5px] text-slate-600 leading-relaxed mt-3.5 pl-9">{f.a}</p>
                         </details>
                       ))}
                     </div>
                   </div>
                 )}
 
-                {/* Consultation CTA — ink block */}
-                <div className="mt-16 border border-slate-950 bg-[#101418] text-[#FAF8F4] shadow-[12px_12px_0_rgba(11,77,162,0.18)]">
-                  <div className="flex items-center justify-between gap-4 border-b border-white/10 px-6 py-3 text-[9.5px] font-bold uppercase tracking-[0.28em] text-white/50 lg:px-10">
-                    <span>Ashu Laser Vision — Andheri West</span>
-                    <span className="hidden sm:block">Same-day appointments</span>
-                  </div>
-                  <div className="px-6 py-10 lg:px-10 lg:py-12">
-                    <h3 className="max-w-2xl font-display text-[26px] font-extrabold leading-[1.04] tracking-tight lg:text-[36px]">
-                      Worried it might be {disease.title}? Get a definitive answer.
-                    </h3>
-                    <p className="mt-4 max-w-2xl text-[13.5px] leading-relaxed text-slate-300">
-                      Early diagnosis prevents vision loss. Book a comprehensive eye exam with OCT, FFA &amp; Pentacam — 20+ years of excellence and 50,000+ successful surgeries.
-                    </p>
-                    <div className="mt-7 flex flex-wrap gap-3">
-                      <Link to="/contact" className="flex items-center gap-2.5 bg-[#FAF8F4] px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#101418] transition-colors hover:bg-[#00D4AA]">
-                        <Calendar size={14} /> Book consultation
+                {/* Inline consult CTA */}
+                <div className="mt-14 relative overflow-hidden rounded-[26px] bg-[#07152E] text-white p-7 lg:p-10">
+                  <div className="absolute -top-20 -right-16 w-72 h-72 bg-[#0B4DA2]/50 rounded-full blur-[70px]" />
+                  <div className="absolute -bottom-24 -left-10 w-64 h-64 bg-[#00D4AA]/20 rounded-full blur-[70px]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+                  <div className="relative">
+                    <div className="inline-flex items-center gap-1.5 bg-[#00D4AA]/15 text-[#00D4AA] border border-[#00D4AA]/30 text-[10px] font-bold tracking-[0.18em] uppercase px-3 py-1.5 rounded-full">Same-Day Appointments</div>
+                    <h3 className="mt-4 text-[24px] lg:text-[30px] font-bold font-display tracking-tight leading-tight">Concerned about {disease.title}?</h3>
+                    <p className="text-slate-300 text-[14px] mt-3 leading-relaxed max-w-2xl">Early diagnosis prevents vision loss. Book a comprehensive eye exam with OCT, FFA & Pentacam at Ashu Laser Vision, Andheri West — 20+ years of excellence and 50,000+ successful surgeries.</p>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <Link to="/contact" className="bg-white text-slate-950 px-6 py-3 rounded-full font-bold text-sm hover:bg-[#00D4AA] transition flex items-center gap-2">
+                        <Calendar size={15} /> Book Consultation
                       </Link>
-                      <a href="tel:+919322364002" className="flex items-center gap-2.5 border border-white/25 px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors hover:bg-white/10">
-                        <Phone size={14} /> +91 93223 64002
+                      <a href="tel:+919322364002" className="bg-white/[0.08] border border-white/15 px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/[0.16] transition flex items-center gap-2">
+                        <Phone size={15} /> +91 93223 64002
                       </a>
                     </div>
                   </div>
                 </div>
 
                 {/* Disclaimer */}
-                <div className="mt-8 flex gap-4 border border-amber-600/30 bg-amber-50/70 p-5">
-                  <AlertTriangle size={18} className="mt-0.5 shrink-0 text-amber-600" />
-                  <p className="text-[12.5px] leading-relaxed text-amber-900">
-                    <span className="font-bold">Medical disclaimer.</span> This guide is for education only and does not replace professional medical advice. For diagnosis and treatment of {disease.title}, consult Dr. Shahnawaz Kazi at Ashu Laser Vision, Andheri West, Mumbai. Eye emergency? Call +91 93223 64002 — 24×7.
-                  </p>
+                <div className="mt-8 bg-amber-50/80 border border-amber-200/80 rounded-2xl p-5 flex gap-3.5">
+                  <span className="w-9 h-9 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0"><AlertTriangle size={17} /></span>
+                  <div className="text-[12.5px] leading-relaxed text-amber-900">
+                    <span className="font-bold">Medical Disclaimer:</span> This guide is for educational purposes only and does not replace professional medical advice. For diagnosis and treatment of {disease.title}, consult Dr. Shahnawaz Kazi at Ashu Laser Vision, Andheri West, Mumbai. Emergency? Call 93223 64002 — 24x7.
+                  </div>
                 </div>
               </article>
             </div>
 
-            {/* Right rail */}
-            <aside className="hidden self-start lg:block">
-              <div className="sticky top-[160px] space-y-5">
-
-                {/* Reading progress */}
-                <div className={`flex items-center gap-4 border ${HAIRLINE} bg-white p-5 shadow-[8px_8px_0_rgba(16,20,24,0.05)]`}>
-                  <div className="relative h-14 w-14 shrink-0">
-                    <svg viewBox="0 0 56 56" className="h-14 w-14 -rotate-90">
-                      <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(16,20,24,0.1)" strokeWidth="3" />
-                      <motion.circle
-                        cx="28" cy="28" r="24" fill="none"
-                        stroke="#0B4DA2" strokeWidth="3" strokeLinecap="butt"
-                        strokeDasharray={RING_C}
-                        style={{ strokeDashoffset: ringOffset }}
-                      />
-                    </svg>
-                    <BookOpen size={15} className="absolute inset-0 m-auto text-[#0B4DA2]" />
+            {/* Right sidebar */}
+            <aside className="space-y-5 lg:sticky lg:top-[108px] self-start">
+              {/* Booking card */}
+              <div className="relative overflow-hidden bg-gradient-to-b from-[#0B4DA2] to-[#083A7A] text-white rounded-[24px] p-6 shadow-[0_20px_60px_rgba(8,58,122,0.35)]">
+                <div className="absolute -top-14 -right-14 w-48 h-48 bg-[#00A6CB]/30 rounded-full blur-[50px]" />
+                <div className="relative">
+                  <h4 className="font-bold font-display text-lg flex items-center gap-2"><Calendar size={17} /> Book Expert Consultation</h4>
+                  <p className="text-blue-100 text-[12.5px] mt-2 leading-relaxed">Get {disease.title} evaluated by Dr. Shahnawaz Kazi — Gold Medalist FCPS, FRCS Glasgow.</p>
+                  <div className="mt-5 space-y-2.5">
+                    <Link to="/contact" className="w-full bg-white text-[#0B4DA2] py-3 rounded-full font-bold text-[13px] flex items-center justify-center gap-2 hover:bg-[#00D4AA] hover:text-slate-950 transition"><Calendar size={15} /> Book Appointment</Link>
+                    <a href="tel:+919322364002" className="w-full bg-white/10 border border-white/20 py-3 rounded-full font-semibold text-[13px] flex items-center justify-center gap-2 hover:bg-white/20 transition"><Phone size={15} /> +91 93223 64002</a>
+                    <a href="https://wa.me/919322364002" target="_blank" rel="noopener noreferrer" className="w-full bg-[#25D366] py-3 rounded-full font-semibold text-[13px] flex items-center justify-center gap-2 hover:bg-[#1EBE5D] transition"><WhatsAppIcon size={15} /> WhatsApp Us</a>
                   </div>
-                  <div className="min-w-0">
-                    <div className="text-[9.5px] font-bold uppercase tracking-[0.26em] text-slate-500">Reading progress</div>
-                    <motion.div className="mt-1 font-display text-[22px] font-extrabold leading-none text-slate-950">{progressPct}</motion.div>
-                    <div className="mt-1 text-[10.5px] text-slate-400">{tocH2.length} chapters</div>
+                  <div className="mt-5 pt-4 border-t border-white/15 space-y-2 text-[11.5px] text-blue-100">
+                    <div className="flex gap-2 items-center"><MapPin size={13} className="shrink-0 text-[#00D4AA]" /> Opp Andheri Rly Platform 1, Andheri West</div>
+                    <div className="flex gap-2 items-center"><Clock size={13} className="shrink-0 text-[#00D4AA]" /> Mon–Sat 10AM–8PM • 24x7 Emergency</div>
                   </div>
                 </div>
+              </div>
 
-                {/* Specialist card */}
-                <div className="border border-slate-950 bg-[#101418] text-[#FAF8F4] shadow-[8px_8px_0_rgba(16,20,24,0.15)]">
-                  <div className="flex items-center justify-between border-b border-white/10 px-5 py-3 text-[9.5px] font-bold uppercase tracking-[0.28em] text-white/50">
-                    <span>Your specialist</span>
-                    <Stethoscope size={13} />
-                  </div>
-                  <div className="p-5">
-                    <div className="font-display text-[19px] font-bold leading-tight">Dr. Shahnawaz Kazi</div>
-                    <div className="mt-1 text-[9.5px] font-bold uppercase tracking-[0.2em] text-[#8FD8CB]">FMRF · FRCS Glasgow · Gold Medalist</div>
-                    <p className="mt-3 text-[12.5px] leading-relaxed text-slate-300">
-                      Get {disease.title} evaluated with OCT, FFA &amp; Pentacam diagnostics by the Founder &amp; Medical Director.
-                    </p>
-                    <div className="mt-5 space-y-2">
-                      <Link to="/contact" className="flex w-full items-center justify-center gap-2 bg-[#FAF8F4] py-3 text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#101418] transition-colors hover:bg-[#00D4AA]"><Calendar size={13} /> Book appointment</Link>
-                      <a href="tel:+919322364002" className="flex w-full items-center justify-center gap-2 border border-white/25 py-3 text-[10.5px] font-bold uppercase tracking-[0.16em] transition-colors hover:bg-white/10"><Phone size={13} /> +91 93223 64002</a>
-                      <a href="https://wa.me/919322364002" target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center gap-2 bg-[#25D366] py-3 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#1EBE5D]"><WhatsAppIcon size={14} /> WhatsApp</a>
-                    </div>
-                    <div className="mt-5 space-y-2.5 border-t border-white/10 pt-4 text-[11.5px] leading-relaxed text-slate-300">
-                      <div className="flex items-start gap-2"><MapPin size={13} className="mt-0.5 shrink-0 text-[#8FD8CB]" /> Opp. Andheri Railway Platform 1, Andheri West, Mumbai</div>
-                      <div className="flex items-start gap-2"><Clock size={13} className="mt-0.5 shrink-0 text-[#8FD8CB]" /> Mon–Sat 10 AM–8 PM · 24×7 emergency</div>
-                    </div>
+              {/* Prev / Next */}
+              <div className="bg-white border border-slate-200/80 rounded-[24px] p-5 shadow-sm">
+                <h4 className="font-bold text-[11px] uppercase tracking-[0.18em] text-slate-900">Navigate Guides</h4>
+                <div className="mt-4 space-y-2.5">
+                  {prevDisease && (
+                    <Link to={`/eye-diseases/${prevDisease.slug}`} className="group flex items-center gap-3 rounded-2xl border border-slate-200/80 p-3.5 hover:border-[#0B4DA2]/30 hover:bg-[#F0F7FF] transition">
+                      <span className="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 group-hover:bg-[#0B4DA2] group-hover:text-white transition"><ArrowLeft size={14} /></span>
+                      <div className="min-w-0">
+                        <div className="text-[9.5px] uppercase tracking-[0.18em] font-bold text-slate-400">Previous • #{String(prevDisease.index).padStart(3, '0')}</div>
+                        <div className="text-[13px] font-semibold text-slate-900 group-hover:text-[#0B4DA2] truncate mt-0.5">{prevDisease.title}</div>
+                      </div>
+                    </Link>
+                  )}
+                  {nextDisease && (
+                    <Link to={`/eye-diseases/${nextDisease.slug}`} className="group flex items-center gap-3 rounded-2xl border border-slate-200/80 p-3.5 hover:border-[#0B4DA2]/30 hover:bg-[#F0F7FF] transition">
+                      <div className="min-w-0 flex-1 text-right">
+                        <div className="text-[9.5px] uppercase tracking-[0.18em] font-bold text-slate-400">Next • #{String(nextDisease.index).padStart(3, '0')}</div>
+                        <div className="text-[13px] font-semibold text-slate-900 group-hover:text-[#0B4DA2] truncate mt-0.5">{nextDisease.title}</div>
+                      </div>
+                      <span className="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 group-hover:bg-[#0B4DA2] group-hover:text-white transition"><ArrowRight size={14} /></span>
+                    </Link>
+                  )}
+                </div>
+                <Link to="/eye-diseases" className="mt-4 w-full bg-slate-950 text-white py-3 rounded-full text-[12px] font-bold flex items-center justify-center gap-2 hover:bg-[#0B4DA2] transition">
+                  Browse All {eyeDiseases.length} Guides <ArrowRight size={13} />
+                </Link>
+              </div>
+
+              {/* Group chips */}
+              {group && (
+                <div className="bg-white border border-slate-200/80 rounded-[24px] p-5 shadow-sm">
+                  <h4 className="font-bold text-[11px] uppercase tracking-[0.18em] text-slate-900">More in {group.label}</h4>
+                  <p className="text-[11.5px] text-slate-500 mt-1.5 leading-relaxed">{group.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {group.slugs.slice(0, 12).map(s => {
+                      const dd = eyeDiseases.find(x => x.slug === s);
+                      if (!dd) return null;
+                      return (
+                        <Link key={s} to={`/eye-diseases/${s}`} className={`text-[11px] px-3 py-1.5 rounded-full border font-medium transition ${s === disease.slug ? 'bg-[#0B4DA2] text-white border-[#0B4DA2] shadow-md shadow-blue-900/20' : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-[#E6F0FF] hover:border-[#0B4DA2]/30 hover:text-[#0B4DA2]'}`}>
+                          {dd.title}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
+              )}
 
-                {/* Group chips */}
-                {group && (
-                  <div className={`border ${HAIRLINE} bg-white p-5 shadow-[8px_8px_0_rgba(16,20,24,0.05)]`}>
-                    <h4 className="text-[9.5px] font-bold uppercase tracking-[0.26em] text-slate-500">More in — {group.label}</h4>
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {group.slugs.slice(0, 10).map(s => {
-                        const dd = eyeDiseases.find(x => x.slug === s);
-                        if (!dd) return null;
-                        return (
-                          <Link
-                            key={s}
-                            to={`/eye-diseases/${s}`}
-                            className={`border px-2.5 py-1.5 text-[11px] font-medium transition-colors ${s === disease.slug ? 'border-[#0B4DA2] bg-[#0B4DA2] text-white' : 'border-slate-950/15 text-slate-600 hover:border-[#101418] hover:bg-[#101418] hover:text-white'}`}
-                          >
-                            {dd.title}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-
-                {/* Emergency */}
-                <div className="border border-red-600/40 bg-white p-5 shadow-[8px_8px_0_rgba(220,38,38,0.12)]">
-                  <div className="flex items-center justify-between text-[9.5px] font-bold uppercase tracking-[0.26em] text-red-600">
-                    <span>Eye emergency — 24×7</span>
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-60" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-red-600" />
-                    </span>
-                  </div>
-                  <p className="mt-3 text-[12px] leading-relaxed text-slate-600">Sudden vision loss, flashes, injury or chemical splash — do not wait for an appointment.</p>
-                  <a href="tel:+919322364002" className="mt-4 flex items-center justify-center gap-2 bg-red-600 py-3 text-[10.5px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-red-700"><Phone size={13} /> Call now</a>
+              {/* Emergency */}
+              <div className="bg-gradient-to-br from-red-50 to-orange-50 border border-red-200/70 rounded-[24px] p-5">
+                <div className="flex items-center gap-2.5 font-bold text-sm text-red-700">
+                  <span className="relative flex w-2.5 h-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-60" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
+                  </span>
+                  Eye Emergency? 24x7 Help
                 </div>
+                <p className="text-[12px] text-slate-600 mt-2.5 leading-relaxed">Flashes, sudden vision loss, eye injury or chemical splash — do not wait. Our trauma OT is ready round the clock.</p>
+                <a href="tel:+919322364002" className="mt-3.5 block bg-red-600 text-white text-center py-3 rounded-full text-[13px] font-bold hover:bg-red-700 transition shadow-lg shadow-red-600/25">Emergency Call Now</a>
               </div>
             </aside>
           </div>
         </div>
       </section>
 
-      {/* ================= RELATED — THE INDEX ================= */}
+      {/* ---------- RELATED CONDITIONS ---------- */}
       {related.length > 0 && (
-        <section className="border-t border-slate-950/15" style={{ backgroundColor: PAPER, ...NOISE }}>
-          <div className="mx-auto max-w-[1440px] px-4 py-14 md:px-6 lg:px-8 lg:py-20">
-            <div className="flex flex-wrap items-end justify-between gap-5">
+        <section className="bg-white border-t border-slate-100 py-12 lg:py-16">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
+            <div className="flex items-end justify-between gap-6 mb-7">
               <div>
-                <div className="flex items-center gap-4">
-                  <span className="text-[10.5px] font-bold uppercase tracking-[0.32em] text-[#0B4DA2]">Keep exploring</span>
-                  <span className="h-px w-16 bg-slate-950/20" />
-                </div>
-                <h3 className="mt-4 font-display text-[28px] font-extrabold tracking-tight text-slate-950 lg:text-[40px]">Related conditions</h3>
+                <div className="text-[10.5px] font-bold tracking-[0.2em] uppercase text-[#00A6CB]">Keep Exploring</div>
+                <h3 className="text-[26px] lg:text-[32px] font-bold font-display tracking-tight text-slate-900 mt-2">Related Eye Conditions</h3>
+                <div className="h-1 w-20 rounded-full bg-gradient-to-r from-[#0B4DA2] to-[#00D4AA] mt-3" />
               </div>
-              <Link to="/eye-diseases" className="flex items-center gap-2.5 border border-slate-950/20 bg-white/60 px-5 py-3 text-[10.5px] font-bold uppercase tracking-[0.18em] text-slate-950 transition-colors hover:border-slate-950 hover:bg-white">
-                The complete index <ArrowRight size={13} />
+              <Link to="/eye-diseases" className="hidden md:flex shrink-0 items-center gap-2 border border-slate-200 px-5 py-2.5 rounded-full text-[12.5px] font-bold text-slate-700 hover:border-[#0B4DA2] hover:text-[#0B4DA2] transition">
+                View all 151 <ArrowRight size={14} />
               </Link>
             </div>
-
-            <div className="mt-10 border-t-2 border-slate-950">
-              {related.slice(0, 6).map((r, i) => {
+            <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory [scrollbar-width:thin]">
+              {related.map(r => {
                 const thumb = relatedThumb(r);
                 return (
-                  <Link
-                    key={r.slug}
-                    to={`/eye-diseases/${r.slug}`}
-                    className="group grid grid-cols-[42px_minmax(0,1fr)_44px] items-center gap-4 border-b border-slate-950/15 px-2 py-5 transition-colors hover:bg-white md:grid-cols-[60px_minmax(0,1fr)_minmax(0,380px)_96px_48px] md:gap-6 md:px-4 lg:grid-cols-[60px_minmax(0,380px)_minmax(0,1fr)_96px_48px]"
-                  >
-                    <span className="font-display text-[22px] font-extrabold leading-none text-slate-950/15 transition-colors group-hover:text-[#0B4DA2] md:text-[26px]">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="min-w-0">
-                      <span className="block truncate font-display text-[16px] font-bold leading-snug text-slate-950 md:text-[19px]">{r.title}</span>
-                      <span className="mt-1 hidden text-[11px] uppercase tracking-[0.18em] text-slate-400 md:block">Guide Nº {pad(r.index)}</span>
-                    </span>
-                    <span className="hidden min-w-0 md:block">
-                      <span className="line-clamp-2 text-[12.5px] leading-relaxed text-slate-500">{cleanLede(r.title, r.shortDesc)}</span>
-                    </span>
-                    <span className="hidden h-16 w-24 overflow-hidden border border-slate-950/15 bg-[#101418] md:block">
-                      {thumb
-                        ? <img src={thumb} alt={r.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                        : <span className="flex h-full w-full items-center justify-center text-white/40"><Eye size={18} /></span>}
-                    </span>
-                    <span className="flex h-11 w-11 items-center justify-center justify-self-end border border-slate-950/20 text-slate-950 transition-all duration-300 group-hover:border-[#101418] group-hover:bg-[#101418] group-hover:text-[#FAF8F4]">
-                      <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:rotate-45" />
-                    </span>
+                  <Link key={r.slug} to={`/eye-diseases/${r.slug}`} className="group snap-start shrink-0 w-[250px] bg-white border border-slate-200/80 rounded-[20px] overflow-hidden hover:border-[#0B4DA2]/30 hover:shadow-[0_18px_50px_rgba(8,58,122,0.12)] hover:-translate-y-1 transition-all duration-300">
+                    <div className="aspect-[16/10] bg-[#F0F7FF] overflow-hidden relative">
+                      {thumb ? (
+                        <img src={thumb} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-[#0B4DA2]/30"><Eye size={34} /></div>
+                      )}
+                      <span className="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#0B4DA2] text-[9.5px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full">Guide #{String(r.index).padStart(3, '0')}</span>
+                    </div>
+                    <div className="p-4">
+                      <div className="text-[13.5px] font-bold text-slate-900 group-hover:text-[#0B4DA2] transition line-clamp-1">{r.title}</div>
+                      <div className="text-[11.5px] text-slate-500 mt-1.5 leading-relaxed line-clamp-2">{r.shortDesc}</div>
+                      <div className="mt-3 flex items-center gap-1 text-[11px] font-bold text-[#0B4DA2]">
+                        Read guide <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
                   </Link>
                 );
               })}
-            </div>
-
-            <div className="mt-9 text-center md:text-left">
-              <Link to="/eye-diseases" className="inline-flex items-center gap-3 bg-[#101418] px-8 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#0B4DA2]">
-                Browse all {eyeDiseases.length} guides <ArrowRight size={14} />
+              <Link to="/eye-diseases" className="snap-start shrink-0 w-[160px] rounded-[20px] bg-slate-950 text-white flex flex-col items-center justify-center gap-3 hover:bg-[#0B4DA2] transition p-6 text-center">
+                <span className="w-11 h-11 rounded-full bg-white/10 border border-white/15 flex items-center justify-center"><ArrowRight size={18} /></span>
+                <span className="text-[12px] font-bold leading-snug">View all {eyeDiseases.length} conditions</span>
               </Link>
             </div>
           </div>
         </section>
       )}
 
-      {/* ================= PREV / NEXT ================= */}
-      {(prevDisease || nextDisease) && (
-        <section className="border-t border-slate-950/15 bg-white">
-          <div className="grid divide-y divide-slate-950/15 md:grid-cols-2 md:divide-x md:divide-y-0">
-            {prevDisease ? (
-              <Link to={`/eye-diseases/${prevDisease.slug}`} className="group flex flex-col gap-4 px-6 py-12 transition-colors hover:bg-[#101418] lg:px-14 lg:py-16">
-                <span className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.28em] text-slate-500 transition-colors group-hover:text-white/60">
-                  <ArrowLeft size={14} className="transition-transform duration-300 group-hover:-translate-x-1.5" /> Previous — Nº {pad(prevDisease.index)}
-                </span>
-                <span className="font-display text-[24px] font-extrabold leading-tight tracking-tight text-slate-950 transition-colors group-hover:text-[#FAF8F4] lg:text-[34px]">{prevDisease.title}</span>
-              </Link>
-            ) : <div className="hidden md:block" />}
-            {nextDisease ? (
-              <Link to={`/eye-diseases/${nextDisease.slug}`} className="group flex flex-col items-start gap-4 px-6 py-12 transition-colors hover:bg-[#101418] md:items-end md:text-right lg:px-14 lg:py-16">
-                <span className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.28em] text-slate-500 transition-colors group-hover:text-white/60">
-                  Next — Nº {pad(nextDisease.index)} <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1.5" />
-                </span>
-                <span className="font-display text-[24px] font-extrabold leading-tight tracking-tight text-slate-950 transition-colors group-hover:text-[#FAF8F4] lg:text-[34px]">{nextDisease.title}</span>
-              </Link>
-            ) : <div className="hidden md:block" />}
-          </div>
-        </section>
-      )}
-
-      {/* Persistent thumb-friendly action for mobile visitors */}
+      {/* Persistent, thumb-friendly action for mobile visitors. */}
       {showMobileCta && (
-        <div className="fixed inset-x-3 bottom-3 z-50 md:hidden">
-          <div className="flex items-stretch gap-2 border border-white/15 bg-[#101418]/95 p-2 shadow-[0_18px_55px_rgba(16,20,24,0.45)] backdrop-blur-xl">
-            <Link to="/contact" className="flex min-w-0 flex-1 items-center justify-center gap-2 bg-[#00D4AA] px-3 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-[#101418] transition active:scale-[0.98]">
-              <Calendar size={15} /> Book an eye exam
+        <div className="fixed inset-x-3 bottom-3 z-50 md:hidden motion-safe:animate-[fade-in_300ms_ease-out]">
+          <div className="flex items-center gap-2 rounded-[22px] border border-white/20 bg-[#07152E]/95 p-2 shadow-[0_18px_55px_rgba(7,21,46,0.42)] backdrop-blur-xl">
+            <Link to="/contact" className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-[16px] bg-[#00D4AA] px-3 py-3 text-[12px] font-bold text-slate-950 transition active:scale-[0.98]">
+              <Calendar size={15} /> Book an eye checkup
             </Link>
-            <a href="tel:+919322364002" aria-label="Call Ashu Laser Vision" className="flex w-12 shrink-0 items-center justify-center border border-white/15 bg-white/10 text-white">
+            <a href="tel:+919322364002" aria-label="Call Ashu Laser Vision" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[16px] border border-white/15 bg-white/10 text-white">
               <Phone size={17} />
             </a>
-            <button type="button" onClick={() => setShowMobileCta(false)} aria-label="Close appointment options" className="flex w-9 shrink-0 items-center justify-center text-slate-400">
+            <button type="button" onClick={() => setShowMobileCta(false)} aria-label="Close appointment options" className="flex h-9 w-7 shrink-0 items-center justify-center text-slate-400">
               <X size={15} />
             </button>
           </div>
@@ -999,3 +879,5 @@ export default function EyeDiseaseDetailPage() {
     </PageTransition>
   );
 }
+
+
