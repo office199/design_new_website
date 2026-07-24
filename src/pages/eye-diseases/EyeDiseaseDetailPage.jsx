@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ChevronRight, Eye, ShieldCheck, BookOpen, Share2, Phone, Calendar, AlertTriangle, CheckCircle2, HelpCircle, Stethoscope, Loader2, ScrollText, MapPin, Clock, Plus, Sparkles, FileText } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronRight, Eye, ShieldCheck, BookOpen, Share2, Phone, Calendar, AlertTriangle, CheckCircle2, HelpCircle, Stethoscope, Loader2, ScrollText, MapPin, Clock, Plus, Sparkles, FileText, ClipboardCheck, Activity, X } from 'lucide-react';
 import SEO from '../../components/SEO';
 import PageTransition from '../../components/animations/PageTransition';
 import { getDiseaseBySlug as getMetaBySlug, eyeDiseases, eyeDiseaseGroups } from '../../data/eyeDiseasesMeta';
@@ -187,7 +187,24 @@ export default function EyeDiseaseDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeId, setActiveId] = useState(null);
+  const [shareStatus, setShareStatus] = useState('');
+  const [showMobileCta, setShowMobileCta] = useState(true);
   const { scrollYProgress } = useScroll();
+
+  const shareGuide = async () => {
+    const shareData = { title: disease?.title || 'Eye health guide', url: window.location.href };
+    try {
+      if (navigator.share) await navigator.share(shareData);
+      else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(window.location.href);
+        setShareStatus('Link copied');
+        window.setTimeout(() => setShareStatus(''), 2200);
+      }
+    } catch (err) {
+      // A dismissed native share sheet is not an error the visitor needs to see.
+      if (err?.name !== 'AbortError') setShareStatus('Unable to share');
+    }
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -440,10 +457,13 @@ export default function EyeDiseaseDetailPage() {
             </nav>
             <div className="flex items-center gap-2 shrink-0">
               <button
-                onClick={() => navigator.share ? navigator.share({ title: disease.title, url: window.location.href }) : navigator.clipboard.writeText(window.location.href)}
-                className="hidden md:flex items-center gap-1.5 bg-white/[0.07] backdrop-blur border border-white/10 px-3.5 py-2 rounded-full text-xs font-medium hover:bg-white/[0.14] transition"
+                type="button"
+                onClick={shareGuide}
+                aria-live="polite"
+                className="hidden md:flex items-center gap-1.5 bg-white/[0.07] backdrop-blur border border-white/10 px-3.5 py-2 rounded-full text-xs font-medium hover:bg-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00D4AA] transition"
               >
-                <Share2 size={13} /> Share Guide
+                {shareStatus === 'Link copied' ? <ClipboardCheck size={13} className="text-[#00D4AA]" /> : <Share2 size={13} />}
+                {shareStatus || 'Share Guide'}
               </button>
               <Link to="/eye-diseases" className="flex items-center gap-1.5 bg-white text-slate-900 px-3.5 py-2 rounded-full text-xs font-bold hover:bg-[#00D4AA] hover:text-slate-950 transition">
                 <ArrowLeft size={13} /> All {eyeDiseases.length}
@@ -544,10 +564,20 @@ export default function EyeDiseaseDetailPage() {
                   )}
                 </div>
               ) : (
-                <div className="relative max-w-[520px] mx-auto rounded-[28px] border border-dashed border-white/20 bg-white/[0.04] backdrop-blur p-10 text-center aspect-[4/3] flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-2xl bg-white/[0.08] border border-white/10 flex items-center justify-center mb-4"><Eye size={28} className="text-[#00A6CB]" /></div>
-                  <div className="text-sm font-semibold text-slate-200">Clinical illustrations for {disease.title}</div>
-                  <div className="text-xs text-slate-400 mt-1.5">Available during consultation at Ashu Laser Vision</div>
+                <div className="relative isolate max-w-[520px] mx-auto rounded-[32px] border border-white/15 bg-gradient-to-br from-white/[0.10] to-white/[0.03] backdrop-blur p-7 md:p-10 aspect-[4/3] overflow-hidden flex flex-col justify-between shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+                  <div className="absolute -right-16 -top-16 h-72 w-72 rounded-full border border-[#00D4AA]/20" />
+                  <div className="absolute -right-4 -top-4 h-48 w-48 rounded-full border border-[#00A6CB]/25" />
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00D4AA]/70 to-transparent" />
+                  <div className="relative flex items-center justify-between">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-[#07152E]/30 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-300"><Activity size={13} className="text-[#00D4AA]" /> Clinical guide</span>
+                    <span className="text-[10px] font-semibold text-slate-400">ASHU LASER VISION</span>
+                  </div>
+                  <div className="relative">
+                    <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-[28px] border border-[#00D4AA]/30 bg-[#00A6CB]/10 shadow-[0_0_45px_rgba(0,166,203,0.22)]"><Eye size={37} strokeWidth={1.5} className="text-[#6BE5F4]" /></div>
+                    <p className="max-w-sm text-xl font-bold font-display leading-tight text-white">Clear, specialist-led answers for your eye health.</p>
+                    <p className="mt-2 max-w-xs text-xs leading-relaxed text-slate-400">A personalised assessment is available at our Andheri West clinic.</p>
+                  </div>
+                  <div className="relative flex items-center gap-2 text-[11px] font-medium text-[#A7F3D0]"><ClipboardCheck size={15} /> Reviewed patient education</div>
                 </div>
               )}
             </div>
@@ -828,6 +858,23 @@ export default function EyeDiseaseDetailPage() {
             </div>
           </div>
         </section>
+      )}
+
+      {/* Persistent, thumb-friendly action for mobile visitors. */}
+      {showMobileCta && (
+        <div className="fixed inset-x-3 bottom-3 z-50 md:hidden motion-safe:animate-[fade-in_300ms_ease-out]">
+          <div className="flex items-center gap-2 rounded-[22px] border border-white/20 bg-[#07152E]/95 p-2 shadow-[0_18px_55px_rgba(7,21,46,0.42)] backdrop-blur-xl">
+            <Link to="/contact" className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-[16px] bg-[#00D4AA] px-3 py-3 text-[12px] font-bold text-slate-950 transition active:scale-[0.98]">
+              <Calendar size={15} /> Book an eye checkup
+            </Link>
+            <a href="tel:+919322364002" aria-label="Call Ashu Laser Vision" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[16px] border border-white/15 bg-white/10 text-white">
+              <Phone size={17} />
+            </a>
+            <button type="button" onClick={() => setShowMobileCta(false)} aria-label="Close appointment options" className="flex h-9 w-7 shrink-0 items-center justify-center text-slate-400">
+              <X size={15} />
+            </button>
+          </div>
+        </div>
       )}
     </PageTransition>
   );
