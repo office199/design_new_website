@@ -188,7 +188,7 @@ export default function EyeDiseasesPage() {
                       {String(d.index).padStart(3,'0')}
                     </div>
                     <div className="flex gap-1">
-                      {d.images.length>0 && (
+                      {d.images && d.images.length > 0 && (
                         <span className="bg-slate-100 text-slate-600 text-[10px] px-2 py-1 rounded-full font-medium">{d.images.length} img</span>
                       )}
                       <span className="bg-blue-50 text-[#0B4DA2] text-[10px] px-2 py-1 rounded-full font-medium">Guide</span>
@@ -202,7 +202,7 @@ export default function EyeDiseasesPage() {
 
                   <div className="mt-5 pt-4 border-t border-slate-50 flex items-center justify-between">
                     <div className="text-[11px] text-slate-400">
-                      Pages {d.pages[0]}–{d.pages[1]} • Ashu Laser Vision
+                      {d.pages && d.pages[0] && d.pages[1] ? `Pages ${d.pages[0]}–${d.pages[1]} • ` : ''}Ashu Laser Vision
                     </div>
                     <Link to={`/eye-diseases/${d.slug}`} className="inline-flex items-center gap-1.5 bg-slate-900 text-white px-4 py-2 rounded-full text-xs font-semibold group-hover:bg-[#0B4DA2] transition">
                       Read Guide <ArrowRight size={12} />
