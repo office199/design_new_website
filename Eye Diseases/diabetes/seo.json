@@ -1,0 +1,30 @@
+{
+  "slug": "diabetes",
+  "title": "Diabetes - Causes, Symptoms, Diagnosis & Treatment | Ashu Laser Vision Mumbai",
+  "description": "Learn about Diabetes: causes, symptoms, diagnosis, treatment, prevention & FAQs. Expert eye care by Dr. Shahnawaz Kazi at Ashu Laser Vision, Andheri Mumbai.",
+  "canonical": "https://ashulaservision.com/eye-diseases/diabetes",
+  "breadcrumbs": [
+    {
+      "name": "Home",
+      "url": "https://ashulaservision.com/"
+    },
+    {
+      "name": "Eye Diseases & Conditions",
+      "url": "https://ashulaservision.com/eye-diseases"
+    },
+    {
+      "name": "Diabetes",
+      "url": "https://ashulaservision.com/eye-diseases/diabetes"
+    }
+  ],
+  "images": [
+    "https://ashulaservision.com/eye-diseases/012-diabetes/images/page-062-image-01.jpg",
+    "https://ashulaservision.com/eye-diseases/012-diabetes/images/page-067-image-01.jpg"
+  ],
+  "folder": "012-diabetes",
+  "index": 12,
+  "pages": [
+    61,
+    68
+  ]
+}

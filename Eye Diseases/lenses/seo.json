@@ -1,0 +1,30 @@
+{
+  "slug": "lenses",
+  "title": "Lenses - Causes, Symptoms, Diagnosis & Treatment | Ashu Laser Vision Mumbai",
+  "description": "Learn about Lenses: causes, symptoms, diagnosis, treatment, prevention & FAQs. Expert eye care by Dr. Shahnawaz Kazi at Ashu Laser Vision, Andheri Mumbai.",
+  "canonical": "https://ashulaservision.com/eye-diseases/lenses",
+  "breadcrumbs": [
+    {
+      "name": "Home",
+      "url": "https://ashulaservision.com/"
+    },
+    {
+      "name": "Eye Diseases & Conditions",
+      "url": "https://ashulaservision.com/eye-diseases"
+    },
+    {
+      "name": "Lenses",
+      "url": "https://ashulaservision.com/eye-diseases/lenses"
+    }
+  ],
+  "images": [
+    "https://ashulaservision.com/eye-diseases/008-lenses/images/page-039-image-01.jpg",
+    "https://ashulaservision.com/eye-diseases/008-lenses/images/page-043-image-01.jpg"
+  ],
+  "folder": "008-lenses",
+  "index": 8,
+  "pages": [
+    39,
+    44
+  ]
+}

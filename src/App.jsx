@@ -15,6 +15,8 @@ import ContactPage from './pages/ContactPage';
 import TechnologyPage from './pages/TechnologyPage';
 import BlogsPage from './pages/BlogsPage';
 import BlogPostDetail from './pages/BlogPostDetail';
+import EyeDiseasesPage from './pages/eye-diseases/EyeDiseasesPage';
+import EyeDiseaseDetailPage from './pages/eye-diseases/EyeDiseaseDetailPage';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -25,6 +27,9 @@ function AnimatedRoutes() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/:id" element={<ServiceDetail />} />
+        <Route path="/eye-diseases" element={<EyeDiseasesPage />} />
+        <Route path="/eye-diseases/:slug" element={<EyeDiseaseDetailPage />} />
+        <Route path="/eye-diseases-and-conditions" element={<EyeDiseasesPage />} />
         <Route path="/doctor" element={<DoctorPage />} />
         <Route path="/technology" element={<TechnologyPage />} />
         <Route path="/blogs" element={<BlogsPage />} />

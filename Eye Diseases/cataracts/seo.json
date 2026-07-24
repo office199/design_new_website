@@ -1,0 +1,30 @@
+{
+  "slug": "cataracts",
+  "title": "Cataracts - Causes, Symptoms, Diagnosis & Treatment | Ashu Laser Vision Mumbai",
+  "description": "Learn about Cataracts: causes, symptoms, diagnosis, treatment, prevention & FAQs. Expert eye care by Dr. Shahnawaz Kazi at Ashu Laser Vision, Andheri Mumbai.",
+  "canonical": "https://ashulaservision.com/eye-diseases/cataracts",
+  "breadcrumbs": [
+    {
+      "name": "Home",
+      "url": "https://ashulaservision.com/"
+    },
+    {
+      "name": "Eye Diseases & Conditions",
+      "url": "https://ashulaservision.com/eye-diseases"
+    },
+    {
+      "name": "Cataracts",
+      "url": "https://ashulaservision.com/eye-diseases/cataracts"
+    }
+  ],
+  "images": [
+    "https://ashulaservision.com/eye-diseases/016-cataracts/images/page-090-image-01.jpg",
+    "https://ashulaservision.com/eye-diseases/016-cataracts/images/page-094-image-01.jpg"
+  ],
+  "folder": "016-cataracts",
+  "index": 16,
+  "pages": [
+    89,
+    95
+  ]
+}

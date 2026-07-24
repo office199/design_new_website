@@ -1,0 +1,30 @@
+{
+  "slug": "retina",
+  "title": "Retina - Causes, Symptoms, Diagnosis & Treatment | Ashu Laser Vision Mumbai",
+  "description": "Learn about Retina: causes, symptoms, diagnosis, treatment, prevention & FAQs. Expert eye care by Dr. Shahnawaz Kazi at Ashu Laser Vision, Andheri Mumbai.",
+  "canonical": "https://ashulaservision.com/eye-diseases/retina",
+  "breadcrumbs": [
+    {
+      "name": "Home",
+      "url": "https://ashulaservision.com/"
+    },
+    {
+      "name": "Eye Diseases & Conditions",
+      "url": "https://ashulaservision.com/eye-diseases"
+    },
+    {
+      "name": "Retina",
+      "url": "https://ashulaservision.com/eye-diseases/retina"
+    }
+  ],
+  "images": [
+    "https://ashulaservision.com/eye-diseases/007-retina/images/page-034-image-01.jpg",
+    "https://ashulaservision.com/eye-diseases/007-retina/images/page-038-image-01.jpg"
+  ],
+  "folder": "007-retina",
+  "index": 7,
+  "pages": [
+    34,
+    39
+  ]
+}
